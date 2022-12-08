@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import "./asd.css"
+import { checkOld } from "./utils/calcOld"
 
-function App() {
+
+export const App = () => {
+  const [birth, setBirth] = useState("")
+  const onChangeBirth = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newBirth = e.target.value;
+    setBirth(newBirth)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <div className="flex">
+          <p>№</p>
+          <p>ссылка на человека</p>
+          <p>дата рождения</p>
+          <p>возраст</p>
+          <p>имя</p>
+          <p>статус</p>
+        </div>
+
+        <div className="flex">
+          <p>empty</p>
+          <input className="input" placeholder="ссылка на человека" />
+          <input className="input" placeholder="дата рождения"
+            onChange={onChangeBirth} />
+          <p>empty</p>
+          <input className="input" placeholder="имя" />
+          <input className="input" placeholder="status" />
+        </div>
+
+        <div className="flex">
+          <p>1</p>
+          <p>vk.com</p>
+          <p>{birth}</p>
+          <p>{checkOld(birth)}</p>
+          <p>alla</p>
+          <p>D</p>
+        </div>
+      </div>
+    </>
   );
 }
-
-export default App;

@@ -1,0 +1,12 @@
+.flex {
+  width: 80vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 150px);
+  justify-content: space-around;
+}
+
+.input {
+
+  min-width: 2vw;
+}
