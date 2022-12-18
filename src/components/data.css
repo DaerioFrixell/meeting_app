@@ -1,0 +1,24 @@
+.grid {
+  width: 80vw;
+  margin: auto;
+  /* display: flex;
+  justify-content: space-around; */
+  display: grid;
+  grid-template-columns: repeat(2, 3rem) repeat(2, 8rem) 2.8rem 6rem repeat(2, 14rem) 3rem;
+  gap: 1rem;
+}
+
+.smth {
+  display: flex;
+  justify-content: space-around;
+}
+
+.item {}
+
+.item-stock {
+  background-color: greenyellow;
+}
+
+.input {
+  height: 2rem;
+}
