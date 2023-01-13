@@ -1,11 +1,10 @@
 export type InitState = {
-  units: any[],
   isLoading: boolean,
-  error: null | string
+  error: null | string,
+  units: any[]
 }
 
 export type UnitType = {
-  id: number
   status: string | null,
   name: string,
   surname: string,
@@ -16,10 +15,22 @@ export type UnitType = {
   typeMeet: "live" | "ether"
 }
 
+export type AddUnitType = {
+  status: string | null,
+  name: string,
+  surname: string,
+  wasOld: number | "none",
+  dateMeet: string,
+  link: string,
+  whereMeet: string,
+  typeMeet: string
+}
+
 export enum UnitActionType {
   FETCH_UNITS = "FETCH_UNITS",
   FETCH_UNITS_SUCCESS = "FETCH_UNITS_SUCCESS",
   FETCH_UNITS_ERROR = "FETCH_UNITS_ERROR",
+  ADD_UNITS = "ADD_UNITS"
 }
 
 export type FetchUnitAction = {
@@ -36,7 +47,13 @@ export type FetchUnitErrorAction = {
   payload: string
 }
 
+export type addUnitsAction = {
+  type: UnitActionType.ADD_UNITS,
+  payload: AddUnitType
+}
+
 export type UnitActions =
   FetchUnitAction
   | FetchUnitSuccessAction
   | FetchUnitErrorAction
+  | addUnitsAction
