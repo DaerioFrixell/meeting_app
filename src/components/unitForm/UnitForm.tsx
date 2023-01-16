@@ -1,5 +1,5 @@
 import "./unitForm.css"
-import { Form, Formik, Field } from "formik";
+import { Form, Formik, Field, FormikErrors } from "formik";
 import { calcWasOld } from "../../middleware/calcOldMiddleware";
 import { useAction } from "../../hooks/useAction";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -15,8 +15,8 @@ type UnitFormType = {
 }
 
 type errorType = {
-  link: boolean | string,
-  typeMeet: boolean | string,
+  link: string,
+  typeMeet: string,
 }
 
 export const UnitForm = () => {
@@ -34,6 +34,7 @@ export const UnitForm = () => {
     typeMeet: "",
   };
 
+
   return (
     <>
       <h2>добавить</h2>
@@ -41,18 +42,15 @@ export const UnitForm = () => {
         initialValues={initialValues}
         validate={values => {
           let checkLinks = (unitLinks.filter(u => u === values.link))
-          console.log(checkLinks)
-          const errors: errorType = {
-            link: false,
-            typeMeet: false
-          };
+          const errors:
+            FormikErrors<errorType> = {};
 
           if (checkLinks.length === 1) { errors.link = "link add yet" }
           if (values.link === "") { errors.link = "empty" }
           if (values.typeMeet === "") { errors.typeMeet = "empty" }
-          // return errors;
+          return errors;
         }}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
+        onSubmit={(values, actions) => {
           const wasOld = calcWasOld(values.birth, values.dateMeet)
           addUnit({
             status: null,
@@ -64,12 +62,14 @@ export const UnitForm = () => {
             whereMeet: values.whereMeet,
             typeMeet: values.typeMeet
           })
-          resetForm()
-          setSubmitting(false);
-        }}>
+          actions.resetForm()
+          actions.setSubmitting(false);
+
+
+        }
+        }>
 
         {({
-          values,
           errors,
           touched,
           isSubmitting }) => (
