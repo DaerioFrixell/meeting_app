@@ -1,0 +1,73 @@
+.unit-list {
+  box-shadow: .1px 1px 10px 1px #0000006f;
+  font-size: 1.4rem;
+  width: 1440px;
+  margin: auto;
+
+  &__titles {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    width: 120rem;
+    margin: auto;
+    height: 4rem;
+    gap: .5rem;
+
+    &__number {
+      width: 3rem;
+    }
+
+    &__status {
+      width: 3rem;
+    }
+
+    &__name {
+      width: 10rem;
+    }
+
+    &__surname {
+      width: 10rem;
+    }
+
+    &__was-old {
+      width: 16rem;
+      text-align: center;
+
+    }
+
+    &__date-meet {
+      width: 10rem;
+    }
+
+    &__link {
+      width: 26rem;
+    }
+
+    &__where-meet {
+      width: 22rem;
+    }
+
+    &__type-meet {
+      width: 10rem;
+    }
+
+    &__button {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}
+
+.item-update {
+  padding: .2rem 0;
+}
+
+.item-update:hover {
+  background-color: rgb(160, 237, 160);
+}
+
+.item:active {
+  background-color: rgb(116, 239, 116);
+}

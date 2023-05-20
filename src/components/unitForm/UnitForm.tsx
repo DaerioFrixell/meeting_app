@@ -42,11 +42,9 @@ export const UnitForm = () => {
         initialValues={initialValues}
         validate={values => {
           let checkLinks = (unitLinks.filter(u => u === values.link))
-          const errors:
-            FormikErrors<errorType> = {};
+          const errors: FormikErrors<errorType> = {};
 
-          if (checkLinks.length === 1) { errors.link = "link add yet" }
-          if (values.link === "") { errors.link = "empty" }
+          if (checkLinks.length === 1 && checkLinks[0] !== "") { errors.link = "link add yet" }
           if (values.typeMeet === "") { errors.typeMeet = "empty" }
           return errors;
         }}
@@ -59,13 +57,14 @@ export const UnitForm = () => {
             wasOld: wasOld,
             dateMeet: values.dateMeet,
             link: values.link,
+            vk: null,
+            inst: null,
+            telegram: null,
             whereMeet: values.whereMeet,
             typeMeet: values.typeMeet
           })
           actions.resetForm()
           actions.setSubmitting(false);
-
-
         }
         }>
 
@@ -75,6 +74,7 @@ export const UnitForm = () => {
           isSubmitting }) => (
 
           <Form className="unit-form">
+
             <Field className="unit-form-input" name="name" placeholder="имя" />
             <Field className="unit-form-input" name="surname" placeholder="surname" />
             <Field className="unit-form-input" name="birth" placeholder="дата рождения" />
@@ -84,6 +84,7 @@ export const UnitForm = () => {
               name="link"
               placeholder="ссылка на соц сеть" />
             {errors.link && touched.link && (<p>{errors.link}</p>)}
+
             <Field className="unit-form-input" name="whereMeet" placeholder="место встречи" />
             <Field className="unit-form-input" component="select" name="typeMeet" >
               <option disabled>тип знакомства</option>
@@ -91,6 +92,7 @@ export const UnitForm = () => {
               <option value="ether">ether </option>
             </Field>
             {errors.link && touched.link && (<p>{errors.typeMeet}</p>)}
+
             <button type="submit" disabled={isSubmitting}>create</button>
           </Form>
         )}
