@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { GetUnitResponse } from '../../../Data/GetUnitResponse'
 import { useAction } from '../../../hooks/useAction'
+import { FormField } from '../../UI/field/FormField'
 
 type Unit = GetUnitResponse
 export const Unit: FC<Unit> = ({
@@ -14,39 +15,15 @@ export const Unit: FC<Unit> = ({
   whereMeet,
   id,
 }) => {
-  const [a, setA] = useState(true)
-  const [c, setC] = useState('')
   const { deleteUnitAction } = useAction()
 
   const testFunc = (link: string) => {
     return console.log(link)
   }
 
-  const handleState = () => {
-    setA(!a)
-    console.log(a)
-  }
-
-  const handlerValue = (e: any) => {
-    setC(e.target.value)
-  }
-
-  const b = a ? (
-    <p onClick={handleState}>{c ? c : 'nothing'}</p>
-  ) : (
-    <>
-      <input
-        placeholder="cmon bitch"
-        value={c}
-        onChange={handlerValue}
-      />
-      <p onClick={handleState}>cl</p>
-    </>
-  )
-
   return (
     <div className="unit-list__item">
-      {b}
+      <FormField asd={wasOld} />
       <p className="unit-list__item__number">{id}</p>
 
       <p
