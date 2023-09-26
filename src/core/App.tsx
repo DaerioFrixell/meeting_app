@@ -1,13 +1,12 @@
-import { Data } from "../components/Data";
-import "./app.css"
-
+import { AllUnits } from '../page/allUnits/AllUnits'
+import './app.css'
 
 export const App = () => {
   return (
     <>
       <div className="App">
-        <Data />
+        <AllUnits />
       </div>
     </>
-  );
+  )
 }

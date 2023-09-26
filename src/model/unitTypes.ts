@@ -1,44 +1,30 @@
 export type InitState = {
-  isLoading: boolean,
-  error: null | string,
+  isLoading: boolean
+  error: null | string
   units: any[]
 }
 
-export type UnitType = {
-  status: string | null,
-  name: string,
-  surname: string,
-  wasOld: number,
-  dateMeet: string,
-  link: string | null,
-  vk: string | null,
-  inst: string | null,
-  telegram: string | null,
-  whereMeet: string,
-  typeMeet: "live" | "ether"
-}
-
 export type AddUnitType = {
-  status: string | null,
-  name: string,
-  surname: string,
-  wasOld: number | "none",
-  dateMeet: string,
-  link: string | null,
-  vk: string | null,
-  inst: string | null,
-  telegram: string | null,
-  whereMeet: string,
+  status: string | null
+  name: string
+  surname: string
+  wasOld: number | 'none'
+  dateMeet: string
+  link: string | null
+  vk: string | null
+  inst: string | null
+  telegram: string | null
+  whereMeet: string
   typeMeet: string
 }
 
 export enum UnitActionType {
-  FETCH_UNITS = "FETCH_UNITS",
-  FETCH_UNITS_SUCCESS = "FETCH_UNITS_SUCCESS",
-  FETCH_UNITS_ERROR = "FETCH_UNITS_ERROR",
-  ADD_UNITS = "ADD_UNITS",
-  DELETE_UNITS = "DELETE_UNITS",
-  DELETE_UNITS_ERROR = "DELETE_UNITS_ERROR"
+  FETCH_UNITS = 'FETCH_UNITS',
+  FETCH_UNITS_SUCCESS = 'FETCH_UNITS_SUCCESS',
+  FETCH_UNITS_ERROR = 'FETCH_UNITS_ERROR',
+  ADD_UNITS = 'ADD_UNITS',
+  DELETE_UNITS = 'DELETE_UNITS',
+  DELETE_UNITS_ERROR = 'DELETE_UNITS_ERROR',
 }
 
 export type FetchUnitAction = {
@@ -56,7 +42,7 @@ export type FetchUnitErrorAction = {
 }
 
 export type addUnitsAction = {
-  type: UnitActionType.ADD_UNITS,
+  type: UnitActionType.ADD_UNITS
   payload: AddUnitType
 }
 
@@ -65,12 +51,12 @@ export type DeleteUnitAction = {
 }
 
 export type DeleteUnitErrorAction = {
-  type: UnitActionType.DELETE_UNITS_ERROR,
+  type: UnitActionType.DELETE_UNITS_ERROR
   payload: string
 }
 
 export type UnitActions =
-  FetchUnitAction
+  | FetchUnitAction
   | FetchUnitSuccessAction
   | FetchUnitErrorAction
   | addUnitsAction
