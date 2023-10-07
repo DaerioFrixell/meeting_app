@@ -21,9 +21,9 @@ export const UnitList: FC = () => {
         <p className="unit-list__item__status">stat</p>
         <p className="unit-list__item__name">name</p>
         <p className="unit-list__item__surname">surname</p>
-        <p className="unit-list__item__was-old">лет при знакомстве</p>
+        <p className="unit-list__item__was-old">было лет</p>
         <p className="unit-list__item__date-meet">dateMeet</p>
-        <p className="unit-list__item__link">link</p>
+        <p className="unit-list__item__link">links</p>
         <p className="unit-list__item__where-meet">whereMeet</p>
         <p className="unit-list__item__type-meet">typeMeet</p>
       </div>
