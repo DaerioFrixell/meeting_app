@@ -5,12 +5,14 @@ import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { Unit } from './unit/Unit'
 
 export const UnitList: FC = () => {
-  const { units } = useTypedSelector((state) => state.unit)
+  const { units, isLoading } = useTypedSelector((state) => state.unit)
   const { fetchFeedbacks } = useAction()
 
   useEffect(() => {
     fetchFeedbacks()
   }, [])
+
+  if (isLoading) return <h1>loading...</h1>
 
   return (
     <section className="unit-list">

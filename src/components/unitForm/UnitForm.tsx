@@ -105,11 +105,19 @@ export const UnitForm = () => {
               <option value="live">live</option>
               <option value="ether">ether </option>
             </Field>
-            {errors.link && touched.link && <p>{errors.typeMeet}</p>}
 
-            <button type="submit" disabled={isSubmitting}>
-              create
-            </button>
+            <button type="submit">create</button>
+            {errors && touched && (
+              <p>
+                birth: {errors.birth} <br />
+                datemeet: {errors.dateMeet} <br />
+                link: {errors.link} <br />
+                name: {errors.name} <br />
+                surname: {errors.surname} <br />
+                typemeet: {errors.typeMeet} <br />
+                wheremeet: {errors.whereMeet} <br />
+              </p>
+            )}
           </Form>
         )}
       </Formik>

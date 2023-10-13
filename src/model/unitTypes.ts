@@ -1,3 +1,5 @@
+import { UpdateUnit } from '../Data/Unit'
+
 export type InitState = {
   isLoading: boolean
   error: null | string
@@ -22,7 +24,13 @@ export enum UnitActionType {
   FETCH_UNITS = 'FETCH_UNITS',
   FETCH_UNITS_SUCCESS = 'FETCH_UNITS_SUCCESS',
   FETCH_UNITS_ERROR = 'FETCH_UNITS_ERROR',
+
+  OFF_LOADING = 'OFF_LOADING',
+
   ADD_UNITS = 'ADD_UNITS',
+
+  UPDATE_UNIT = 'UPDATE_UNIT',
+
   DELETE_UNITS = 'DELETE_UNITS',
   DELETE_UNITS_ERROR = 'DELETE_UNITS_ERROR',
 }
@@ -31,9 +39,13 @@ export type FetchUnitAction = {
   type: UnitActionType.FETCH_UNITS
 }
 
+export type OffFetchUnitAction = {
+  type: UnitActionType.OFF_LOADING
+}
+
 export type FetchUnitSuccessAction = {
   type: UnitActionType.FETCH_UNITS_SUCCESS
-  payload: InitState[]
+  payload: []
 }
 
 export type FetchUnitErrorAction = {
@@ -41,7 +53,7 @@ export type FetchUnitErrorAction = {
   payload: string
 }
 
-export type addUnitsAction = {
+export type AddUnitsAction = {
   type: UnitActionType.ADD_UNITS
   payload: AddUnitType
 }
@@ -55,10 +67,17 @@ export type DeleteUnitErrorAction = {
   payload: string
 }
 
+export type UpdateUnitAction = {
+  type: UnitActionType.UPDATE_UNIT
+  payload: UpdateUnit
+}
+
 export type UnitActions =
+  | OffFetchUnitAction
   | FetchUnitAction
   | FetchUnitSuccessAction
   | FetchUnitErrorAction
-  | addUnitsAction
+  | AddUnitsAction
   | DeleteUnitAction
   | DeleteUnitErrorAction
+  | UpdateUnitAction
