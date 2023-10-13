@@ -10,7 +10,7 @@ export type CreateUnit = {
 
 export type UpdateUnit = {
   id: any
-  status: string
+  status: string | null
   name: string
   surname: string
   wasOld: number

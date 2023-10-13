@@ -1,3 +1,4 @@
+import { UpdateUnit } from '../Data/Unit'
 import { InitState, UnitActions, UnitActionType } from './unitTypes'
 
 const initialState: InitState = {
@@ -42,11 +43,7 @@ export const unitReducer = (
       return {
         isLoading: false,
         error: null,
-        units: state.units.map((u) => {
-          u.id === action.payload.id
-            ? console.log('update id = ', action.payload.id)
-            : console.log('something went wrong...')
-        }), // сделать обновление Units
+        units: asd(state, action.payload),
       }
 
     default:
@@ -54,4 +51,26 @@ export const unitReducer = (
   }
 }
 
-const asd = () => {}
+const asd = (state: InitState, payload: UpdateUnit): any[] => {
+  const allUnits = state.units
+  const d = state.units.filter((u) => u.id !== payload.id)
+  state.units.push(payload)
+  console.log('pady', state.units)
+
+  // const newAllUnits = []
+
+  // for (let i = 0; i < allUnits.length; i++) {
+  //   if (allUnits[i].id === payload.id) {
+  //     console.log('was: ', allUnits[i])
+  //     console.log('now: ', payload)
+
+  //     // allUnits[i] = {payload}
+  //     console.log(
+  //       `now obj with id = ${allUnits[i].id} = ${allUnits[i]}`
+  //     )
+  //   }
+  //   newAllUnits.push(allUnits[i])
+  // }
+
+  return state.units
+}

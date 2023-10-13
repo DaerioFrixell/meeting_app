@@ -31,6 +31,7 @@ export const UnitForm = () => {
       <Formik
         initialValues={initialValues}
         validate={(values) => {
+          console.log("i'm work too")
           let checkLinks = unitLinks.filter((u) => u === values.link)
           const errors: FormikErrors<errorType> = {}
 

@@ -16,25 +16,31 @@ export const Unit: FC<Unit> = ({
   whereMeet,
   id,
 }) => {
-  const { deleteUnitAction } = useAction()
+  const { deleteUnitAction, updateUnit } = useAction()
   const [canUpdate, setCanUpdate] = useState(false)
 
   const testFunc = (link: string) => {
     return console.log(link)
   }
 
+  const foo = () => {
+    console.log(id)
+    setCanUpdate(!canUpdate)
+  }
+
   const initialValues: UpdateUnit = {
-    status: '',
+    id: 203,
+    status,
     name,
     surname,
-    wasOld,
-    dateMeet,
-    link,
+    wasOld: 0,
+    dateMeet: '0',
+    link: '',
     vk: '',
     inst: '',
     telegram: '',
     whereMeet: '',
-    typeMeet,
+    typeMeet: 'ether',
   }
 
   return (
@@ -43,103 +49,107 @@ export const Unit: FC<Unit> = ({
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          console.log(values)
+          updateUnit(values)
+          setCanUpdate(false)
         }}
       >
-        {() => (
-          <Form className="flex">
-            {canUpdate ? (
-              <>
-                <Field
-                  name="status"
-                  className="unit-list__item__status item-update"
-                  value={status ? status : '-'}
-                />
+        {(values) => (
+          console.log('values: ', values),
+          (
+            <Form className="flex">
+              {canUpdate ? (
+                <>
+                  <Field
+                    name="status"
+                    className="unit-list__item__status item-update"
+                    value={status}
+                  />
 
-                <Field
-                  name="name"
-                  type="text"
-                  className="unit-list__item__name"
-                  value={name}
-                />
+                  <Field
+                    name="name"
+                    className="unit-list__item__name"
+                    value={name}
+                  />
 
-                <input
-                  className="unit-list__item__surname"
-                  value={surname}
-                />
+                  <Field
+                    name="surname"
+                    className="unit-list__item__surname"
+                    value={surname}
+                  />
 
-                <p className="unit-list__item__was-old">{wasOld}</p>
+                  <p className="unit-list__item__was-old">{wasOld}</p>
 
-                <input
-                  className="unit-list__item__date-meet"
-                  value={dateMeet}
-                />
+                  <input
+                    className="unit-list__item__date-meet"
+                    value={dateMeet}
+                  />
 
-                <input
-                  className="unit-list__item__link"
-                  value={link}
-                />
+                  <input
+                    className="unit-list__item__link"
+                    value={link}
+                  />
 
-                <input
-                  className="unit-list__item__where-meet"
-                  value={whereMeet}
-                />
+                  <input
+                    className="unit-list__item__where-meet"
+                    value={whereMeet}
+                  />
 
-                <input
-                  className="unit-list__item__type-meet"
-                  value={typeMeet}
-                />
-              </>
-            ) : (
-              <>
-                <p
-                  className="unit-list__item__status item-update"
-                  onClick={() => testFunc(link)}
-                >
-                  {status ? status : '-'}
-                </p>
+                  <input
+                    className="unit-list__item__type-meet"
+                    value={typeMeet}
+                  />
+                </>
+              ) : (
+                <>
+                  <p
+                    className="unit-list__item__status item-update"
+                    onClick={() => testFunc(link)}
+                  >
+                    {status ? status : '-'}
+                  </p>
 
-                <p className="unit-list__item__name">{name}</p>
-                <p className="unit-list__item__surname">{surname}</p>
+                  <p className="unit-list__item__name">{name}</p>
+                  <p className="unit-list__item__surname">
+                    {surname}
+                  </p>
 
-                <p className="unit-list__item__was-old">{wasOld}</p>
-                <p className="unit-list__item__date-meet">
-                  {dateMeet}
-                </p>
+                  <p className="unit-list__item__was-old">{wasOld}</p>
+                  <p className="unit-list__item__date-meet">
+                    {dateMeet}
+                  </p>
 
-                <p className="unit-list__item__link">{link}</p>
-                <p className="unit-list__item__where-meet">
-                  {whereMeet}
-                </p>
-                <p className="unit-list__item__type-meet">
-                  {typeMeet}
-                </p>
-              </>
-            )}
-
-            <button
-              className="unit-list__item__button"
-              onClick={() => setCanUpdate(!canUpdate)}
-            >
-              /
-            </button>
-
-            <button
-              className="unit-list__item__button"
-              onClick={() => deleteUnitAction(id)}
-            >
-              -
-            </button>
-
-            {canUpdate && (
+                  <p className="unit-list__item__link">{link}</p>
+                  <p className="unit-list__item__where-meet">
+                    {whereMeet}
+                  </p>
+                  <p className="unit-list__item__type-meet">
+                    {typeMeet}
+                  </p>
+                </>
+              )}
               <button
-                type="submit"
+                type="button"
                 className="unit-list__item__button"
+                onClick={() => foo()}
               >
-                U
+                /
               </button>
-            )}
-          </Form>
+              <button
+                className="unit-list__item__button"
+                onClick={() => deleteUnitAction(id)}
+              >
+                -
+              </button>
+              {canUpdate && (
+                <button
+                  type="submit"
+                  className="unit-list__item__button"
+                >
+                  U
+                </button>
+              )}
+            </Form>
+          )
         )}
       </Formik>
     </div>

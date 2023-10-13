@@ -6,6 +6,7 @@ import {
   getUnits,
   updateUnitRequest,
 } from '../api/unitApi'
+import { UpdateUnit } from '../Data/Unit'
 
 export const fetchFeedbacks = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
@@ -48,15 +49,22 @@ export const addUnit = (unit: AddUnitType) => {
   }
 }
 
-export const updateUnit = (unit: AddUnitType) => {
+export const updateUnit = (updateUnit: UpdateUnit) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      dispatch({ type: UnitActionType.FETCH_UNITS })
+      // dispatch({ type: UnitActionType.FETCH_UNITS })
+      console.log('payload for redux: ', updateUnit)
+      // const data = await updateUnitRequest(unit)
 
-      const data = await updateUnitRequest(unit)
-      console.log('updat fake data: ', data)
-      // сделать обновление в редаксе или просто запросить всех Units
-      dispatch({ type: UnitActionType.OFF_LOADING })
+      /** TO DO
+       * сделать обновление в редаксе
+       * запросить всех Units
+       * */
+
+      dispatch({
+        type: UnitActionType.UPDATE_UNIT,
+        payload: updateUnit,
+      })
     } catch (e) {
       dispatch({
         type: UnitActionType.FETCH_UNITS_ERROR,
