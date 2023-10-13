@@ -1,44 +1,49 @@
 .unit-list {
-  box-shadow: .1px 1px 10px 1px #0000006f;
+  box-shadow: 0.1px 1px 10px 1px #0000006f;
   font-size: 1.4rem;
-  width: 1440px;
+  width: 144rem;
   margin: auto;
 
   &__titles {
-    display: flex;
+    display: flex; // what does it do?
   }
 
   &__item {
+    border: 1px solid red;
+
     display: flex;
-    width: 120rem;
+    width: 140rem;
     margin: auto;
-    height: 4rem;
-    gap: .5rem;
+    margin-bottom: 0.2rem;
+    height: 3rem;
+    gap: 0.5rem;
+    text-align: center;
 
     &__number {
-      width: 3rem;
+      width: 2rem;
     }
 
     &__status {
-      width: 3rem;
+      width: 4rem;
+      // margin: 0 2rem;
     }
 
     &__name {
-      width: 10rem;
+      width: 8.4rem;
+      padding: 0, 2rem;
     }
 
     &__surname {
-      width: 10rem;
+      width: 12rem;
     }
 
     &__was-old {
-      width: 16rem;
+      width: 10rem;
       text-align: center;
-
     }
 
     &__date-meet {
-      width: 10rem;
+      width: 8rem;
     }
 
     &__link {
@@ -61,7 +66,7 @@
 }
 
 .item-update {
-  padding: .2rem 0;
+  padding: 0.2rem 0;
 }
 
 .item-update:hover {
@@ -70,4 +75,8 @@
 
 .item:active {
   background-color: rgb(116, 239, 116);
+}
+
+.flex {
+  display: flex;
 }

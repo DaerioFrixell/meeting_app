@@ -4,18 +4,18 @@ type FormField = {
   asd: string | number
 }
 export const FormField: FC<FormField> = ({ asd }) => {
-  const [condition, setCondition] = useState(false)
+  const [clickOnField, setClickOnField] = useState(false)
   const [fieldValue, setFieldValue] = useState(asd)
 
   const handleStateCondition = () => {
-    setCondition(!condition)
+    setClickOnField(!clickOnField)
   }
 
   const handlerValue = (e: FormEvent<HTMLInputElement>) => {
     setFieldValue(e.currentTarget.value)
   }
 
-  return condition ? (
+  return clickOnField ? (
     <>
       <input value={fieldValue} onChange={handlerValue} />
 
