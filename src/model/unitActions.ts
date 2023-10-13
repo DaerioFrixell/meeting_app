@@ -1,6 +1,11 @@
 import { Dispatch } from 'redux'
 import { AddUnitType, UnitActions, UnitActionType } from './unitTypes'
-import { createUnit, deleteUnit, getUnits } from '../api/unitApi'
+import {
+  createUnit,
+  deleteUnit,
+  getUnits,
+  updateUnitRequest,
+} from '../api/unitApi'
 
 export const fetchFeedbacks = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
@@ -48,8 +53,10 @@ export const updateUnit = (unit: AddUnitType) => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      updateUnit(unit) // в url пустая строка, api не работает сейчас
+      const data = await updateUnitRequest(unit)
+      console.log('updat fake data: ', data)
       // сделать обновление в редаксе или просто запросить всех Units
+      dispatch({ type: UnitActionType.OFF_LOADING })
     } catch (e) {
       dispatch({
         type: UnitActionType.FETCH_UNITS_ERROR,

@@ -9,6 +9,7 @@ export type CreateUnit = {
 }
 
 export type UpdateUnit = {
+  id: any
   status: string
   name: string
   surname: string

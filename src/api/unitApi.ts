@@ -11,8 +11,9 @@ export const getUnits = async () => {
   return data
 }
 
-export const updateUnit = async (updateUnit: any) => {
+export const updateUnitRequest = async (updateUnit: any) => {
   const { data } = await $host.put('', updateUnit)
+  return data
 }
 
 export const deleteUnit = async (id: number) => {

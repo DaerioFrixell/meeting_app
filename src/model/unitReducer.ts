@@ -42,10 +42,16 @@ export const unitReducer = (
       return {
         isLoading: false,
         error: null,
-        units: state.units, // сделать обновление Units
+        units: state.units.map((u) => {
+          u.id === action.payload.id
+            ? console.log('update id = ', action.payload.id)
+            : console.log('something went wrong...')
+        }), // сделать обновление Units
       }
 
     default:
       return state
   }
 }
+
+const asd = () => {}
