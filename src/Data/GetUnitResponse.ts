@@ -2,7 +2,6 @@ export type GetUnitResponse = {
   id: number
   status: string | null
   name: string
-  birth: string
   surname: string
   wasOld: number
   dateMeet: string
