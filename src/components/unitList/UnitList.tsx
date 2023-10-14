@@ -36,6 +36,7 @@ export const UnitList: FC = () => {
             key={u.id}
             id={u.id}
             dateMeet={u.dateMeet}
+            birth={u.birth}
             inst={u.inst}
             link={u.link}
             name={u.name}
