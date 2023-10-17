@@ -1,5 +1,4 @@
 import { AllUnits } from '../page/allUnits/AllUnits'
-import { GlobalStats } from '../page/globalStats/GlobalStats'
 import './app.css'
 
 export const App = () => {
@@ -8,7 +7,6 @@ export const App = () => {
       <div className="App">
         <AllUnits />
       </div>
-      <GlobalStats />
     </>
   )
 }

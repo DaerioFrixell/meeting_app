@@ -17,31 +17,40 @@ export const GlobalStats: FC = () => {
           Goal: meeting {countUits} units per {year} year
         </p>
 
-        <div>
-          <div className="global-stats__general-info__calcucation">
-            <div className="global-stats__general-info__calcucation__plan">
+        <div className="gs-inner">
+          <div className="gs-inner__calcucation">
+            <div className="gs-inner__calcucation__plan">
               <p>{perDay}</p>
-              <p>2</p>
+              <p>0</p>
             </div>
 
-            <div className="global-stats__general-info__calcucation__plan">
+            <div className="gs-inner__calcucation__plan">
               <p>{perMonth}</p>
-              <p>60.8</p>
+              <p>0.00</p>
+            </div>
+          </div>
+
+          <div className="gs-inner__process">
+            <div>
+              <span>completly </span>
+              <span>0%</span>
+            </div>
+
+            <div>
+              <span>0</span>
+              <span>из</span>
+              <span>0000</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div>
-        <p>
-          <p>completly</p>
-        </p>
-      </div>
-
-      <div>
-        change period
-        <p>2023</p>
-        <p>2022</p>
+      <div className="global-stats__period">
+        <span>change period</span>
+        <select name="" id="">
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
       </div>
 
       <div className="global-stats__block">
@@ -52,11 +61,19 @@ export const GlobalStats: FC = () => {
           <p>3st</p>
           <p>3st</p>
           <p>3st</p>
+          <p>3st</p>
+          <p>3st</p>
+          <p>3st</p>
+          <p>3st</p>
         </div>
 
         <div className="global-stats__block__marks">
           <p>23%</p>
           <p>43%</p>
+          <p>15%</p>
+          <p>15%</p>
+          <p>15%</p>
+          <p>15%</p>
           <p>15%</p>
           <p>15%</p>
           <p>15%</p>
@@ -71,11 +88,19 @@ export const GlobalStats: FC = () => {
           <p>3st</p>
           <p>3st</p>
           <p>3st</p>
+          <p>3st</p>
+          <p>3st</p>
+          <p>3st</p>
+          <p>3st</p>
         </div>
 
         <div className="global-stats__block__marks">
           <p>23%</p>
           <p>43%</p>
+          <p>15%</p>
+          <p>15%</p>
+          <p>15%</p>
+          <p>15%</p>
           <p>15%</p>
           <p>15%</p>
           <p>15%</p>

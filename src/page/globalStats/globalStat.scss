@@ -1,17 +1,27 @@
 .global-stats {
-  width: 50rem;
+  width: 70rem;
   margin: auto;
   padding: 1rem;
   font-size: 2rem;
 
-  &__general-info {
-    border: 2px solid black;
+  border: 2px solid black;
+  border-radius: 5px;
 
-    &__calcucation {
-      display: flex;
-      &__plan {
-      }
+  &__general-info {
+    border: 2px solid rgba(153, 152, 152, 0.461);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+
+    &__goal {
+      margin-bottom: 1rem;
     }
+  }
+
+  &__period {
+    width: 20rem;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
   }
 
   &__block {
@@ -23,5 +33,16 @@
       display: flex;
       justify-content: space-around;
     }
+  }
+}
+
+.gs-inner {
+  display: flex;
+
+  &__calcucation {
+    display: flex;
+    justify-content: space-between;
+    min-width: 8rem;
+    margin-right: 2rem;
   }
 }
