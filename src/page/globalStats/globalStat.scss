@@ -1,0 +1,27 @@
+.global-stats {
+  width: 50rem;
+  margin: auto;
+  padding: 1rem;
+  font-size: 2rem;
+
+  &__general-info {
+    border: 2px solid black;
+
+    &__calcucation {
+      display: flex;
+      &__plan {
+      }
+    }
+  }
+
+  &__block {
+    display: grid;
+    grid-template-columns: repeat(1fr, 3);
+    margin-top: 1.5rem;
+
+    &__marks {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
