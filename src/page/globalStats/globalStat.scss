@@ -1,0 +1,48 @@
+.global-stats {
+  width: 70rem;
+  margin: auto;
+  padding: 1rem;
+  font-size: 2rem;
+
+  border: 2px solid black;
+  border-radius: 5px;
+
+  &__general-info {
+    border: 2px solid rgba(153, 152, 152, 0.461);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+
+    &__goal {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__period {
+    width: 20rem;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__block {
+    display: grid;
+    grid-template-columns: repeat(1fr, 3);
+    margin-top: 1.5rem;
+
+    &__marks {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
+
+.gs-inner {
+  display: flex;
+
+  &__calcucation {
+    display: flex;
+    justify-content: space-between;
+    min-width: 8rem;
+    margin-right: 2rem;
+  }
+}
