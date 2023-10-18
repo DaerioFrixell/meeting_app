@@ -1,12 +1,12 @@
-import { AllUnits } from '../page/allUnits/AllUnits'
-import './app.css'
+import { Header } from '../components/header/header'
+import { Routing } from './routing/Routing'
+import './app.scss'
 
 export const App = () => {
   return (
-    <>
       <div className="App">
-        <AllUnits />
+        <Header />
+        <Routing />
       </div>
-    </>
   )
 }
