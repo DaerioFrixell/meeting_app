@@ -23,7 +23,7 @@ export const Unit: FC<Unit> = ({
   const [canUpdate, setCanUpdate] = useState(false)
 
   const testFunc = (link: string) => {
-    return console.log(link)
+    // return console.log(link)
   }
 
   const initialValues: UpdateUnit = {
@@ -47,7 +47,7 @@ export const Unit: FC<Unit> = ({
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          console.log('values fo load:', values)
+          // console.log('values fo load:', values)
           updateUnit(values)
           setCanUpdate(false)
         }}

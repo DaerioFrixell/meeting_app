@@ -6,10 +6,11 @@ import { Unit } from './unit/Unit'
 
 export const UnitList: FC = () => {
   const { units, isLoading } = useTypedSelector((state) => state.unit)
-  const { fetchFeedbacks } = useAction()
+  const { fetchFeedbacks, getFakeData } = useAction()
 
   useEffect(() => {
-    fetchFeedbacks()
+    // fetchFeedbacks()
+    getFakeData()
   }, [])
 
   if (isLoading) return <h1>loading...</h1>
