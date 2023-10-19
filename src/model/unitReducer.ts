@@ -43,7 +43,7 @@ export const unitReducer = (
       return {
         isLoading: false,
         error: null,
-        units: asd(state, action.payload),
+        units: updateStateUnits(state, action.payload),
       }
 
     default:
@@ -51,26 +51,17 @@ export const unitReducer = (
   }
 }
 
-const asd = (state: InitState, payload: UpdateUnit): any[] => {
-  const allUnits = state.units
-  const d = state.units.filter((u) => u.id !== payload.id)
-  state.units.push(payload)
-  console.log('pady', state.units)
+/** TO DO
+ * вынести функцию в middleware, в thunk или еще куда-то.
+ * оставлять редакс чистым для чтения
+ */
 
-  // const newAllUnits = []
-
-  // for (let i = 0; i < allUnits.length; i++) {
-  //   if (allUnits[i].id === payload.id) {
-  //     console.log('was: ', allUnits[i])
-  //     console.log('now: ', payload)
-
-  //     // allUnits[i] = {payload}
-  //     console.log(
-  //       `now obj with id = ${allUnits[i].id} = ${allUnits[i]}`
-  //     )
-  //   }
-  //   newAllUnits.push(allUnits[i])
-  // }
-
+const updateStateUnits = (state: InitState, payload: UpdateUnit): any[] => {  
+  for(let i = 0; i < state.units.length; i++) {
+    if (state.units[i].id === payload.id) {
+      Object.assign(state.units[i], payload);
+      break
+    }
+  }
   return state.units
 }
