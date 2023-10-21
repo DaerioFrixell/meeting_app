@@ -52,7 +52,7 @@ export const getFakeData = () => {
 export const addUnit = (unit: AddUnitType) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      dispatch({ type: UnitActionType.FETCH_UNITS })
+      // dispatch({ type: UnitActionType.FETCH_UNITS })
 
       const data = await createUnit(unit) // data: Unit с id и другими полями
       console.log('you create: ', data)
@@ -71,9 +71,10 @@ export const addUnit = (unit: AddUnitType) => {
 }
 
 export const updateUnit = (updateUnit: UpdateUnit) => {
+  console.log('updateUnit action work')
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      dispatch({ type: UnitActionType.FETCH_UNITS })
+      // dispatch({ type: UnitActionType.FETCH_UNITS })
       const data = await updateUnitRequest(updateUnit)
 
       dispatch({
@@ -90,7 +91,7 @@ export const updateUnit = (updateUnit: UpdateUnit) => {
 }
 
 export const deleteUnitAction = (id: number) => {
-  console.log(id)
+  console.log('delete action work')
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       deleteUnit(id)

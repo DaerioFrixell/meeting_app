@@ -30,25 +30,23 @@ export const UnitList: FC = () => {
         <p className="unit-list__item__type-meet">typeMeet</p>
       </div>
 
-      {units
-        .map((u) => (
-          <Unit
-            key={u.id}
-            id={u.id}
-            dateMeet={u.dateMeet}
-            inst={u.inst}
-            link={u.link}
-            name={u.name}
-            status={u.status}
-            surname={u.surname}
-            telegram={u.telegram}
-            typeMeet={u.typeMeet}
-            vk={u.vk}
-            wasOld={u.wasOld}
-            whereMeet={u.whereMeet}
-          />
-        ))
-        .reverse()}
+      {units.map((u) => (
+        <Unit
+          key={u.id}
+          id={u.id}
+          dateMeet={u.dateMeet}
+          inst={u.inst}
+          link={u.link}
+          name={u.name}
+          status={u.status}
+          surname={u.surname}
+          telegram={u.telegram}
+          typeMeet={u.typeMeet}
+          vk={u.vk}
+          wasOld={u.wasOld}
+          whereMeet={u.whereMeet}
+        />
+      ))}
     </section>
   )
 }
