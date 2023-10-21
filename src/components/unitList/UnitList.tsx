@@ -1,16 +1,15 @@
+import './unitList.scss'
 import { FC, useEffect } from 'react'
 import { useAction } from '../../hooks/useAction'
-import './unitList.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { Unit } from './unit/Unit'
 
 export const UnitList: FC = () => {
   const { units, isLoading } = useTypedSelector((state) => state.unit)
-  const { fetchFeedbacks, getFakeData } = useAction()
+  const { fetchFeedbacks } = useAction()
 
   useEffect(() => {
-    // fetchFeedbacks()
-    getFakeData()
+    fetchFeedbacks()
   }, [])
 
   if (isLoading) return <h1>loading...</h1>

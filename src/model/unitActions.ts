@@ -4,7 +4,7 @@ import {
   createUnit,
   deleteUnit,
   getUnits,
-  // updateUnitRequest,
+  updateUnitRequest,
 } from '../api/unitApi'
 import { UpdateUnit } from '../Data/Unit'
 import { fakeUnits } from '../mocdb/mocdb'
@@ -29,7 +29,7 @@ export const fetchFeedbacks = () => {
   }
 }
 
-export const getFakeData = ( ) => {
+export const getFakeData = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
@@ -55,7 +55,7 @@ export const addUnit = (unit: AddUnitType) => {
       dispatch({ type: UnitActionType.FETCH_UNITS })
 
       const data = await createUnit(unit) // data: Unit с id и другими полями
-      // console.log('you create: ', data)
+      console.log('you create: ', data)
 
       dispatch({
         type: UnitActionType.ADD_UNITS,
@@ -74,11 +74,11 @@ export const updateUnit = (updateUnit: UpdateUnit) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
-      // const data = await updateUnitRequest(unit)
+      const data = await updateUnitRequest(updateUnit)
 
       dispatch({
         type: UnitActionType.UPDATE_UNIT,
-        payload: updateUnit,
+        payload: data,
       })
     } catch (e) {
       dispatch({
@@ -94,11 +94,10 @@ export const deleteUnitAction = (id: number) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       deleteUnit(id)
-      /**TO DO 
+      /**TO DO
        * удалить объект в редаксе, чтобы изменить UI!
-       * 
-      */
-
+       *
+       */
     } catch (e) {
       dispatch({
         type: UnitActionType.DELETE_UNITS_ERROR,

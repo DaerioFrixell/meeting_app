@@ -12,7 +12,7 @@ export const getUnits = async () => {
 }
 
 export const updateUnitRequest = async (updateUnit: any) => {
-  const { data } = await $host.put('', updateUnit)
+  const { data } = await $host.put('api/unit', updateUnit)
   return data
 }
 
