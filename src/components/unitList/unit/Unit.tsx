@@ -47,7 +47,6 @@ export const Unit: FC<Unit> = ({
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          // console.log('values fo load:', values)
           updateUnit(values)
           setCanUpdate(false)
         }}
