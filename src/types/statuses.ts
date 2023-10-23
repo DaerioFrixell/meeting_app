@@ -1,4 +1,4 @@
-export enum StatusMark_E {
+export enum StatusMark {
   C = "C",
   D = "D",
   CM = "CM",
@@ -11,7 +11,7 @@ export enum StatusMark_E {
   ABD = "ABD"
 }
 
-export enum StatusMetric_E {
+export enum StatusMetric {
   contact = 'contact',
   disregarting = 'disregarting',
   contact_married = 'contact married',
@@ -26,6 +26,6 @@ export enum StatusMetric_E {
 
 export type Status = {
   number: string | number
-  metric: StatusMetric_E
-  mark: StatusMark_E
+  metric: StatusMetric
+  mark: StatusMark
 }
