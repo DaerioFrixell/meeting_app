@@ -1,13 +1,15 @@
-import { useState } from "react"
+import { useState } from 'react';
 
 export default function useModal() {
-  const [isOpen, setisOpen] = useState(false);
-  const toggle = () => {
-    setisOpen(!isOpen)
-  }
+    const [isOpen, setIsOpen] = useState(false);
 
-  return {
-    isOpen,
-    toggle
-  };
+    const toggle = (): void => {
+        setIsOpen(!isOpen);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
+    return { isOpen, toggle, closeModal };
 }

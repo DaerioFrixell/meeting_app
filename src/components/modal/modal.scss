@@ -1,0 +1,28 @@
+.modal-bg {
+    background-color: rgba(65, 65, 65, 0.461);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal {
+    position: absolute;
+    background-color: white;
+    border-radius: 4px;
+    padding: 1rem;
+    width: 50rem;
+
+    top: 5rem;
+    bottom: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+}
