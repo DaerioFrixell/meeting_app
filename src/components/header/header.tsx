@@ -1,26 +1,16 @@
+import './header.scss';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import './header.scss';
-import useModal from '../../hooks/useModal';
-import { createPortal } from 'react-dom';
-import { Modal } from '../modal/modal';
+import { links } from './headerLinks';
 
 export const Header: FC = () => {
-    const { isOpen, toggle } = useModal();
-
     return (
         <header className="header">
-            <Link className="header__link" to="/">
-                main
-            </Link>
-
-            <Link className="header__link" to="/allunits">
-                all units
-            </Link>
-
-            <button onClick={toggle}>add unit</button>
-
-            {isOpen && createPortal(<Modal toggle={toggle} />, document.body)}
+            {links.map((link) => (
+                <Link key={link.to} to={link.to} className="header__link">
+                    {link.title}
+                </Link>
+            ))}
         </header>
     );
 };

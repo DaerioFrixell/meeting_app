@@ -1,12 +1,6 @@
-import { UnitForm } from '../../components/unitForm/UnitForm'
-import { UnitList } from '../../components/unitList/UnitList'
-import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { UnitList } from '../../components/unitList/UnitList';
+import { FC } from 'react';
 
-export const AllUnits = () => {
-  return (
-    <>
-      <UnitForm />
-      <UnitList />
-    </>
-  )
-}
+export const AllUnits: FC = () => {
+    return <UnitList />;
+};
