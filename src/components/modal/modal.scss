@@ -12,17 +12,34 @@
     background-color: white;
     border-radius: 4px;
     padding: 1rem;
-    width: 50rem;
+    width: auto;
 
     top: 5rem;
-    bottom: 30rem;
+    bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
 
-    &__title {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        text-align: center;
+    font-family: sans-serif;
+
+    &__header {
+        height: 15%;
+
+        &__title {
+            display: flex;
+            height: 100%;
+            align-items: center;
+
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__body {
+        height: 65%;
+    }
+
+    &__footer {
+        height: 20%;
     }
 }
