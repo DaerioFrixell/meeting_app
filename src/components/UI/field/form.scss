@@ -1,0 +1,35 @@
+.form-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.6rem;
+
+  color: #333; // execute in color
+  font-size: 1.4rem; // execute in font-style
+  font-weight: 600;
+}
+
+/* TO DO вынести в UI компоненту */
+.unit-form-input {
+  padding: 1rem 0.8rem;
+  margin-bottom: 1.4rem;
+  height: 4rem;
+  border-radius: 4px; // execute in radius
+  border: 1px solid rgba(147, 145, 145, 0.518); // execute in color
+
+  font-size: 1.7rem; // execute in font-size
+  color: #444; // execute in color
+
+  &:focus {
+    border: none;
+    outline: 1.6px solid rgba(94, 18, 157, 0.701); // execute in color
+  }
+  &::placeholder {
+    color: #5807558c; // execute in color
+  }
+}
+
+.error {
+  color: rgb(245, 62, 62); // execute in color
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
