@@ -1,6 +1,6 @@
 .unit-list {
-  box-shadow: 0.1px 1px 10px 1px #0000006f;
-  font-size: 1.4rem;
+  box-shadow: 0.1px 1px 10px 1px #0000006f; // execute in mixine
+  font-size: 1.4rem; // execute in size
   width: 144rem;
   margin: auto;
 
@@ -8,9 +8,8 @@
     display: flex; // what does it do?
   }
 
+  /* TO DO вынести или в UI компоненту или в Unit опустить */
   &__item {
-    border: 1px solid red;
-
     display: flex;
     width: 140rem;
     margin: auto;
@@ -25,7 +24,6 @@
 
     &__status {
       width: 4rem;
-      // margin: 0 2rem;
     }
 
     &__name {
@@ -70,11 +68,11 @@
 }
 
 .item-update:hover {
-  background-color: rgb(160, 237, 160);
+  background-color: rgb(160, 237, 160); // execute in color
 }
 
 .item:active {
-  background-color: rgb(116, 239, 116);
+  background-color: rgb(116, 239, 116); // execute in color
 }
 
 .flex {

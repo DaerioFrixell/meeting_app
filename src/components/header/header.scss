@@ -2,17 +2,17 @@
   padding: 2rem;
   align-items: center;
   display: flex;
-  font-size: 1.7rem;
+  font-size: 1.7rem; // execute in font-size
   height: 4rem;
   width: 100vw;
 
   &__link {
     margin-right: 1rem;
-    color: #333;
+    color: #333; // execute in color
     transition: all .3s;
 
     &:hover {
-      color: #333333b7;
+      color: #333333b7; // execute in color
     }
   }
 }
