@@ -21,18 +21,18 @@
     padding: 1rem 0.8rem;
     margin-bottom: 1rem;
     height: 4rem;
-    border-radius: 4px;
-    border: 1px solid rgba(147, 145, 145, 0.518);
+    border-radius: 4px; // execute in radius
+    border: 1px solid rgba(147, 145, 145, 0.518); // execute in color
 
-    font-size: 1.7rem;
-    color: #444;
+    font-size: 1.7rem; // execute in font-size
+    color: #444; // execute in color
 
     &:focus {
         border: none;
-        outline: 1.6px solid rgba(94, 18, 157, 0.701);
+        outline: 1.6px solid rgba(94, 18, 157, 0.701); // execute in color
     }
     &::placeholder {
-        color: #5807558c;
+        color: #5807558c; // execute in color
     }
 }
 
@@ -46,13 +46,13 @@
 }
 
 .button {
-    color: white;
+    color: white; // execute in color
     font-size: 1.8rem;
     width: 100%;
     height: 100%;
 
     border: none;
-    background-color: #862ef1df;
+    background-color: #862ef1df; // execute in color
     border-radius: 4px;
     transition: all 0.2s;
 
@@ -61,7 +61,9 @@
     }
 
     &__cancel {
-        color: #444;
-        background-color: #e2daec;
+        /* TO DO сделать миксин */
+        
+        color: #444; // execute in color
+        background-color: #e2daec; // execute in color
     }
 }

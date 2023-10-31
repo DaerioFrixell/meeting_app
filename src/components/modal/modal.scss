@@ -1,5 +1,5 @@
 .modal-bg {
-    background-color: rgba(65, 65, 65, 0.461);
+    background-color: rgba(65, 65, 65, 0.461); // execute in color
     position: fixed;
     top: 0;
     right: 0;
@@ -9,8 +9,8 @@
 
 .modal {
     position: absolute;
-    background-color: white;
-    border-radius: 4px;
+    background-color: white; // execute in color
+    border-radius: 4px; // execute in raduis
     padding: 1rem;
     width: auto;
 
@@ -29,7 +29,7 @@
             height: 100%;
             align-items: center;
 
-            font-size: 1.7rem;
+            font-size: 1.7rem; // execute in font-size
             font-weight: 600;
             margin-bottom: 1rem;
         }

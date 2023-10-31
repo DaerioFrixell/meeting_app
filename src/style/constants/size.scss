@@ -1,0 +1,15 @@
+// font-size
+$_fs_difference: 3rem;
+
+$fz-big: 2rem;
+$fz-normal: $fz-big - $_fs_difference;
+$fz-small: $fz-normal - $_fs_difference;
+
+// button-font-size
+$_fs_button_difference: 4rem;
+
+$fz-button-big: 2.2rem;
+$fz-button-normal: $fz-button-big - $_fs_button_difference;
+$fz-button-normal: $fz-button-normal - $_fs_button_difference;
+
+
