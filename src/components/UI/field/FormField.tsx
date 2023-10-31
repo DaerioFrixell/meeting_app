@@ -1,29 +1,43 @@
-import { FC, FormEvent, useState } from 'react'
+import './form.scss';
+import { Field, FieldProps } from 'formik';
+import { FC } from 'react';
 
-type FormField = {
-  asd: string | number
-}
-export const FormField: FC<FormField> = ({ asd }) => {
-  const [clickOnField, setClickOnField] = useState(false)
-  const [fieldValue, setFieldValue] = useState(asd)
+type FormField_Type = {
+  name: string;
+  label: string;
+  placeholder: string;
 
-  const handleStateCondition = () => {
-    setClickOnField(!clickOnField)
-  }
+  className?: string;
+  type?: any; // text, number e.t.c
+};
 
-  const handlerValue = (e: FormEvent<HTMLInputElement>) => {
-    setFieldValue(e.currentTarget.value)
-  }
+export const FormField: FC<FormField_Type> = ({
+  name,
+  placeholder,
+  label,
+  type,
+  className = '',
+}) => {
+  return (
+    <Field name={name} {...Field}>
+      {({ field, meta: { error, touched } }: FieldProps) => (
+        <div>
+          <label className="form-label" htmlFor={label}>
+            {label}
+          </label>
 
-  return clickOnField ? (
-    <>
-      <input value={fieldValue} onChange={handlerValue} />
+          {/* TO DO сделать UI инпут или хотя бы стили для инпута */}
+          {touched && error && <h3 className="error">err: {error}</h3>}
 
-      <p onClick={handleStateCondition}>cl</p>
-    </>
-  ) : (
-    <p onClick={handleStateCondition}>
-      {fieldValue ? fieldValue : '-'}
-    </p>
-  )
-}
+          <input
+            id={label}
+            className={`unit-form-input ${className}`} // className подключить
+            placeholder={placeholder}
+            type={type}
+            {...field}
+          />
+        </div>
+      )}
+    </Field>
+  );
+};
