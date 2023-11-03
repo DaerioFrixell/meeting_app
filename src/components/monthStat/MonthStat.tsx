@@ -1,93 +1,47 @@
-import { FC } from 'react';
 import './monthStat.scss';
+import { FC } from 'react';
+import { allMonthes } from '../../staticData/date';
+import { MonthStatsData, MonthStatsTitle } from './type';
 
 export const MonthStats: FC = () => {
-  // список по месяцам в столбик
-  // заголовки: month/all/negative/positive
+  const zeroArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-  const monthTitle = [
-    'month',
-    'all',
-    'negative',
-    'positive',
-  ];
-  const months = [
-    'january',
-    'febr',
-    'mar',
-    'apr',
-    'may',
-    'june',
-    'july',
-    'aug',
-    'sept',
-    'oct',
-    'nov',
-    'dec',
-  ];
-
-  const data = [
+  const data: MonthStatsData = [
     {
-      title: 'month',
-      data: [
-        'january',
-        'febr',
-        'mar',
-        'apr',
-        'may',
-        'june',
-        'july',
-        'aug',
-        'sept',
-        'oct',
-        'nov',
-        'dec',
-      ],
+      title: MonthStatsTitle.MONTH,
+      data: allMonthes,
     },
     {
-      title: 'all',
-      data: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0,
-      ],
+      title: MonthStatsTitle.ALL,
+      data: zeroArray,
     },
     {
-      title: 'positive',
-      data: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0,
-      ],
+      title: MonthStatsTitle.NEGATIVE,
+      data: zeroArray,
     },
     {
-      title: 'negative',
-      data: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0,
-      ],
+      title: MonthStatsTitle.POSITIVE,
+      data: zeroArray,
     },
   ];
 
   return (
     <div className="month">
-      <h2> month stat</h2>
-
-      <div className="month__inner">
-        {data.map((d) => (
+      <p className='month-inner__element'>год: 0000</p>
+      <p className='month-inner__element'>всего: 0000</p>
+      <div className="month-inner">
+        {data.map(d => (
           <div className="">
-            <p className="month__title">
+            <p className="month-inner__title">
               {d.title}
             </p>
-            {d.data?.map((newD) =>
-              newD ? (
-                <p>{newD}</p>
-              ) : (
-                <p>12</p>
-              )
+
+            {d.data?.map(newD =>
+              <p className='month-inner__element'>{newD ? newD : 0}</p>
             )}
           </div>
         ))}
       </div>
     </div>
-    // </div>
   );
 };

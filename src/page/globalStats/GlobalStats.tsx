@@ -2,10 +2,12 @@ import './globalStat.scss';
 import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavigatePath } from '../../core/routing/routes.config';
+import { NavigatePath } from '../../core/routing/type';
 
 export const GlobalStats: FC = () => {
   const navigate = useNavigate();
+
+  const zeroArray = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
   const countUits = 0;
   const year = 0;
@@ -13,8 +15,22 @@ export const GlobalStats: FC = () => {
   const perMonth = 'pm';
 
   const foo = () => {
-    navigate(NavigatePath.MONTH_STAT);
+    navigate(NavigatePath.MONTHS_STAT);
   };
+
+  /** TODO перебрать StatusMark и запихать результат в statuses */
+  const globalStatistics = [
+    {
+      statuses: ["1st", "2st", "2st", "2st", "2st", "2st", "2st", "2st", "2st"],
+      online: zeroArray,
+      offline: zeroArray,
+    }
+  ]
+
+  const statusesList = globalStatistics.map(glStat => glStat
+    .statuses.map(status => (
+      <p>{status}</p>
+    )))
 
   return (
     <section className="global-stats">
@@ -65,57 +81,35 @@ export const GlobalStats: FC = () => {
       </div>
 
       <div className="global-stats__block">
-        <p className="global-stats__block__subtitle">online</p>
-        <div className="global-stats__block__marks">
-          <p>1st</p>
-          <p>2st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-        </div>
+        <p className="global-stats__block__subtitle">
+          online
+        </p>
 
-        <div className="global-stats__block__marks">
-          <p>23%</p>
-          <p>43%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-        </div>
-      </div>
+        {globalStatistics.map(globStat => (
+          <div className="global-stats__block__marks">
+            {statusesList}
 
-      <div className="global-stats__block">
-        <p>offline</p>
-        <div className="global-stats__block__marks">
-          <p>1st</p>
-          <p>2st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-        </div>
+            {globStat.online.map(onlineValue => (
+              <p>
+                {onlineValue}
+              </p>
+            ))}
+          </div>
+        ))}
 
-        <div className="global-stats__block__marks">
-          <p>23%</p>
-          <p>43%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-        </div>
+        <p className="global-stats__block__subtitle">offline</p>
+
+        {globalStatistics.map(globStat => (
+          <div className="global-stats__block__marks">
+            {statusesList}
+
+            {globStat.offline.map(offlineValue => (
+              <p>
+                {offlineValue}
+              </p>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );
