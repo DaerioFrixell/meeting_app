@@ -1,0 +1,11 @@
+.month__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 30rem);
+  // grid-template-rows: 5rem 50rem;
+
+  &__months {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+  }
+}

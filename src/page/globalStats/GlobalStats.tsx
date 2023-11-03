@@ -1,12 +1,20 @@
-import './globalStat.scss'
-import { MainTitle } from '../../components/UI/mainTitle/MainTitle'
-import { FC } from 'react'
+import './globalStat.scss';
+import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
+import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { NavigatePath } from '../../core/routing/routes.config';
 
 export const GlobalStats: FC = () => {
-  const countUits = 0
-  const year = 0
-  const perDay = 'pd'
-  const perMonth = 'pm'
+  const navigate = useNavigate();
+
+  const countUits = 0;
+  const year = 0;
+  const perDay = 'pd';
+  const perMonth = 'pm';
+
+  const foo = () => {
+    navigate(NavigatePath.MONTH_STAT);
+  };
 
   return (
     <section className="global-stats">
@@ -47,10 +55,13 @@ export const GlobalStats: FC = () => {
 
       <div className="global-stats__period">
         <span>change period</span>
+
         <select name="" id="">
           <option value="2023">2023</option>
           <option value="2022">2022</option>
         </select>
+
+        <button onClick={foo}>по месяцам</button>
       </div>
 
       <div className="global-stats__block">
@@ -107,5 +118,5 @@ export const GlobalStats: FC = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
