@@ -1,12 +1,38 @@
-import './globalStat.scss'
-import { MainTitle } from '../../components/UI/mainTitle/MainTitle'
-import { FC } from 'react'
+import './globalStat.scss';
+import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
+import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { NavigatePath } from '../../core/routing/type';
+import { StatusMark } from '../../Data/statuses';
+import { zeroArray_10 } from '../../staticData/others';
+import { allYears } from '../../staticData/date';
 
 export const GlobalStats: FC = () => {
-  const countUits = 0
-  const year = 0
-  const perDay = 'pd'
-  const perMonth = 'pm'
+  const navigate = useNavigate();
+
+  const countUits = 0;
+  const year = 0;
+  const perDay = 'pd';
+  const perMonth = 'pm';
+
+  const statTitles = Object.keys(StatusMark)
+
+  const goToMonthStats = () => {
+    navigate(NavigatePath.MONTHS_STAT);
+  };
+
+  const globalStatistics = [
+    {
+      statuses: statTitles,
+      online: zeroArray_10,
+      offline: zeroArray_10,
+    }
+  ]
+
+  const statusesList = globalStatistics.map(glStat => glStat
+    .statuses.map(status => (
+      <p>{status}</p>
+    )))
 
   return (
     <section className="global-stats">
@@ -32,13 +58,13 @@ export const GlobalStats: FC = () => {
 
           <div className="gs-inner__process">
             <div>
-              <span>completly </span>
-              <span>0%</span>
+              <span>completly</span>
+              <span> 0%</span>
             </div>
 
             <div>
               <span>0</span>
-              <span>из</span>
+              <span> из </span>
               <span>0000</span>
             </div>
           </div>
@@ -47,65 +73,46 @@ export const GlobalStats: FC = () => {
 
       <div className="global-stats__period">
         <span>change period</span>
+
         <select name="" id="">
-          <option value="2023">2023</option>
-          <option value="2022">2022</option>
+          {allYears.map(year =>
+            <option value={year}>{year}</option>)}
         </select>
+
+        <button onClick={goToMonthStats}>по месяцам</button>
       </div>
 
       <div className="global-stats__block">
-        <p className="global-stats__block__subtitle">online</p>
-        <div className="global-stats__block__marks">
-          <p>1st</p>
-          <p>2st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-        </div>
+        <p className="global-stats__block__subtitle">
+          online
+        </p>
 
-        <div className="global-stats__block__marks">
-          <p>23%</p>
-          <p>43%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-        </div>
-      </div>
+        {globalStatistics.map(globStat => (
+          <div className="global-stats__block__marks">
+            {statusesList}
 
-      <div className="global-stats__block">
-        <p>offline</p>
-        <div className="global-stats__block__marks">
-          <p>1st</p>
-          <p>2st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-          <p>3st</p>
-        </div>
+            {globStat.online.map(onlineValue => (
+              <p>
+                {onlineValue}
+              </p>
+            ))}
+          </div>
+        ))}
 
-        <div className="global-stats__block__marks">
-          <p>23%</p>
-          <p>43%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-          <p>15%</p>
-        </div>
+        <p className="global-stats__block__subtitle">offline</p>
+
+        {globalStatistics.map(globStat => (
+          <div className="global-stats__block__marks">
+            {statusesList}
+
+            {globStat.offline.map(offlineValue => (
+              <p>
+                {offlineValue}
+              </p>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
-  )
-}
+  );
+};

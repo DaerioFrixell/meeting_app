@@ -1,23 +1,25 @@
+import { MonthStats } from '../../components/monthStat/MonthStat';
 import { UnitForm } from '../../components/unitForm/UnitForm';
 import { AllUnits } from '../../page/allUnits/AllUnits';
 import { GlobalStats } from '../../page/globalStats/GlobalStats';
+import { NavigatePath, allNavigationRoutes } from './type';
 
-type allNavigationRoutes = {
-    path: string;
-    element: React.FC;
-};
-
-export const allRoutes: allNavigationRoutes[] = [
+export const allRoutes: allNavigationRoutes[] =
+  [
     {
-        path: '/',
-        element: GlobalStats,
+      path: NavigatePath.GLOBAL_STATS,
+      element: GlobalStats,
     },
     {
-        path: '/allunits',
-        element: AllUnits,
+      path: NavigatePath.ALL_UNITS,
+      element: AllUnits,
     },
     {
-        path: '/create_unit',
-        element: UnitForm,
+      path: NavigatePath.CREATE_UNITS,
+      element: UnitForm,
     },
-];
+    {
+      path: NavigatePath.MONTHS_STAT,
+      element: MonthStats,
+    },
+  ];

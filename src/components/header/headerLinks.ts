@@ -1,26 +1,16 @@
+import { NavigatePath } from "../../core/routing/type";
+
 export const links = [
     {
-        to: '/',
+        to: NavigatePath.GLOBAL_STATS,
         title: 'main',
     },
     {
-        to: '/allunits',
+        to: NavigatePath.ALL_UNITS,
         title: 'all units',
     },
     {
-        to: '/create_unit',
+        to: NavigatePath.CREATE_UNITS,
         title: 'add unit',
     },
 ];
-
-/** exm. for use React.Portal  */
-// <button onClick={toggle}>add unit</button>;
-// {
-//     isOpen &&
-//         createPortal(
-//             <Modal toggle={toggle} title="добавление unit">
-//                 <UnitForm />
-//             </Modal>,
-//             document.body
-//         );
-// }

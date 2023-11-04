@@ -11,7 +11,8 @@ export enum StatusMark {
   ABD = "ABD"
 }
 
-export enum StatusMetric {
+/** TO DO сделать заглавными */
+enum StatusMetric {
   contact = 'contact',
   disregarting = 'disregarting',
   contact_married = 'contact married',
