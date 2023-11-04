@@ -1,15 +1,18 @@
+@import "../../style/colors.scss";
+@import "../../style/border-style.scss";
+
 .global-stats {
   width: 70rem;
   margin: auto;
   padding: 1rem;
   font-size: 2rem;
 
-  border: 2px solid black; // execute in color/border
-  border-radius: 5px; // execute in border
+  border: $b-width-2 solid $black;
+  border-radius: $b-radus-5;
 
   &__general-info {
-    border: 2px solid rgba(153, 152, 152, 0.461); // execute in color/border
-    border-radius: 5px; // execute in border
+    $b-width-2: $b-width-2 solid $gray-opacyti-1;
+    border-radius: $b-radus-5;
     margin-bottom: 1rem;
 
     &__goal {
@@ -32,7 +35,7 @@
     &__marks {
       display: grid;
       grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: repeat(9, 1fr);
+      grid-template-columns: repeat(10, 1fr);
 
       justify-content: space-around;
       text-align: center;

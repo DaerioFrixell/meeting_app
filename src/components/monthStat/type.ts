@@ -3,7 +3,7 @@ export enum MonthStatsTitle {
   ALL = 'all',
   NEGATIVE = 'negative',
   POSITIVE = 'positive',
-}
+};
 
 export type MonthStatsData = [
   month: {
@@ -12,14 +12,14 @@ export type MonthStatsData = [
   },
   all: {
     title: MonthStatsTitle.ALL,
-    data: any[]
+    data: number[]
   },
   negative: {
     title: MonthStatsTitle.NEGATIVE,
-    data: any[]
+    data: number[]
   },
   positive: {
     title: MonthStatsTitle.POSITIVE,
-    data: any[]
-  }
-]
+    data: number[]
+  },
+];

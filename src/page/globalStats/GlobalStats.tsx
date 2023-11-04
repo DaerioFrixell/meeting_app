@@ -3,27 +3,29 @@ import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavigatePath } from '../../core/routing/type';
+import { StatusMark } from '../../Data/statuses';
+import { zeroArray_10 } from '../../staticData/others';
+import { allYears } from '../../staticData/date';
 
 export const GlobalStats: FC = () => {
   const navigate = useNavigate();
-
-  const zeroArray = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
   const countUits = 0;
   const year = 0;
   const perDay = 'pd';
   const perMonth = 'pm';
 
-  const foo = () => {
+  const statTitles = Object.keys(StatusMark)
+
+  const goToMonthStats = () => {
     navigate(NavigatePath.MONTHS_STAT);
   };
 
-  /** TODO перебрать StatusMark и запихать результат в statuses */
   const globalStatistics = [
     {
-      statuses: ["1st", "2st", "2st", "2st", "2st", "2st", "2st", "2st", "2st"],
-      online: zeroArray,
-      offline: zeroArray,
+      statuses: statTitles,
+      online: zeroArray_10,
+      offline: zeroArray_10,
     }
   ]
 
@@ -56,13 +58,13 @@ export const GlobalStats: FC = () => {
 
           <div className="gs-inner__process">
             <div>
-              <span>completly </span>
-              <span>0%</span>
+              <span>completly</span>
+              <span> 0%</span>
             </div>
 
             <div>
               <span>0</span>
-              <span>из</span>
+              <span> из </span>
               <span>0000</span>
             </div>
           </div>
@@ -73,11 +75,11 @@ export const GlobalStats: FC = () => {
         <span>change period</span>
 
         <select name="" id="">
-          <option value="2023">2023</option>
-          <option value="2022">2022</option>
+          {allYears.map(year =>
+            <option value={year}>{year}</option>)}
         </select>
 
-        <button onClick={foo}>по месяцам</button>
+        <button onClick={goToMonthStats}>по месяцам</button>
       </div>
 
       <div className="global-stats__block">

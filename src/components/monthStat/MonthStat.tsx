@@ -2,10 +2,9 @@ import './monthStat.scss';
 import { FC } from 'react';
 import { allMonthes } from '../../staticData/date';
 import { MonthStatsData, MonthStatsTitle } from './type';
+import { zeroArray_12 } from '../../staticData/others';
 
 export const MonthStats: FC = () => {
-  const zeroArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
   const data: MonthStatsData = [
     {
       title: MonthStatsTitle.MONTH,
@@ -13,15 +12,15 @@ export const MonthStats: FC = () => {
     },
     {
       title: MonthStatsTitle.ALL,
-      data: zeroArray,
+      data: zeroArray_12,
     },
     {
       title: MonthStatsTitle.NEGATIVE,
-      data: zeroArray,
+      data: zeroArray_12,
     },
     {
       title: MonthStatsTitle.POSITIVE,
-      data: zeroArray,
+      data: zeroArray_12,
     },
   ];
 
@@ -33,14 +32,14 @@ export const MonthStats: FC = () => {
         {data.map(d => (
           <div className="">
             <p className="month-inner__title">
-              {d.title}
+              {d.title};
             </p>
 
             {d.data?.map(newD =>
               <p className='month-inner__element'>{newD ? newD : 0}</p>
-            )}
+            )};
           </div>
-        ))}
+        ))};
       </div>
     </div>
   );

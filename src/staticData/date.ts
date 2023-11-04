@@ -12,3 +12,10 @@ export const allMonthes = [
   'nov',
   'dec',
 ]
+
+export const allYears = [
+  2020,
+  2021,
+  2022,
+  2023
+]

@@ -1,4 +1,4 @@
-enum StatusMark {
+export enum StatusMark {
   C = "C",
   D = "D",
   CM = "CM",
