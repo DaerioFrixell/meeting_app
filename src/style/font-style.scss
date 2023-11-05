@@ -4,11 +4,12 @@ $_fs_difference: .3rem;
 $font-big: 2rem;
 $font-normal: calc($font-big - $_fs_difference);
 $font-small: calc($font-normal - $_fs_difference);
-$font-little: $font-small - $_fs_difference;
+$font-little: calc($font-small - $_fs_difference);
+
 
 // button-font-size
 $_fs_button_difference: .4rem;
 
 $font-button-big: 2.2rem;
-$font-button-normal: $font-button-big - $_fs_button_difference;
-$font-button-normal: $font-button-normal - $_fs_button_difference;
+$font-button-normal: calc($font-button-big - $_fs_button_difference);
+$font-button-normal: cacl($font-button-normal - $_fs_button_difference);

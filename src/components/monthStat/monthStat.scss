@@ -1,14 +1,14 @@
 @import "../../style/colors.scss";
 @import "../../style/border-style.scss";
 @import "../../style/font-style.scss";
+@import "../../style/layouts.scss";
 
 .month {
-  width: 50rem;
-  margin: auto;
+  @include layout-month-stats;
 }
 
 .month-inner {
-  padding: 1rem;
+  padding-top: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: $b-width-2 solid $gray-opacyti-1;
