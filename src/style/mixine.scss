@@ -1,11 +1,6 @@
-$shawod: 0.1px 1px 10px 1px #0000006f;
-
-@mixin layout {
-  width: 90vw;
-  margin: auto;
-}
+$shadow: 0.1px 1px 10px 1px #0000006f;
 
 @mixin second-button {
   color: #444; // импортировать из colors
- background-color: #e2daec; // импортировать из colors
+  background-color: #e2daec; // импортировать из colors
 }

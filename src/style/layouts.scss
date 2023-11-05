@@ -1,0 +1,33 @@
+@mixin layout-wrapper {
+  padding: 0 1rem;
+}
+
+@mixin layout-inner {
+  padding: 1rem;
+}
+
+
+@mixin layout-units-list {
+  @include layout-inner;
+
+  width: 144rem;
+  margin: auto;
+}
+
+@mixin layout-unit-form {
+  width: 36rem;
+  margin: auto;
+}
+
+
+@mixin layout-global-stats {
+  @include layout-inner;
+
+  width: 80rem;
+  margin: auto;
+}
+
+@mixin layout-month-stats {
+  width: 46rem;
+  margin: auto;
+}

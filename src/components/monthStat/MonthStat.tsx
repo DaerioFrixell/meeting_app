@@ -32,14 +32,14 @@ export const MonthStats: FC = () => {
         {data.map(d => (
           <div className="">
             <p className="month-inner__title">
-              {d.title};
+              {d.title}
             </p>
 
             {d.data?.map(newD =>
               <p className='month-inner__element'>{newD ? newD : 0}</p>
-            )};
+            )}
           </div>
-        ))};
+        ))}
       </div>
     </div>
   );

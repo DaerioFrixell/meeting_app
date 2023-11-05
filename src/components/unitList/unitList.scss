@@ -1,14 +1,17 @@
+@import "../../style/font-style.scss";
+@import "../../style/colors.scss";
+@import "../../style/mixine.scss";
+@import "../../style/layouts.scss";
+
 .unit-list {
-  box-shadow: 0.1px 1px 10px 1px #0000006f; // execute in mixine
-  font-size: 1.4rem; // execute in size
-  width: 144rem;
-  margin: auto;
+  @include layout-units-list;
 
-  &__titles {
-    display: flex; // what does it do?
-  }
+  box-shadow: $shadow;
+  font-size: $font-small;
 
-  /* TO DO вынести или в UI компоненту или в Unit опустить */
+  /* TO DO вынести или в UI компоненту или в Unit опустить
+   * переделать на гриды
+   */
   &__item {
     display: flex;
     width: 140rem;

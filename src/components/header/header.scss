@@ -1,18 +1,21 @@
+@import "../../style/font-style.scss";
+@import "../../style/colors.scss";
+
 .header {
-  padding: 2rem;
-  align-items: center;
   display: flex;
-  font-size: 1.7rem; // execute in font-size
-  height: 4rem;
   width: 100vw;
+  height: 4rem;
+
+  align-items: center;
+  font-size: $font-normal;
 
   &__link {
     margin-right: 1rem;
-    color: #333; // execute in color
+    color: $gray-3;
     transition: all .3s;
 
     &:hover {
-      color: #333333b7; // execute in color
+      color: $hover;
     }
   }
 }

@@ -1,18 +1,24 @@
+@import "../../style/mixine.scss";
+@import "../../style/layouts.scss";
+
+@mixin block {
+  display: flex;
+  flex-direction: column;
+}
+
 .unit-form {
-  margin: 3rem auto;
-  width: 36rem;
+  @include layout-unit-form;
 
   &__block {
     margin-bottom: 1rem;
     width: auto;
 
     &__one {
-      display: flex;
-      flex-direction: column;
+      @include block;
     }
+
     &__two {
-      display: flex;
-      flex-direction: column;
+      @include block;
     }
   }
 }
@@ -44,8 +50,6 @@
   }
 
   &__cancel {
-    /* execut in mixine */
-    color: #444;
-    background-color: #e2daec;
+    @include second-button;
   }
 }

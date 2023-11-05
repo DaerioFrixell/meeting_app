@@ -1,0 +1,5 @@
+@import "../style/layouts.scss";
+
+.app {
+  @include layout-wrapper;
+}
