@@ -1,24 +1,15 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 import { unitReducer } from '../model/unitReducer';
-// import { UnusReducer } from '../../model/unusReducer';
+import { someReducer } from '../model/something/someReducer';
 
-declare global {
-  interface Window { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose; }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  : compose;
-
-const rootReducer = combineReducers({
-  unit: unitReducer
+const store = configureStore({
+  reducer: {
+    unit: unitReducer,
+    some: someReducer,
+  }
 })
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
-export type RootState = ReturnType<typeof rootReducer>
-export default store;
+export default store

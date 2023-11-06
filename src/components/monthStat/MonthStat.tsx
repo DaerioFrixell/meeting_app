@@ -4,7 +4,10 @@ import { allMonthes } from '../../staticData/date';
 import { MonthStatsData, MonthStatsTitle } from './type';
 import { zeroArray_12 } from '../../staticData/others';
 
-export const MonthStats: FC = () => {
+type MonthStats_T = {
+  asd: any
+}
+export const MonthStats: FC<MonthStats_T> = ({ asd }) => {
   const data: MonthStatsData = [
     {
       title: MonthStatsTitle.MONTH,

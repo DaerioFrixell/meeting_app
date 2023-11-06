@@ -1,35 +1,24 @@
 import './unitList.scss';
-import { FC, useEffect } from 'react';
-import { useAction } from '../../hooks/useAction';
+import { FC } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Unit } from './unit/Unit';
 import { unitFields } from './fields';
 
 export const UnitList: FC = () => {
-    const { units, isLoading } = useTypedSelector((state) => state.unit);
-    const { fetchFeedbacks } = useAction();
-
-    useEffect(() => {
-        fetchFeedbacks();
-    }, []);
-
-    if (isLoading) return <h1>loading...</h1>;
+    const { units } = useTypedSelector((state) => state.unit);
 
     return (
         <section className="unit-list">
             <h2>список всех</h2>
 
-            {unitFields.map((f, key) => (
-                <div className="unit-list__item">
+            {unitFields.map((f) => (
+                <div key={f.id} className="unit-list__item" >
                     <p className="unit-list__item__number">{f.id}</p>
                     <p className="unit-list__item__status">{f.status.title}</p>
                     <p className="unit-list__item__name">{f.name}</p>
                     <p className="unit-list__item__surname">{f.surename}</p>
                     <p className="unit-list__item__was-old">{f.wasOld}</p>
-                    <p className="unit-list__item__date-meet">{f.dateMeet}</p>
                     <p className="unit-list__item__link">{f.links.title}</p>
-                    <p className="unit-list__item__where-meet">{f.whereMeet}</p>
-                    <p className="unit-list__item__type-meet">{f.typeMeet}</p>
                 </div>
             ))}
 
