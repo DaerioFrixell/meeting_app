@@ -1,4 +1,4 @@
-import { UpdateUnit } from '../Data/Unit'
+import { UnitV1, UpdateUnit } from '../Data/Unit'
 import { InitState, UnitActions, UnitActionType } from './unitTypes'
 
 const initialState: InitState = {
@@ -7,10 +7,7 @@ const initialState: InitState = {
   units: [],
 }
 
-export const unitReducer = (
-  state = initialState,
-  action: UnitActions
-): InitState => {
+export const unitReducer = (state = initialState, action: UnitActions): InitState => {
   switch (action.type) {
     case UnitActionType.FETCH_UNITS:
       return { ...state, isLoading: true }
@@ -56,7 +53,7 @@ export const unitReducer = (
  * оставлять редакс чистым для чтения
  */
 
-const updateStateUnits = (state: InitState, payload: UpdateUnit): any[] => {  
+const updateStateUnits = (state: InitState, payload: UpdateUnit): UnitV1[] => {  
   for(let i = 0; i < state.units.length; i++) {
     if (state.units[i].id === payload.id) {
       Object.assign(state.units[i], payload);

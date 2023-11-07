@@ -6,15 +6,20 @@ import {
   getUnits,
   updateUnitRequest,
 } from '../api/unitApi'
-import { UpdateUnit } from '../Data/Unit'
+import { UnitV1, UpdateUnit } from '../Data/Unit'
 import { fakeUnits } from '../mocdb/mocdb'
 
+
+/**
+ * получение всех Unit без пагинации
+ */
 export const fetchFeedbacks = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      const data = await getUnits()
+      // здесь получаются Unit с id/датой создания/e.t.c, это другой тип
+      const data: UnitV1[] = await getUnits()
 
       dispatch({
         type: UnitActionType.FETCH_UNITS_SUCCESS,
@@ -29,12 +34,15 @@ export const fetchFeedbacks = () => {
   }
 }
 
+/**
+ * получение всех моковых Unit без пагинации
+ */
 export const getFakeData = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      const data: any = fakeUnits
+      const data: UnitV1[] = fakeUnits
 
       dispatch({
         type: UnitActionType.FETCH_UNITS_SUCCESS,
@@ -49,6 +57,9 @@ export const getFakeData = () => {
   }
 }
 
+/**
+ * создание нового Unit
+ */
 export const addUnit = (unit: AddUnitType) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
@@ -70,6 +81,9 @@ export const addUnit = (unit: AddUnitType) => {
   }
 }
 
+/**
+ * обновление выбранного Unit
+ */
 export const updateUnit = (updateUnit: UpdateUnit) => {
   console.log('updateUnit action work')
   return async (dispatch: Dispatch<UnitActions>) => {
@@ -90,6 +104,9 @@ export const updateUnit = (updateUnit: UpdateUnit) => {
   }
 }
 
+/**
+ * удаление выбранного Unit
+ */
 export const deleteUnitAction = (id: number) => {
   console.log('delete action work')
   return async (dispatch: Dispatch<UnitActions>) => {

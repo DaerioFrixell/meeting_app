@@ -1,3 +1,4 @@
+import { UpdateUnit } from '../Data/Unit';
 import { $host } from '../core/url'
 import { AddUnitType } from '../model/unitTypes'
 
@@ -11,7 +12,8 @@ export const getUnits = async () => {
   return data
 }
 
-export const updateUnitRequest = async (updateUnit: any) => {
+
+export const updateUnitRequest = async (updateUnit: UpdateUnit) => {
   const { data } = await $host.put('api/unit', updateUnit)
   return data
 }

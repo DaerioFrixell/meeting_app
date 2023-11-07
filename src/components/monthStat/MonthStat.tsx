@@ -4,7 +4,13 @@ import { allMonthes } from '../../staticData/date';
 import { MonthStatsData, MonthStatsTitle } from './type';
 import { zeroArray_12 } from '../../staticData/others';
 
+export type MonthStatsType = {
+  year: string | number
+  allUnit: number
+}
+
 export const MonthStats: FC = () => {
+  /** TO DO вынести в моковые данные */
   const data: MonthStatsData = [
     {
       title: MonthStatsTitle.MONTH,
