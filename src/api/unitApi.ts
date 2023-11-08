@@ -1,12 +1,12 @@
+import { UnitRequestV1, UnitV1 } from '../Data/UnitV1'
 import { $host } from '../core/url'
-import { AddUnitType } from '../model/unitTypes'
 
-export const createUnit = async (unit: AddUnitType) => {
+export const createUnit = async (unit: UnitRequestV1) => {
   const { data } = await $host.post('api/unit', unit)
   return data
 }
 
-export const getUnits = async () => {
+export const getUnits = async (): Promise<UnitV1[]> => {
   const { data } = await $host.get('api/unit')
   return data
 }

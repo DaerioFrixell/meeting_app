@@ -6,8 +6,8 @@ import {
   getUnits,
   updateUnitRequest,
 } from '../api/unitApi'
-import { UpdateUnit } from '../Data/Unit'
 import { fakeUnitsV1 } from '../mocdb/mocdb'
+import { UnitRequestV1, UnitUpdateV1 } from '../Data/UnitV1'
 
 export const getAllUnits = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
@@ -49,7 +49,7 @@ export const getFakeData = () => {
   }
 }
 
-export const addUnit = (unit: AddUnitType) => {
+export const createUnitV1 = (unit: UnitRequestV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })
@@ -69,7 +69,7 @@ export const addUnit = (unit: AddUnitType) => {
   }
 }
 
-export const updateUnit = (updateUnit: UpdateUnit) => {
+export const updateUnit = (updateUnit: UnitUpdateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })

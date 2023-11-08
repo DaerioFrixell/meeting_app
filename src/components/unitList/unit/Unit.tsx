@@ -2,23 +2,25 @@ import { FC, useState } from 'react'
 import { GetUnitResponse } from '../../../Data/GetUnitResponse'
 import { useAction } from '../../../hooks/useAction'
 import { Field, Form, Formik } from 'formik'
-import { UpdateUnit } from '../../../Data/Unit'
+import { UnitRequestV1, UnitUpdateV1, UnitV1 } from '../../../Data/UnitV1'
 import { useNavigate } from 'react-router-dom'
 
 type Unit = GetUnitResponse
-export const Unit: FC<Unit> = ({
+
+/* TO DO неверная функция. Здест должно быть только отображение Unit,
+ * а не редактирование или еще что-то.
+ * редактирование и отображение в разные компоненты поместить!
+ */
+export const Unit: FC<UnitV1> = ({
+  id,
   dateMeet,
   link,
   name,
   status,
   surname,
-  typeMeet,
   wasOld,
   whereMeet,
-  id,
-  vk,
-  inst,
-  telegram,
+  typeMeet
 }) => {
   const navigate = useNavigate()
   const { deleteUnitAction, updateUnit } = useAction()
@@ -29,17 +31,12 @@ export const Unit: FC<Unit> = ({
     navigate(`${id}`)
   }
 
-  const initialValues: UpdateUnit = {
-    id,
+  const initialValues: any = {
     status,
     name,
     surname,
-    wasOld,
     dateMeet,
     link,
-    vk,
-    inst,
-    telegram,
     whereMeet,
     typeMeet,
   }

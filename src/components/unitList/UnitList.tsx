@@ -27,16 +27,16 @@ export const UnitList: FC = () => {
                     key={u.id}
                     id={u.id}
                     dateMeet={u.dateMeet}
-                    inst={u.inst}
                     link={u.link}
                     name={u.name}
                     status={u.status}
                     surname={u.surname}
-                    telegram={u.telegram}
                     typeMeet={u.typeMeet}
-                    vk={u.vk}
                     wasOld={u.wasOld}
                     whereMeet={u.whereMeet}
+                    birth={u.birth}
+                    createAt={u.createAt}
+                    updateAt={u.updateAt}
                 />
             ))}
         </section>
