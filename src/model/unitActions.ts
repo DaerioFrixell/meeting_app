@@ -6,10 +6,10 @@ import {
   getUnits,
   updateUnitRequest,
 } from '../api/unitApi'
-import { UpdateUnit } from '../Data/Unit'
-import { fakeUnits } from '../mocdb/mocdb'
+import { fakeUnitsV1 } from '../mocdb/mocdb'
+import { UnitRequestV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 
-export const fetchFeedbacks = () => {
+export const getAllUnits = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
@@ -34,7 +34,7 @@ export const getFakeData = () => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      const data: any = fakeUnits
+      const data: UnitV1[] = fakeUnitsV1
 
       dispatch({
         type: UnitActionType.FETCH_UNITS_SUCCESS,
@@ -49,13 +49,12 @@ export const getFakeData = () => {
   }
 }
 
-export const addUnit = (unit: AddUnitType) => {
+export const createUnitV1 = (unit: UnitRequestV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      const data = await createUnit(unit) // data: Unit с id и другими полями
-      console.log('you create: ', data)
+      const data: UnitV1 = await createUnit(unit) // data: Unit с id и другими полями
 
       dispatch({
         type: UnitActionType.ADD_UNITS,
@@ -70,16 +69,15 @@ export const addUnit = (unit: AddUnitType) => {
   }
 }
 
-export const updateUnit = (updateUnit: UpdateUnit) => {
-  console.log('updateUnit action work')
+export const updateUnit = (updateUnit: UnitUpdateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })
-      const data = await updateUnitRequest(updateUnit)
+      // const data = await updateUnitRequest(updateUnit)
 
       dispatch({
         type: UnitActionType.UPDATE_UNIT,
-        payload: data,
+        payload: updateUnit,
       })
     } catch (e) {
       dispatch({

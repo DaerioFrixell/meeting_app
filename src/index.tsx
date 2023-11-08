@@ -2,8 +2,8 @@ import "./index.scss"
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { App } from './core/App';
-import store from './core/store';
 import { BrowserRouter } from "react-router-dom";
+import store from "./core/store";
 
 
 const root = ReactDOM.createRoot(

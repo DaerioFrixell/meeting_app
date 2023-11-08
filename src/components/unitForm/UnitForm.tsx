@@ -3,29 +3,29 @@ import { Form, Formik, Field, FormikErrors } from 'formik';
 import { calcWasOld } from '../../middleware/calcOldMiddleware';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { CreateUnit } from '../../Data/Unit';
+import { UnitRequestV1 } from '../../Data/UnitV1';
 import { FC } from 'react';
 import { FormField } from '../UI/field/FormField';
 
 type errorType = {
   link: string;
-  typeMeet: string;
   name: string;
 };
 
 export const UnitForm: FC = () => {
   const { units } = useTypedSelector((state) => state.unit);
-  const { addUnit } = useAction();
+  const { createUnitV1 } = useAction();
   const unitLinks = units.map((u) => u.link);
 
-  const initialValues: CreateUnit = {
+  const initialValues: UnitRequestV1 = {
     name: '',
     surname: '',
+    status: '',
     birth: '',
     dateMeet: '',
     link: '',
     whereMeet: '',
-    typeMeet: '',
+    typeMeet: 'ether',
   };
 
   return (
@@ -39,10 +39,6 @@ export const UnitForm: FC = () => {
           errors.link = 'link add yet';
         }
 
-        if (values.typeMeet === '') {
-          errors.typeMeet = 'typeMeet is empty';
-        }
-
         if (values.name === '') {
           errors.name = 'name is empty';
         }
@@ -50,20 +46,17 @@ export const UnitForm: FC = () => {
         return errors;
       }}
       onSubmit={(values, actions) => {
-        const wasOld = calcWasOld(values.birth, values.dateMeet);
-        addUnit({
+        createUnitV1({
           status: null,
           name: values.name,
           surname: values.surname,
-          wasOld: wasOld,
+          birth: values.birth,
           dateMeet: values.dateMeet,
           link: values.link,
-          vk: null,
-          inst: null,
-          telegram: null,
           whereMeet: values.whereMeet,
           typeMeet: values.typeMeet,
         });
+
         actions.resetForm();
         actions.setSubmitting(false);
       }}
@@ -117,6 +110,7 @@ export const UnitForm: FC = () => {
 
                 {/* группа из 2х элементов с возможностью расшириться */}
                 <h2>typeMeet</h2>
+
                 <Field
                   className="unit-form-input"
                   component="select"
@@ -126,6 +120,7 @@ export const UnitForm: FC = () => {
                   <option value="live">live</option>
                   <option value="ether">ether </option>
                 </Field>
+
                 {errors.typeMeet ? <p> {errors.typeMeet}</p> : null}
               </div>
             </div>
