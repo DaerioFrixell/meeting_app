@@ -7,7 +7,7 @@ import {
   updateUnitRequest,
 } from '../api/unitApi'
 import { fakeUnitsV1 } from '../mocdb/mocdb'
-import { UnitRequestV1, UnitUpdateV1 } from '../Data/UnitV1'
+import { UnitRequestV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 
 export const getAllUnits = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
@@ -34,7 +34,7 @@ export const getFakeData = () => {
     try {
       dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      const data: any = fakeUnitsV1
+      const data: UnitV1[] = fakeUnitsV1
 
       dispatch({
         type: UnitActionType.FETCH_UNITS_SUCCESS,
@@ -54,7 +54,7 @@ export const createUnitV1 = (unit: UnitRequestV1) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      const data = await createUnit(unit) // data: Unit с id и другими полями
+      const data: UnitV1 = await createUnit(unit) // data: Unit с id и другими полями
 
       dispatch({
         type: UnitActionType.ADD_UNITS,

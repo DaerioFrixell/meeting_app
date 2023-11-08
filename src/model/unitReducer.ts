@@ -1,7 +1,7 @@
-import { UnitUpdateV1 } from '../Data/UnitV1'
-import { InitState, UnitActions, UnitActionType } from './unitTypes'
+import { UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
+import { UnitActions, UnitActionType, UnitInitState } from './unitTypes'
 
-const initialState: InitState = {
+const initialState: UnitInitState = {
   isLoading: false,
   error: null,
   units: [],
@@ -10,13 +10,19 @@ const initialState: InitState = {
 export const unitReducer = (
   state = initialState,
   action: UnitActions
-): InitState => {
+): UnitInitState => {
   switch (action.type) {
     case UnitActionType.FETCH_UNITS:
-      return { ...state, isLoading: true }
+      return {
+        ...state,
+        isLoading: true
+      }
 
     case UnitActionType.OFF_LOADING:
-      return { ...state, isLoading: false }
+      return {
+        ...state,
+        isLoading: false
+      }
 
     case UnitActionType.FETCH_UNITS_SUCCESS:
       return {
@@ -34,6 +40,7 @@ export const unitReducer = (
 
     case UnitActionType.ADD_UNITS:
       return {
+        ...state,
         isLoading: false,
         error: null,
         units: state.units.concat(action.payload),
@@ -41,6 +48,7 @@ export const unitReducer = (
 
     case UnitActionType.UPDATE_UNIT:
       return {
+        ...state,
         isLoading: false,
         error: null,
         units: updateStateUnits(state, action.payload),
@@ -56,7 +64,7 @@ export const unitReducer = (
  * оставлять редакс чистым для чтения
  */
 
-const updateStateUnits = (state: InitState, payload: UnitUpdateV1): any[] => {
+const updateStateUnits = (state: UnitInitState, payload: UnitUpdateV1): UnitV1[] => {
   for (let i = 0; i < state.units.length; i++) {
     if (state.units[i].id === payload.id) {
       Object.assign(state.units[i], payload);
