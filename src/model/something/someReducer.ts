@@ -5,6 +5,7 @@ const initialState: Qee = {
   array: []
 }
 
+// Reducer для дебага RootState
 export const someReducer = (
   state = initialState,
   action: any

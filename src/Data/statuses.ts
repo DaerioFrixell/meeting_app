@@ -30,3 +30,5 @@ export type Status = {
   metric: StatusMetric
   mark: StatusMark
 }
+
+export const statTitles: string[] = Object.keys(StatusMark);

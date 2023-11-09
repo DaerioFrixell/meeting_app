@@ -20,12 +20,13 @@ export const UnitForm: FC = () => {
   const initialValues: UnitRequestV1 = {
     name: '',
     surname: '',
-    status: '',
     birth: '',
     dateMeet: '',
     link: '',
-    whereMeet: '',
     typeMeet: 'ether',
+
+    whereMeet: '',
+    status: '',
   };
 
   return (

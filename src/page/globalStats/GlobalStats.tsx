@@ -1,38 +1,31 @@
 import './globalStat.scss';
-import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
 import { NavigatePath } from '../../core/routing/type';
-import { StatusMark } from '../../Data/statuses';
-import { zeroArray_10 } from '../../staticData/others';
-import { allYears } from '../../staticData/date';
+import { allYears,  } from '../../staticData/date';
+import { getCurrentCountUnitsSelector, getUnitCountSelector } from '../../model/unit/unit.selectors';
+import { useSelector } from 'react-redux';
+import { globalStatistics, goalObj } from '../../model/something/some.selector';
 
 export const GlobalStats: FC = () => {
   const navigate = useNavigate();
-
-  const countUits = 0;
-  const year = 0;
-  const perDay = 'pd';
-  const perMonth = 'pm';
-
-  const statTitles = Object.keys(StatusMark)
 
   const goToMonthStats = () => {
     navigate(NavigatePath.MONTHS_STAT);
   };
 
-  const globalStatistics = [
-    {
-      statuses: statTitles,
-      online: zeroArray_10,
-      offline: zeroArray_10,
-    }
-  ]
+  const year: number = new Date().getFullYear();
 
+  const countUits: number = getUnitCountSelector;
+  const currentUnits: number = useSelector(getCurrentCountUnitsSelector);
+  const completlyPercent: number = Math.floor(currentUnits / countUits * 100);
+
+  /** TO DO в компоненте 3 */
   const statusesList = globalStatistics.map(glStat => glStat
     .statuses.map(status => (
       <p key={status}>{status}</p>
-    )))
+    )));
 
   return (
     <section className="global-stats">
@@ -43,34 +36,26 @@ export const GlobalStats: FC = () => {
           Goal: meeting {countUits} units per {year} year
         </p>
 
+        {/* TO DO 1 компонента со шкалой завершенности, она динамическая! */}
         <div className="gs-inner">
           <div className="gs-inner__calcucation">
-            <div className="gs-inner__calcucation__plan">
-              <p>{perDay}</p>
-              <p>0</p>
-            </div>
-
-            <div className="gs-inner__calcucation__plan">
-              <p>{perMonth}</p>
-              <p>0.00</p>
-            </div>
+            {goalObj.period.map(perion => <p>{perion}</p>)}
+            {goalObj.count.map(count => <p>{Math.floor(count)}</p>)}
           </div>
 
           <div className="gs-inner__process">
-            <div>
-              <span>completly</span>
-              <span> 0%</span>
-            </div>
+            <p>
+              completly {completlyPercent}%
+            </p>
 
-            <div>
-              <span>0</span>
-              <span> из </span>
-              <span>0000</span>
-            </div>
+            <p>
+              {currentUnits} из {countUits}
+            </p>
           </div>
         </div>
       </div>
 
+      {/* TO DO 2 компонента с выбором периода, она динамическая */}
       <div className="global-stats__period">
         <span>change period</span>
 
@@ -82,6 +67,7 @@ export const GlobalStats: FC = () => {
         <button onClick={goToMonthStats}>по месяцам</button>
       </div>
 
+      {/* TO DO 3 компонента со статистикой, она динамическая! */}
       <div className="global-stats__block">
         <p className="global-stats__block__subtitle">
           online
