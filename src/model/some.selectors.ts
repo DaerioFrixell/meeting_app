@@ -1,3 +1,3 @@
-import { InitState } from './unitTypes'
+import { UnitInitState } from './unitTypes'
 
-export const selectLoading = (state: InitState) => state.isLoading
+export const selectLoading = (state: UnitInitState) => state.isLoading

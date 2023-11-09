@@ -31,7 +31,7 @@ export const GlobalStats: FC = () => {
 
   const statusesList = globalStatistics.map(glStat => glStat
     .statuses.map(status => (
-      <p>{status}</p>
+      <p key={status}>{status}</p>
     )))
 
   return (

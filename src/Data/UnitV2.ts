@@ -8,12 +8,12 @@ export type Unit = {
   status: Status
   name: string
   surname: string
-  birth: Date
+  birth: Date | string
   wasOld: string | number
-  dateMeet: Date
+  dateMeet: Date | string
   link: Omit<Links, "title">
-  createAt: Date
-  updateAt: Date
+  createAt: Date | string
+  updateAt: Date | string
   whereMeet: string
   typeMeet: TypeMeet
 }

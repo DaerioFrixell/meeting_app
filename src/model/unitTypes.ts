@@ -1,9 +1,9 @@
-import { UpdateUnit } from '../Data/Unit'
+import { UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 
-export type InitState = {
+export type UnitInitState = {
   isLoading: boolean
   error: null | string
-  units: any[]
+  units: UnitV1[]
 }
 
 export type AddUnitType = {
@@ -45,7 +45,7 @@ export type OffFetchUnitAction = {
 
 export type FetchUnitSuccessAction = {
   type: UnitActionType.FETCH_UNITS_SUCCESS
-  payload: []
+  payload: any[]
 }
 
 export type FetchUnitErrorAction = {
@@ -55,7 +55,7 @@ export type FetchUnitErrorAction = {
 
 export type AddUnitsAction = {
   type: UnitActionType.ADD_UNITS
-  payload: AddUnitType
+  payload: UnitV1
 }
 
 export type DeleteUnitAction = {
@@ -69,7 +69,7 @@ export type DeleteUnitErrorAction = {
 
 export type UpdateUnitAction = {
   type: UnitActionType.UPDATE_UNIT
-  payload: UpdateUnit
+  payload: UnitUpdateV1
 }
 
 export type UnitActions =
