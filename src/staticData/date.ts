@@ -1,4 +1,4 @@
-export const allMonthes = [
+export const allMonthes: string[] = [
   'jan',
   'feb',
   'mar',
@@ -11,14 +11,17 @@ export const allMonthes = [
   'oct',
   'nov',
   'dec',
-]
+];
 
-export const allYears = [
+export const allYears: number[] = [
   2020,
   2021,
   2022,
   2023
-]
+];
 
-export const daysInYear = 365;
-export const monthsInYear = 12;
+export const daysInYear: number = 365;
+
+export const monthsInYear: number = 12;
+
+export const period: string[] = [ 'pDay', 'pMonth' ];
