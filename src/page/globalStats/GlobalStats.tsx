@@ -4,35 +4,52 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavigatePath } from '../../core/routing/type';
 import { StatusMark } from '../../Data/statuses';
-import { zeroArray_10 } from '../../staticData/others';
-import { allYears } from '../../staticData/date';
+import { mockCountUnitGoal, mockCurrentUnits, zeroArray_10 } from '../../staticData/others';
+import { allYears, daysInYear, monthsInYear } from '../../staticData/date';
+
+type asd = {
+  period: string[],
+  count: number[];
+};
+
 
 export const GlobalStats: FC = () => {
   const navigate = useNavigate();
 
-  const countUits = 0;
-  const year = 0;
-  const perDay = 'pd';
-  const perMonth = 'pm';
+  const statTitles: string[] = Object.keys(StatusMark);
 
-  const statTitles = Object.keys(StatusMark)
+  // слой абстракции для теста на моковых данных. Это будет из селекторов вытаскиваться, так что можно сразу там сделать.
+  const countUits: number = mockCountUnitGoal;
+  const currentUnits: number = mockCurrentUnits; 
+  const year: number = allYears[3];
+
+  const completlyPercent: number = Math.floor(currentUnits / countUits * 100);
+
+  const goalObj: asd = {
+    period: ['pDay', 'pMonth'],
+    count: [
+      countUits / daysInYear,
+      countUits / monthsInYear,
+    ]
+  };
 
   const goToMonthStats = () => {
     navigate(NavigatePath.MONTHS_STAT);
   };
 
+  // та же история с селекторами. Можно туда перенести сразу.
   const globalStatistics = [
     {
       statuses: statTitles,
       online: zeroArray_10,
       offline: zeroArray_10,
     }
-  ]
+  ];
 
   const statusesList = globalStatistics.map(glStat => glStat
     .statuses.map(status => (
       <p key={status}>{status}</p>
-    )))
+    )));
 
   return (
     <section className="global-stats">
@@ -45,27 +62,18 @@ export const GlobalStats: FC = () => {
 
         <div className="gs-inner">
           <div className="gs-inner__calcucation">
-            <div className="gs-inner__calcucation__plan">
-              <p>{perDay}</p>
-              <p>0</p>
-            </div>
-
-            <div className="gs-inner__calcucation__plan">
-              <p>{perMonth}</p>
-              <p>0.00</p>
-            </div>
+            {goalObj.period.map(perion => <p>{perion}</p>)}
+            {goalObj.count.map(count => <p>{Math.floor(count)}</p>)}
           </div>
 
           <div className="gs-inner__process">
             <div>
               <span>completly</span>
-              <span> 0%</span>
+              <span> {completlyPercent}%</span>
             </div>
 
             <div>
-              <span>0</span>
-              <span> из </span>
-              <span>0000</span>
+              {currentUnits} из {countUits}
             </div>
           </div>
         </div>

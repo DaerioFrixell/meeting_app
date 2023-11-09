@@ -19,3 +19,6 @@ export const allYears = [
   2022,
   2023
 ]
+
+export const daysInYear = 365;
+export const monthsInYear = 12;

@@ -47,9 +47,8 @@
   display: flex;
 
   &__calcucation {
-    display: flex;
-    justify-content: space-between;
-    min-width: 8rem;
-    margin-right: 2rem;
+    width: 15rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
