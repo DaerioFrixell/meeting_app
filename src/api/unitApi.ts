@@ -1,4 +1,4 @@
-import { UnitRequestV1, UnitV1 } from '../Data/UnitV1'
+import { UnitRequestV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 import { $host } from '../core/url'
 
 // запрашивать 10/205/ Units, а не несколько тысяч.
@@ -14,7 +14,7 @@ export const createUnit = async (unit: UnitRequestV1) => {
 }
 
 // с бэка весь объект придёт или только обновленные поля?
-export const updateUnitRequest = async (updateUnit: UnitV1) => {
+export const updateUnitRequest = async (updateUnit: UnitUpdateV1) => {
   const { data } = await $host.put('api/unit', updateUnit)
   return data
 }

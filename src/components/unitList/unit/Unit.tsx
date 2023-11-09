@@ -15,6 +15,7 @@ export const Unit: FC<UnitV1> = ({
   id,
   dateMeet,
   link,
+  birth,
   name,
   status,
   surname,
@@ -28,13 +29,15 @@ export const Unit: FC<UnitV1> = ({
   const [canUpdate, setCanUpdate] = useState(false)
 
   const testFunc = (id: number) => {
-    navigate(`${id}`)
+    // navigate(`${id}`)  
   }
 
-  const initialValues: any = {
+  const initialValues: UnitUpdateV1 = {
+    id,
     status,
     name,
     surname,
+    birth,
     dateMeet,
     link,
     whereMeet,
@@ -49,7 +52,8 @@ export const Unit: FC<UnitV1> = ({
         setCanUpdate(false)
       }}
     >
-      {_ => (
+      {values => (
+        console.log(values),
         <Form className="flex">
           <div className="unit-list__item" onClick={_ => testFunc(id)} >
             <p className="unit-list__item__number" >{id}</p>
@@ -71,7 +75,7 @@ export const Unit: FC<UnitV1> = ({
                 />
 
                 <Field
-                  name="wasOld"
+                  name="birth"
                   className="unit-list__item__wasOld"
                 />
 
