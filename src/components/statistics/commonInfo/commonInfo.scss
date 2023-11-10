@@ -2,36 +2,12 @@
 @import "../../../style/border-style.scss";
 @import "../../../style/layouts.scss";
 
-.global-stats {
-  @include layout-global-stats;
-  font-size: 2rem;
-
-  border: $b-width-2 solid $black;
+.common-info {
+  border: $b-width-2 solid $gray-opacyti-1;
   border-radius: $b-radus-5;
+  margin-bottom: 1rem;
 
-  &__general-info {
-    $b-width-2: $b-width-2 solid $gray-opacyti-1;
-    border-radius: $b-radus-5;
+  &__goal {
     margin-bottom: 1rem;
-
-    &__goal {
-      margin-bottom: 1rem;
-    }
-  }
-
-  &__block {
-    display: grid;
-    grid-template-rows: repeat(1fr, 3);
-    margin-top: 1.5rem;
-
-    &__marks {
-      display: grid;
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: repeat(10, 1fr);
-
-      justify-content: space-around;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
   }
 }

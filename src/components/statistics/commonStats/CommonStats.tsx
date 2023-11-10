@@ -1,44 +1,25 @@
-import './commonStats.scss';
-import { globalStatistics } from '../../../model/something/some.selector';
 import { FC } from 'react';
+import {
+  getCountOfflineUnitsSelector,
+  getCountOnlineUnitsSelector,
+} from '../../../model/user/user.selectors';
+import { CommonStatsTemplate } from './CommonStats.template';
 
-export const CommonStats: FC = () => { 
-  const statusesList = globalStatistics.map((glStat: any) => glStat
-    .statuses.map((status: any) => (
-      <p key={status}>{status}</p>
-    )));
+export const CommonStats: FC = () => {
+  const countOnlineUnits = getCountOnlineUnitsSelector
+  const countOfflineUnits = getCountOfflineUnitsSelector
 
   return (
-      <div className="global-stats__block">
-        <p className="global-stats__block__subtitle">
-          online
-        </p>
+    <>
+      <CommonStatsTemplate
+        statsType="online"
+        valueArray={countOnlineUnits}
+      />
 
-        {globalStatistics.map((globStat: any) => (
-          <div className="global-stats__block__marks">
-            {statusesList}
-
-            {globStat.online.map((onlineValue: any) => (
-              <p>
-                {onlineValue}
-              </p>
-            ))}
-          </div>
-        ))}
-
-        <p className="global-stats__block__subtitle">offline</p>
-
-        {globalStatistics.map((globStat: any)  => (
-          <div className="global-stats__block__marks">
-            {statusesList}
-
-            {globStat.offline.map((offlineValue: any) => (
-              <p>
-                {offlineValue}
-              </p>
-            ))}
-          </div>
-        ))}
-      </div>
+      <CommonStatsTemplate
+        statsType="offline"
+        valueArray={countOfflineUnits}
+      />
+    </>
   );
 };

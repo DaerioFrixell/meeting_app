@@ -1,0 +1,11 @@
+@import "../../style/colors.scss";
+@import "../../style/border-style.scss";
+@import "../../style/layouts.scss";
+
+.global-stats {
+  @include layout-global-stats;
+  font-size: 2rem;
+
+  border: $b-width-2 solid $black;
+  border-radius: $b-radus-5;
+}
