@@ -7,10 +7,10 @@ import { useTypedSelector } from '../hooks/useTypedSelector'
 
 export const App = () => {
   const { isLoading } = useTypedSelector((state) => state.unit);
-  const { getFakeData } = useAction()
+  const { getAllUnits } = useAction()
 
   useEffect(() => {
-    getFakeData();
+    getAllUnits();
   }, [])
 
   if (isLoading) return <h1>loading...</h1>;

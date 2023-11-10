@@ -54,6 +54,7 @@ export const createUnitV1 = (unit: UnitRequestV1) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })
 
+      /** TO DO перекидывать на список Units после добавления! */
       const data: UnitV1 = await createUnit(unit) // data: Unit с id и другими полями
 
       dispatch({
@@ -72,8 +73,7 @@ export const createUnitV1 = (unit: UnitRequestV1) => {
 export const updateUnit = (updateUnit: UnitUpdateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      // dispatch({ type: UnitActionType.FETCH_UNITS })
-      // const data = await updateUnitRequest(updateUnit)
+      const data = await updateUnitRequest(updateUnit)
 
       dispatch({
         type: UnitActionType.UPDATE_UNIT,
