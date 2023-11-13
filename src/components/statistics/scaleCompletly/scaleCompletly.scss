@@ -1,0 +1,10 @@
+.gs-inner {
+  display: flex;
+
+  &__calcucation {
+    width: 15rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

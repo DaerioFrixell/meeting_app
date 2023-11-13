@@ -1,0 +1,12 @@
+.common-stats {
+  display: grid;
+  grid-template-rows: 2rem 6rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &__marks {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    text-align: center;
+  }
+}
