@@ -1,11 +1,11 @@
-import { FC, useState } from 'react'
-import { GetUnitResponse } from '../../../Data/GetUnitResponse'
-import { useAction } from '../../../hooks/useAction'
-import { Field, Form, Formik } from 'formik'
-import { UnitRequestV1, UnitUpdateV1, UnitV1 } from '../../../Data/UnitV1'
-import { useNavigate } from 'react-router-dom'
+import { FC, useState } from 'react';
+import { GetUnitResponse } from '../../../Data/GetUnitResponse';
+import { useAction } from '../../../hooks/useAction';
+import { Field, Form, Formik } from 'formik';
+import { UnitRequestV1, UnitUpdateV1, UnitV1 } from '../../../Data/UnitV1';
+import { useNavigate } from 'react-router-dom';
 
-type Unit = GetUnitResponse
+type Unit = GetUnitResponse;
 
 /* TO DO неверная функция. Здест должно быть только отображение Unit,
  * а не редактирование или еще что-то.
@@ -23,14 +23,9 @@ export const Unit: FC<UnitV1> = ({
   whereMeet,
   typeMeet
 }) => {
-  const navigate = useNavigate()
-  const { deleteUnitAction, updateUnit } = useAction()
-
-  const [canUpdate, setCanUpdate] = useState(false)
-
-  const testFunc = (id: number) => {
-    // navigate(`${id}`)  
-  }
+  const { deleteUnitAction, updateUnit } = useAction();
+  
+  const [ canUpdate, setCanUpdate ] = useState(false);
 
   const initialValues: UnitUpdateV1 = {
     id,
@@ -42,95 +37,68 @@ export const Unit: FC<UnitV1> = ({
     link,
     whereMeet,
     typeMeet,
-  }
+  };
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        updateUnit(values)
-        setCanUpdate(false)
+        updateUnit(values);
+        setCanUpdate(false);
       }}
     >
       {values => (
         console.log(values),
         <Form className="flex">
-          <div className="unit-list__item" onClick={_ => testFunc(id)} >
+          <div className="unit-list__item">
             <p className="unit-list__item__number" >{id}</p>
-            {canUpdate ? (
-              <>
-                <Field
-                  name="status"
-                  className="unit-list__item__status item-update"
-                />
 
-                <Field
-                  name="name"
-                  className="unit-list__item__name"
-                />
+            <Field
+              name="status"
+              className="unit-list__item__status item-update"
+            />
 
-                <Field
-                  name="surname"
-                  className="unit-list__item__surname"
-                />
+            <Field
+              name="name"
+              className="unit-list__item__name"
+            />
 
-                <Field
-                  name="birth"
-                  className="unit-list__item__wasOld"
-                />
+            <Field
+              name="surname"
+              className="unit-list__item__surname"
+            />
 
-                <Field
-                  name="dateMeet"
-                  type="date"
-                  className="unit-list__item__date-meet"
-                />
+            <Field
+              name="birth"
+              className="unit-list__item__wasOld"
+            />
 
-                <Field
-                  name="link"
-                  className="unit-list__item__link"
-                />
+            <Field
+              name="dateMeet"
+              type="date"
+              className="unit-list__item__date-meet"
+            />
 
-                <Field
-                  name="whereMeet"
-                  className="unit-list__item__where-meet"
-                />
+            <Field
+              name="link"
+              className="unit-list__item__link"
+            />
 
-                <Field
-                  className="unit-list__item__type-meet"
-                  component="select"
-                  name="typeMeet">
-                  <option disabled>тип знакомства</option>
-                  <option value="live">live</option>
-                  <option value="ether">ether </option>
-                </Field>
-              </>
-            ) : (
-              <>
-                <p className="unit-list__item__status item-update">
-                  {status ? status : '-'}
-                </p>
+            <Field
+              name="whereMeet"
+              className="unit-list__item__where-meet"
+            />
 
-                <p className="unit-list__item__name">{name}</p>
-                <p className="unit-list__item__surname">{surname}</p>
-                <p className="unit-list__item__was-old">{wasOld}</p>
-
-                <p className="unit-list__item__date-meet">
-                  {dateMeet}
-                </p>
-
-                <p className="unit-list__item__link">{link}</p>
-
-                <p className="unit-list__item__where-meet">
-                  {whereMeet}
-                </p>
-
-                <p className="unit-list__item__type-meet">
-                  {typeMeet}
-                </p>
-              </>
-            )}
-
+            <Field
+              className="unit-list__item__type-meet"
+              component="select"
+              name="typeMeet">
+              <option disabled>тип знакомства</option>
+              <option value="live">live</option>
+              <option value="ether">ether </option>
+            </Field>
           </div>
+
           <button
             type="button"
             className="unit-list__item__button"
@@ -138,6 +106,7 @@ export const Unit: FC<UnitV1> = ({
           >
             /
           </button>
+
           <button
             className="unit-list__item__button"
             onClick={() => deleteUnitAction(id)}
@@ -156,5 +125,5 @@ export const Unit: FC<UnitV1> = ({
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};

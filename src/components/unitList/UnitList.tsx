@@ -1,43 +1,47 @@
 import './unitList.scss';
 import { FC } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { Unit } from './unit/Unit';
-import { unitFields } from './fields';
+import { unitFieldsV1 } from './fields';
 
 export const UnitList: FC = () => {
     const { units } = useTypedSelector((state) => state.unit);
+
+    /** переход на detailUnit */
+    const testFunc = (id: number) => {
+        // navigate(`${id}`)  
+    };
 
     return (
         <section className="unit-list">
             <h2>список всех</h2>
 
-            {unitFields.map((f) => (
-                <div key={f.id} className="unit-list__item" >
-                    <p className="unit-list__item__number">{f.id}</p>
-                    <p className="unit-list__item__status">{f.status.title}</p>
-                    <p className="unit-list__item__name">{f.name}</p>
-                    <p className="unit-list__item__surname">{f.surename}</p>
-                    <p className="unit-list__item__was-old">{f.wasOld}</p>
-                    <p className="unit-list__item__link">{f.links.title}</p>
-                </div>
-            ))}
+            <div className="unit-list__item">
+                <p className="unit-list__item__value">{unitFieldsV1.id}</p>
+                <p className="unit-list__item__value">{unitFieldsV1.status}</p>
+                <p className="unit-list__item__value">{unitFieldsV1.name}</p>
+                <p className="unit-list__item__surname">{unitFieldsV1.surename}</p>
+                <p className="unit-list__item__was-old">{unitFieldsV1.wasOld}</p>
+                <p className="unit-list__item__value">{unitFieldsV1.link}</p>
+            </div>
 
-            {units.map((u) => (
-                <Unit
-                    key={u.id}
-                    id={u.id}
-                    dateMeet={u.dateMeet}
-                    link={u.link}
-                    name={u.name}
-                    status={u.status}
-                    surname={u.surname}
-                    typeMeet={u.typeMeet}
-                    wasOld={u.wasOld}
-                    whereMeet={u.whereMeet}
-                    birth={u.birth}
-                    createAt={u.createAt}
-                    updateAt={u.updateAt}
-                />
+            {units.map(u => (
+                <div className="unit-list__item" onClick={_ => testFunc(u.id)}>
+                    <p className="unit-list__item__value">
+                        {u.id}
+                    </p>
+
+                    <p className="unit-list__item__value item-update">
+                        {u.status ? u.status : '-'}
+                    </p>
+
+                    <p className="unit-list__item__value">{u.name}</p>
+
+                    <p className="unit-list__item__surname">{u.surname}</p>
+
+                    <p className="unit-list__item__was-old">{u.wasOld}</p>
+
+                    <p className="unit-list__item__value">{u.link}</p>
+                </div>
             ))}
         </section>
     );
