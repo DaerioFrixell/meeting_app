@@ -9,41 +9,69 @@
   box-shadow: $shadow;
   font-size: $font-small;
 
-  /* TO DO вынести или в UI компоненту или в Unit опустить
-   * переделать на гриды
-   */
-  &__item {
+  // Горизонтальное отображение Unit для общего списка
+  &__commonView {
+    display: grid;
+    grid-template-columns: 4rem 5rem repeat(4, 1fr);
+    gap: .5rem;
+
     width: 100rem;
     margin: auto;
-    display: grid;
-    grid-template-columns:  4rem 5rem repeat(4, 1fr);
-    margin-bottom: 0.2rem;
-    gap: .5rem;
+    margin-bottom: 0.3rem;
+
     justify-content: center;
     text-align: center;
+    transition: .2s;
+    cursor: default;
+    outline: 2px solid rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0);
 
-    &__value {
-      border: 1px solid green;
+    &:hover {
+      outline: 2px solid rgba(255, 255, 255, 0);
+      border: 2px solid $hoverObject;
+      border-radius: 5px;
     }
+  }
+
+  // редактирование
+
+}
+
+.editUnit {
+  display: flex;
+  flex-flow: row wrap;
+  // justify-content: space-evenly;
+  gap: 1rem;
+
+  width: 55rem;
+  margin-bottom: 0.2rem;
+}
+
+.navigation {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  &__butt {
+    width: 7rem;
+    height: 4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $gray-3;
   }
 }
 
-.detail-view {
-  font-size: 1.6rem;
+.delete-button {
+  margin-left: 5rem;
+  background-color: $danger-1;
 }
 
-.item-update {
-  padding: 0.2rem 0;
-}
-
-.item-update:hover {
-  background-color: rgb(160, 237, 160); // execute in color
-}
-
-.item:active {
-  background-color: rgb(116, 239, 116); // execute in color
-}
-
-.flex {
+.flex-line {
   display: flex;
+  flex-flow: row nowrap;
+  gap: 3rem;
+  margin-bottom: 2rem;
 }

@@ -10,7 +10,7 @@
 
 /* TO DO вынести в UI компоненту */
 .unit-form-input {
-  padding: 1rem 0.8rem;
+  padding: .4rem 0.8rem;
   margin-bottom: 1.4rem;
   height: 4rem;
   border-radius: 4px; // execute in radius
@@ -23,6 +23,7 @@
     border: none;
     outline: 1.6px solid rgba(94, 18, 157, 0.701); // execute in color
   }
+
   &::placeholder {
     color: #5807558c; // execute in color
   }
