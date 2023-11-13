@@ -13,14 +13,20 @@ export const ChangePeriod: FC = () => {
 
   return (
     <div className="change-period">
-        <span>change period</span>
+      <span>change period</span>
 
-        <select name="" id="">
-          {allYears.map(year =>
-            <option value={year}>{year}</option>)}
-        </select>
+      <select name="" id="">
+        {/* TO DO сделать default value */}
+        
+        {allYears.map(year =>
+          <option value={year}>
+            {year}
+          </option>)}
+      </select>
 
-        <button onClick={goToMonthStats}>по месяцам</button>
-      </div>
-  )
-}
+      <button onClick={goToMonthStats}>
+        по месяцам
+      </button>
+    </div>
+  );
+};

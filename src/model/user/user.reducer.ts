@@ -3,6 +3,7 @@ export type UserState = {
   errors: null | {}
   statistics: {
     countAllUnits: number
+    /** это массив со значениями по статусам. Изменить название поля объекта! */
     onlineMeet: number
     offlineMeet: number
   }
@@ -13,9 +14,9 @@ export const initUserState: UserState = {
   errors: null,
   statistics: {
     countAllUnits: 0,
+    /** это массив со значениями по статусам. Изменить название поля объекта! */
     onlineMeet: 0,
     offlineMeet: 0,
-    // и другие поля, пока хз что нужно. Возможно процент/годовая цель и т.д.
   }
 }
 

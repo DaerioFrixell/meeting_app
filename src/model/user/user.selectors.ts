@@ -5,21 +5,22 @@ export const globalStatistics = {
   offline: zeroArray_10,
 };
 
-// TO DO это статистика по каждому статусу online, а не суммарная.
-const getCountOnlineUnits = globalStatistics.online;
-export const getCountOnlineUnitsSelector = getCountOnlineUnits;
+/** значения по каждому статусу online */
+const getCountByEveryOnline: number[] = globalStatistics.online;
+export const getCountOnlineUnitsSelector = getCountByEveryOnline;
 
-// TO DO это статистика по каждому статусу offline, а не суммарная.
-const getCountOfflineUnits = globalStatistics.offline;
-export const getCountOfflineUnitsSelector = getCountOfflineUnits;
+/** значения по каждому статусу offline */
+const getCountByEveryOffline: number[] = globalStatistics.offline;
+export const getCountOfflineUnitsSelector = getCountByEveryOffline;
 
-// TO DO это общее кол-во unit.
-export const getUnitCountSelector: any = [
-  ...getCountOnlineUnits,
-  ...getCountOfflineUnits
-].reduce((prev: number, curr: number) => {
-  let all: any = prev + curr;
-  console.log("all: ", all)
+const countAllUnitsSelector: number[] = [
+  ...getCountByEveryOnline,
+  ...getCountByEveryOffline
+];
 
-  return all
-})
+export const getCountAllUnitsSelector: number = countAllUnitsSelector.reduce(
+  (sum: number, current: number) => sum + current, 0
+);
+
+/** цель на год */
+export const getCountAllUnitsGoalSelector: number = 500;

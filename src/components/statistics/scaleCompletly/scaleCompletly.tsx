@@ -1,23 +1,32 @@
 import "./scaleCompletly.scss";
 import { FC } from "react";
 import { goalObj } from "../../../model/something/some.selector";
-import {
-  getCurrentCountUnitsSelector,
-} from "../../../model/unit/unit.selectors";
-import { useSelector } from "react-redux";
-import { getUnitCountSelector } from "../../../model/user/user.selectors";
+import { getCountAllUnitsGoalSelector, getCountAllUnitsSelector } from "../../../model/user/user.selectors";
 
 export const ScaleCompletly: FC = () => {
-  const countUits: number = getUnitCountSelector;
-  const currentUnits: number = useSelector(getCurrentCountUnitsSelector);
-  const completlyPercent: number = Math.floor(currentUnits / countUits * 100);
+  /** выбранное количество на текущий год */
+  const goalCountUits: number = getCountAllUnitsGoalSelector;
 
-  console.log("countUits: ", countUits)
+  /** текущее количество за текущий год */
+  const currentUnits: number = getCountAllUnitsSelector;
+
+  /** TO DO сделать провку на ноль! */
+  const completlyPercent: number = Math.floor(currentUnits / goalCountUits * 100);
+
   return (
     <div className="gs-inner">
       <div className="gs-inner__calcucation">
-        {goalObj.period.map(perion => <p>{perion}</p>)}
-        {goalObj.count.map(count => <p>{Math.floor(count)}</p>)}
+        {goalObj.period.map(period =>
+          <p>
+            {period}
+          </p>
+        )}
+
+        {goalObj.count.map(count =>
+          <p>
+            {Math.floor(count)}
+          </p>
+        )}
       </div>
 
       <div className="gs-inner__process">
@@ -26,10 +35,10 @@ export const ScaleCompletly: FC = () => {
         </p>
 
         <p>
-          {currentUnits} из {countUits}
+          {currentUnits} из {goalCountUits}
         </p>
       </div>
     </div>
-  )
+  );
 }
 
