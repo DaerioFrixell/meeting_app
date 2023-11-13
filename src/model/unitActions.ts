@@ -88,11 +88,11 @@ export const updateUnit = (updateUnit: UnitUpdateV1) => {
   }
 }
 
-export const deleteUnitAction = (id: number) => {
+export const deleteUnitAction = (id: string | undefined) => {
   console.log('delete action work')
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      deleteUnit(id)
+      id  ? deleteUnit(id) : console.log(`неверный id. Now is = ${id}`)
       /**TO DO
        * удалить объект в редаксе, чтобы изменить UI!
        *

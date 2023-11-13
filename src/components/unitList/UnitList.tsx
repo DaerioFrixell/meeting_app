@@ -1,43 +1,31 @@
-import './unitList.scss';
+import './units.scss';
 import { FC } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { Unit } from './unit/Unit';
-import { unitFields } from './fields';
+import { useNavigate } from 'react-router-dom';
+import { ViewField } from '../UI/field/viewField/ViewField';
+import { MainTitle } from '../UI/mainTitle/MainTitle';
 
 export const UnitList: FC = () => {
+    const navigate = useNavigate();
     const { units } = useTypedSelector((state) => state.unit);
+
+    const openDetailView = (id: number) => {
+        navigate(`${id}`)
+    };
 
     return (
         <section className="unit-list">
-            <h2>список всех</h2>
+            <MainTitle title="весь список" />
 
-            {unitFields.map((f) => (
-                <div key={f.id} className="unit-list__item" >
-                    <p className="unit-list__item__number">{f.id}</p>
-                    <p className="unit-list__item__status">{f.status.title}</p>
-                    <p className="unit-list__item__name">{f.name}</p>
-                    <p className="unit-list__item__surname">{f.surename}</p>
-                    <p className="unit-list__item__was-old">{f.wasOld}</p>
-                    <p className="unit-list__item__link">{f.links.title}</p>
+            {units.map(oneUnit => (
+                <div className="unit-list__commonView" onClick={_ => openDetailView(oneUnit.id)}>
+                    <ViewField title='id' value={oneUnit.id} />
+                    <ViewField title='статус' value={oneUnit.status} />
+                    <ViewField title='имя' value={oneUnit.name} />
+                    <ViewField title='фамилия' value={oneUnit.surname} />
+                    <ViewField title='wasOld' value={oneUnit.wasOld} />
+                    <ViewField title='ссылка' value={oneUnit.link} />
                 </div>
-            ))}
-
-            {units.map((u) => (
-                <Unit
-                    key={u.id}
-                    id={u.id}
-                    dateMeet={u.dateMeet}
-                    link={u.link}
-                    name={u.name}
-                    status={u.status}
-                    surname={u.surname}
-                    typeMeet={u.typeMeet}
-                    wasOld={u.wasOld}
-                    whereMeet={u.whereMeet}
-                    birth={u.birth}
-                    createAt={u.createAt}
-                    updateAt={u.updateAt}
-                />
             ))}
         </section>
     );
