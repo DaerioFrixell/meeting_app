@@ -1,4 +1,4 @@
-import './unitList.scss';
+import './units.scss';
 import { FC } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { unitFieldsV1 } from './fields';

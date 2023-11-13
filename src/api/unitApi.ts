@@ -20,6 +20,6 @@ export const updateUnitRequest = async (updateUnit: UnitUpdateV1) => {
 }
 
 // что с бэка приходит?
-export const deleteUnit = async (id: number) => {
+export const deleteUnit = async (id: string) => {
   return await $host.delete(`api/unit/${id}`)
 }
