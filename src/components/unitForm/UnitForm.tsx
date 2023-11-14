@@ -6,6 +6,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { UnitRequestV1 } from '../../Data/UnitV1';
 import { FC } from 'react';
 import { FormField } from '../UI/field/FormField';
+import { SignupSchemaFormData, initialFormDataValues } from './formData';
 
 type errorType = {
   link: string;
@@ -16,32 +17,17 @@ export const UnitForm: FC = () => {
   const { units } = useTypedSelector((state) => state.unit);
   const { createUnitV1 } = useAction();
   const unitLinks = units.map((u) => u.link);
-
-  const initialValues: UnitRequestV1 = {
-    name: '',
-    surname: '',
-    birth: '',
-    dateMeet: '',
-    link: '',
-    typeMeet: 'ether',
-
-    whereMeet: '',
-    status: '',
-  };
-
+  
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initialFormDataValues}
+      validationSchema={SignupSchemaFormData}
       validate={(values) => {
         let checkLinks = unitLinks.filter((u) => u === values.link);
         const errors: FormikErrors<errorType> = {};
 
         if (checkLinks.length === 1 && checkLinks[0] !== '') {
           errors.link = 'link add yet';
-        }
-
-        if (values.name === '') {
-          errors.name = 'name is empty';
         }
 
         return errors;
