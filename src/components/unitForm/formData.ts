@@ -33,3 +33,5 @@ export const SignupSchemaFormData = Yup.object().shape({
   whereMeet: Yup.string()
     .required('укажи место встречи'),
 });
+
+/** */
