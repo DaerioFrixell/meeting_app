@@ -1,0 +1,77 @@
+@import "../../style/font-style.scss";
+@import "../../style/colors.scss";
+@import "../../style/mixine.scss";
+@import "../../style/layouts.scss";
+
+.unit-list {
+  @include layout-units-list;
+
+  box-shadow: $shadow;
+  font-size: $font-small;
+
+  // Горизонтальное отображение Unit для общего списка
+  &__commonView {
+    display: grid;
+    grid-template-columns: 4rem 5rem repeat(4, 1fr);
+    gap: .5rem;
+
+    width: 100rem;
+    margin: auto;
+    margin-bottom: 0.3rem;
+
+    justify-content: center;
+    text-align: center;
+    transition: .2s;
+    cursor: default;
+    outline: 2px solid rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0);
+
+    &:hover {
+      outline: 2px solid rgba(255, 255, 255, 0);
+      border: 2px solid $hoverObject;
+      border-radius: 5px;
+    }
+  }
+
+  // редактирование
+
+}
+
+.editUnit {
+  display: flex;
+  flex-flow: row wrap;
+  // justify-content: space-evenly;
+  gap: 1rem;
+
+  width: 55rem;
+  margin-bottom: 0.2rem;
+}
+
+.navigation {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  &__butt {
+    width: 7rem;
+    height: 4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $gray-3;
+  }
+}
+
+.delete-button {
+  margin-left: 5rem;
+  background-color: $danger-1;
+}
+
+.flex-line {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}

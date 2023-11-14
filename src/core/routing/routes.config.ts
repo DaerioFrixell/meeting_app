@@ -1,6 +1,6 @@
 import { MonthStats } from '../../components/monthStat/MonthStat';
 import { UnitForm } from '../../components/unitForm/UnitForm';
-import { DetailUnit } from '../../components/unitList/detailUnit/DetailUnit';
+import { DetailViewUnit } from '../../components/unitList/DetailViewUnit';
 import { AllUnits } from '../../page/allUnits/AllUnits';
 import { GlobalStats } from '../../page/globalStats/GlobalStats';
 import { NavigatePath, allNavigationRoutes } from './type';
@@ -17,7 +17,7 @@ export const allRoutes: allNavigationRoutes[] =
     },
     {
       path: NavigatePath.DETAIL_UNIT,
-      element: DetailUnit,
+      element: DetailViewUnit,
     },
     {
       path: NavigatePath.CREATE_UNITS,
