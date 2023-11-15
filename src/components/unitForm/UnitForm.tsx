@@ -49,6 +49,7 @@ export const UnitForm: FC = () => {
       }}
     >
       {({ errors, touched }) => (
+        console.log("err: ", errors),
         <Form className="unit-form">
           <div className="unit-form__block">
             <div className="unit-form__block">

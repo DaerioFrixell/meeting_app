@@ -1,5 +1,6 @@
 import { UnitRequestV1 } from "../../Data/UnitV1";
 import * as Yup from 'yup';
+import dayjs from 'dayjs';
 
 export const initialFormDataValues: UnitRequestV1 = {
   name: '',
@@ -13,25 +14,26 @@ export const initialFormDataValues: UnitRequestV1 = {
   status: '-',
 };
 
+const getMinBirth  = () => {
+  const date = dayjs();
+  return date.subtract(10, 'year')
+}
+
 export const SignupSchemaFormData = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('введи имя'),
+    .required('Введи имя'),
   surname: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('введи фамилию'),
+    .required('Введи фамилию'),
   birth: Yup.date()
-    .max(Date.now() - 10 * 365 * 24 * 3600 * 1000, "не засоряй статистику мелкими.")
-    .required('введи дату'),
+    .max(getMinBirth(), "Слишком маленький возраст!")
+    .required('Выбери дату рождения.'),
   dateMeet: Yup.date()
-    .max(Date.now(), "в будущем нельзя встретиться.")
-    .required('введи дату'),
+    .max(dayjs(), "Дата встречи не должна быть в будущем.")
+    .required('Выбери дату встречи.'),
   link: Yup.string()
-    .required('укажи ссылку'),
+    .required('Укажи ссылку.'),
   whereMeet: Yup.string()
-    .required('укажи место встречи'),
+    .required('Укажи место встречи.'),
 });
-
-/** */
