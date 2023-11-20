@@ -14,7 +14,7 @@ export type UnitV1 = {
   updateAt: Date | string
 }
 
-export type UnitRequestV1 = Omit<UnitV1,
+type UnitRequestV1 = Omit<UnitV1,
   'id'
   | "wasOld"
   | "createAt"
@@ -22,6 +22,7 @@ export type UnitRequestV1 = Omit<UnitV1,
 >;
 
 export type UnitResponseV1 = UnitV1[];
+
 export type UnitCreateV1 = UnitRequestV1
 
 export type UnitUpdateV1 = Omit<UnitV1,

@@ -1,4 +1,4 @@
-import { UnitRequestV1, UnitV1 } from '../../Data/UnitV1';
+import { UnitCreateV1, UnitV1 } from '../../Data/UnitV1';
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
 import { fakeUnitsV1 } from '../../mocdb/mocdb';
@@ -12,7 +12,7 @@ export const getLinkList = (links: any[]) => {
   return links
 }
 
-export const initialFormDataValues: UnitRequestV1 = {
+export const initialFormDataValues: UnitCreateV1 = {
   name: '',
   surname: '',
   birth: '',
@@ -24,9 +24,9 @@ export const initialFormDataValues: UnitRequestV1 = {
   status: '-',
 };
 
-const getMinBirth  = () => {
+const getMinBirth = () => {
   const date = dayjs();
-  return date.subtract(10, 'year')
+  return date.subtract(14, 'year')
 }
 
 export const SignupSchemaFormData = Yup.object().shape({

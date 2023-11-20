@@ -97,8 +97,12 @@ export const UnitForm: FC = () => {
 
           <div className="submit-buttons">
             <button
-              disabled={Object.entries(errors).length === 0}
-              className={(Object.entries(errors).length === 0) ? "button button-create" : "button button-create disable-btn"}
+              disabled={Object.entries(errors).length !== 0}
+              className={
+                (Object.entries(errors).length === 0)
+                  ? "button button-create"
+                  : "button button-create disable-btn"
+              }
               type="submit"
             >
               Create
