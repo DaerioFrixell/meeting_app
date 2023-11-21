@@ -75,12 +75,12 @@ export const createUnitV1 = (unit: UnitCreateV1) => {
 export const updateUnit = (updateUnit: UnitUpdateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      // const data = 
-      await updateUnitRequest(updateUnit)
+      // { status: number, newUnit: {} }
+      const data = await updateUnitRequest(updateUnit)
 
       dispatch({
         type: UnitActionType.UPDATE_UNIT,
-        payload: updateUnit,
+        payload: data.newUnit,
       })
     } catch (e) {
       dispatch({

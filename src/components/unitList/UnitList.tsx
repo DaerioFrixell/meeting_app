@@ -18,7 +18,11 @@ export const UnitList: FC = () => {
             <MainTitle title="весь список" />
 
             {units.map(oneUnit => (
-                <div className="unit-list__commonView" onClick={_ => openDetailView(oneUnit.id)}>
+                <div
+                    key={oneUnit.id}
+                    className="unit-list__commonView"
+                    onClick={_ => openDetailView(oneUnit.id)}
+                >
                     <ViewField title='id' value={oneUnit.id} />
                     <ViewField title='статус' value={oneUnit.status} />
                     <ViewField title='имя' value={oneUnit.name} />
