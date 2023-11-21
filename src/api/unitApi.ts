@@ -3,7 +3,7 @@ import { $host } from '../core/url'
 
 // запрашивать 10/205/ Units, а не несколько тысяч.
 export const getUnits = async (): Promise<UnitV1[]> => {
-  const { data } = await $host.get('api/unit')
+  const { data } = await $host.get('api/unit?limit=20&offset=20')
   return data
 }
 
