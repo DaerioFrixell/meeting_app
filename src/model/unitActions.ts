@@ -8,13 +8,12 @@ import {
 } from '../api/unitApi'
 import { fakeUnitsV1 } from '../mocdb/mocdb'
 import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
+import { requestPaginationSetting_T } from '../middleware/requestPaginationSetting'
 
-export const getAllUnits = () => {
+export const getAllUnits = (counts: requestPaginationSetting_T) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      dispatch({ type: UnitActionType.FETCH_UNITS })
-
-      const data = await getUnits()
+      const data = await getUnits(counts)
 
       dispatch({
         type: UnitActionType.FETCH_UNITS_SUCCESS,

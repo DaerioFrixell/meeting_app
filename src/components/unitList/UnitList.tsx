@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ViewField } from '../UI/field/viewField/ViewField';
 import { MainTitle } from '../UI/mainTitle/MainTitle';
 import { useAction } from '../../hooks/useAction';
+import { requestPaginationSetting } from '../../middleware/requestPaginationSetting';
 
 export const UnitList: FC = () => {
   const navigate = useNavigate();
@@ -12,11 +13,19 @@ export const UnitList: FC = () => {
   const { units } = useTypedSelector((state) => state.unit);
 
   const [isBottom, setIsBottom] = useState(false)
+  const [page, setPage] = useState(2)
+
+  const search = {
+    limit: requestPaginationSetting.limit,
+    page: page
+  }
 
   useEffect(() => {
     if (isBottom) {
-      console.log("bottom")
-      getAllUnits()
+      setIsBottom(false)
+      getAllUnits(search)
+
+      setPage(page + 1)
     }
   }, [isBottom])
 
@@ -28,7 +37,7 @@ export const UnitList: FC = () => {
   }, [])
 
   const scrollCheck = (e: any) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 400) {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
       setIsBottom(true)
     }
   }

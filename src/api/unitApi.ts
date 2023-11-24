@@ -2,8 +2,8 @@ import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 import { $host } from '../core/url'
 
 // запрашивать 10/205/ Units, а не несколько тысяч.
-export const getUnits = async (): Promise<UnitV1[]> => {
-  const { data } = await $host.get('api/unit?limit=20&offset=20')
+export const getUnits = async (search: any): Promise<UnitV1[]> => {
+  const { data } = await $host.get(`api/unit?limit=${search.limit}&page=${search.page}`)
   return data
 }
 
