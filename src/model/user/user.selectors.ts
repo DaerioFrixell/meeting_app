@@ -1,13 +1,25 @@
+import { createSelector } from "@reduxjs/toolkit";
+import { RootState } from "../../core/store";
 import { zeroArray_10 } from "../../staticData/others";
+import { UserState } from "./user.reducer";
 
 export const globalStatistics = {
   online: zeroArray_10,
   offline: zeroArray_10,
 };
 
-/** значения по каждому статусу online */
-const getCountByEveryOnline: number[] = globalStatistics.online;
+const getUserState = (state: RootState): UserState => state.user;
+
+/*
+ * значения по каждому статусу online
+ */
+export const getStatisticsSelector = createSelector(getUserState, (userState: UserState) => {
+  return userState.statistics.statuses
+})
+
+const getCountByEveryOnline = [1, 2]
 export const getCountOnlineUnitsSelector = getCountByEveryOnline;
+
 
 /** значения по каждому статусу offline */
 const getCountByEveryOffline: number[] = globalStatistics.offline;
