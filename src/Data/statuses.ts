@@ -11,6 +11,8 @@ export enum StatusMark {
   ABD = "ABD"
 }
 
+export const statTitles: string[] = Object.keys(StatusMark);
+
 /** TO DO сделать заглавными */
 export enum StatusMetric {
   contact = 'contact',
@@ -30,5 +32,3 @@ export type Status = {
   metric: StatusMetric
   mark: StatusMark
 }
-
-export const statTitles: string[] = Object.keys(StatusMark);

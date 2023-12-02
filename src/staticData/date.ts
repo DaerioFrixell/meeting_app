@@ -13,15 +13,16 @@ export const allMonthes: string[] = [
   'dec',
 ];
 
-export const allYears: number[] = [
-  2020,
-  2021,
+export const allYears: (string | number)[] = [
+  "all time",
+  2023,
   2022,
-  2023
+  2021,
+  2020,
 ];
 
 export const daysInYear: number = 365;
 
 export const monthsInYear: number = 12;
 
-export const period: string[] = [ 'pDay', 'pMonth' ];
+export const period: string[] = ['pDay', 'pMonth'];
