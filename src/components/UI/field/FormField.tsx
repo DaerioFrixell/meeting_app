@@ -2,6 +2,7 @@ import './form.scss';
 import { Field, FieldProps } from 'formik';
 import { FC } from 'react';
 
+/** DO: типы указывать в нотации type_T */
 type FormField_Type = {
   name: string;
   label: string;
@@ -26,12 +27,12 @@ export const FormField: FC<FormField_Type> = ({
             {label}
           </label>
 
-          {/* TO DO сделать UI инпут или хотя бы стили для инпута */}
+          {/* DO: сделать UI инпут или хотя бы стили для инпута */}
           {touched && error && <h3 className="error">err: {error}</h3>}
 
           <input
             id={label}
-            className={`unit-form-input ${className}`} // className подключить
+            className={`unit-form-input ${className}`} // DO: className подключить
             placeholder={placeholder}
             type={type}
             {...field}

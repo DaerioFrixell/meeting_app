@@ -4,6 +4,7 @@ import { Form, Formik, Field } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
 import { SignupSchemaFormData, initialFormDataValues } from './formData';
+import { Checkbox } from '../UI/inputs/Checkbox';
 
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
@@ -29,7 +30,8 @@ export const UnitForm: FC = () => {
         actions.setSubmitting(false);
       }}
     >
-      {({ errors }) => (
+      {({ errors, values }) => (
+        console.log(values),
         <Form className="unit-form">
           <div className="unit-form__block">
             <div className="unit-form__block__one">
@@ -79,17 +81,23 @@ export const UnitForm: FC = () => {
               />
 
               {/* должна быть группа из 2х элементов с возможностью расшириться */}
-              <h2>typeMeet</h2>
+              <h2>type Meet</h2>
 
-              <Field
+              <Checkbox
+                name="typeMeet"
+                values={["online", "offline"]}
+              />
+
+
+
+              {/* <Field
                 className="unit-form-input"
                 component="select"
                 name="typeMeet"
               >
-                <option disabled>тип знакомства</option>
                 <option value="live">live</option>
                 <option value="ether">ether </option>
-              </Field>
+              </Field> */}
 
               {errors.typeMeet ? <p> {errors.typeMeet}</p> : null}
             </div>

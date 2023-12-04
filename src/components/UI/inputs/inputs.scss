@@ -1,0 +1,23 @@
+.checkbox {
+  display: inline-flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  margin-right: 1rem;
+  overflow: hidden;
+
+
+  &__input {
+    display: none;
+    position: absolute;
+  }
+
+  &__label {
+    background-color: gray;
+    color: blue;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    padding: 1.75rem 2.4rem;
+  }
+
+}
