@@ -8,7 +8,7 @@ export type UnitV1 = {
   dateMeet: string
   link: string
   whereMeet: string
-  typeMeet: 'live' | 'ether'
+  typeMeet: 'offline' | 'online'
 
   createAt: Date | string
   updateAt: Date | string
