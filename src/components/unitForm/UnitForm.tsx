@@ -4,8 +4,11 @@ import { Form, Formik, Field } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
 import { SignupSchemaFormData, initialFormDataValues } from './formData';
-import { Checkbox } from '../UI/inputs/Checkbox';
+import { GroupButtons } from '../UI/inputs/GroupButtons';
 
+/** DO: все заголовки вынести в файл статики или i18n. 
+ * не хранить статику в таком виде.
+ */
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
@@ -14,7 +17,7 @@ export const UnitForm: FC = () => {
       initialValues={initialFormDataValues}
       validationSchema={SignupSchemaFormData}
       onSubmit={(values, actions) => {
-        /** здесь можно ...values сделать же просто, не? */
+        /** DO: здесь можно ...values сделать же просто, не? */
         createUnitV1({
           status: null,
           name: values.name,
@@ -35,7 +38,7 @@ export const UnitForm: FC = () => {
         <Form className="unit-form">
           <div className="unit-form__block">
             <div className="unit-form__block__one">
-              <p>about unit</p>
+              <h3>about unit</h3>
 
               <FormField
                 label="имя"
@@ -63,43 +66,27 @@ export const UnitForm: FC = () => {
               />
             </div>
 
-            <p>links</p>
-
             <div className="unit-form__block__two">
+              {/* v2: добавить возможность добавлять ссылки на разные места. */}
+              <h3>список ссылок</h3>
               <FormField
                 label="any link"
                 name="link"
                 placeholder="любая ссылка на unit"
               />
 
-              <p>about meet</p>
-
+              <h3>about meet</h3>
               <FormField
                 label="место встречи"
                 name="whereMeet"
                 placeholder="место встречи"
               />
 
-              {/* должна быть группа из 2х элементов с возможностью расшириться */}
-              <h2>type Meet</h2>
-
-              <Checkbox
-                name="typeMeet"
-                values={["online", "offline"]}
+              <GroupButtons
+                formikName="typeMeet"
+                title="type Meet"
+                buttonsNames={["online", "offline"]}
               />
-
-
-
-              {/* <Field
-                className="unit-form-input"
-                component="select"
-                name="typeMeet"
-              >
-                <option value="live">live</option>
-                <option value="ether">ether </option>
-              </Field> */}
-
-              {errors.typeMeet ? <p> {errors.typeMeet}</p> : null}
             </div>
           </div>
 
