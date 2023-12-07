@@ -2,20 +2,15 @@ import { fakeUnitsV1 } from '../../mocdb/mocdb';
 import { UnitCreateV1, UnitV1 } from '../../Data/UnitV1';
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
+import { TypeMeet } from '../../Data/typeMeet';
 
 const data: UnitV1[] = fakeUnitsV1;
 const unitLinks = data.map(u => u.link)
-/** 
- * Получение списка уникальных ссылок для валидации. 
- * DO: sting[] вроде. Убрать any.
- */
-export const getLinkList = (links: any[]) => {
+
+export const getLinkList = (links: string[]) => {
   return links
 }
 
-/* DO: т.к. typeMeet, то сделай изначально пустой строкой и если user не нажал на кнопку,
- * то будет ошибка, т.к. нужно выбрать что-то. Иначе непонятно какое значение будет выбрано. 
- */
 export const initialFormDataValues: UnitCreateV1 = {
   name: '',
   surname: '',
@@ -23,9 +18,9 @@ export const initialFormDataValues: UnitCreateV1 = {
   dateMeet: '',
   link: '',
   whereMeet: '',
+  typeMeet: TypeMeet.ONLINE,
 
-  typeMeet: 'online',
-  status: '-',
+  status: '-', // v2: добавить поле в форму добавления unit
 };
 
 const getMinBirth = () => {

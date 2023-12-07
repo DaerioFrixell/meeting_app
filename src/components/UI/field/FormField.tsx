@@ -1,18 +1,12 @@
 import './form.scss';
 import { Field, FieldProps } from 'formik';
 import { FC } from 'react';
+import { FormField_T } from './formField.type';
 
-/** DO: типы указывать в нотации type_T */
-type FormField_Type = {
-  name: string;
-  label: string;
-  placeholder: string;
-
-  className?: string;
-  type?: any; // text, number e.t.c
-};
-
-export const FormField: FC<FormField_Type> = ({
+/** 
+ * Use *GroupButton component* for checkbox/radio 
+ */
+export const FormField: FC<FormField_T> = ({
   name,
   placeholder,
   label,

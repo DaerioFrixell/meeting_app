@@ -25,6 +25,11 @@
     }
   },
   "unitForm": {
+    "blockTitle": {
+      "aboutUnit": "about unit",
+      "linkList": "список ссылок",
+      "aboutMeet": "about meet"
+    },
     "placeholders": {
       "status": "статус",
       "name": "введите имя",
@@ -78,6 +83,7 @@
       "update": "обновить",
       "delete": "удалить",
       "clear": "очистить",
+      "clearForm": "очистить форму",
       "close": "закрыть",
       "open": "открыть",
       "back": "назад"

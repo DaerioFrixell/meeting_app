@@ -8,7 +8,7 @@ export type GroupButtons_T = {
   buttonsNames: string[]
 }
 
-/** DO: сделать возможность использовать и для checkboxes */
+/* DO: сделать возможность использовать и для checkboxes */
 export const GroupButtons: FC<GroupButtons_T> = ({ buttonsNames, formikName, title }) => {
   return (
     <div className="group-buttons-wrapper">
