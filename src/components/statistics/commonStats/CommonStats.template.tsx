@@ -4,7 +4,10 @@ import { Statuses } from '../../statuses/Statuses';
 
 type CommonStatsOnlineType = {
   statsType: string
-  valueArray: number[]
+  valueArray: {
+    status: string
+    value: number
+  }[]
 }
 export const CommonStatsTemplate: FC<CommonStatsOnlineType> = ({
   statsType,
@@ -19,9 +22,9 @@ export const CommonStatsTemplate: FC<CommonStatsOnlineType> = ({
       <div className="common-stats__marks">
         <Statuses />
 
-        {valueArray.map((value: number) => (
+        {valueArray.map((obj) => (
           <p>
-            {value}
+            {obj.value}
           </p>
         ))}
       </div>

@@ -4,7 +4,11 @@ import { Form, Formik, Field } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
 import { SignupSchemaFormData, initialFormDataValues } from './formData';
+import { GroupButtons } from '../UI/inputs/GroupButtons';
 
+/** DO: все заголовки вынести в файл статики или i18n. 
+ * не хранить статику в таком виде.
+ */
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
@@ -13,7 +17,7 @@ export const UnitForm: FC = () => {
       initialValues={initialFormDataValues}
       validationSchema={SignupSchemaFormData}
       onSubmit={(values, actions) => {
-        /** здесь можно ...values сделать же просто, не? */
+        /** DO: здесь можно ...values сделать же просто, не? */
         createUnitV1({
           status: null,
           name: values.name,
@@ -29,11 +33,12 @@ export const UnitForm: FC = () => {
         actions.setSubmitting(false);
       }}
     >
-      {({ errors }) => (
+      {({ errors, values }) => (
+        console.log(values),
         <Form className="unit-form">
           <div className="unit-form__block">
             <div className="unit-form__block__one">
-              <p>about unit</p>
+              <h3>about unit</h3>
 
               <FormField
                 label="имя"
@@ -61,44 +66,38 @@ export const UnitForm: FC = () => {
               />
             </div>
 
-            <p>links</p>
-
             <div className="unit-form__block__two">
+              {/* v2: добавить возможность добавлять ссылки на разные места. */}
+              <h3>список ссылок</h3>
               <FormField
                 label="any link"
                 name="link"
                 placeholder="любая ссылка на unit"
               />
 
-              <p>about meet</p>
-
+              <h3>about meet</h3>
               <FormField
                 label="место встречи"
                 name="whereMeet"
                 placeholder="место встречи"
               />
 
-              {/* должна быть группа из 2х элементов с возможностью расшириться */}
-              <h2>typeMeet</h2>
-
-              <Field
-                className="unit-form-input"
-                component="select"
-                name="typeMeet"
-              >
-                <option disabled>тип знакомства</option>
-                <option value="live">live</option>
-                <option value="ether">ether </option>
-              </Field>
-
-              {errors.typeMeet ? <p> {errors.typeMeet}</p> : null}
+              <GroupButtons
+                formikName="typeMeet"
+                title="type Meet"
+                buttonsNames={["online", "offline"]}
+              />
             </div>
           </div>
 
           <div className="submit-buttons">
             <button
-              disabled={Object.entries(errors).length === 0}
-              className={(Object.entries(errors).length === 0) ? "button button-create" : "button button-create disable-btn"}
+              disabled={Object.entries(errors).length !== 0}
+              className={
+                (Object.entries(errors).length === 0)
+                  ? "button button-create"
+                  : "button button-create disable-btn"
+              }
               type="submit"
             >
               Create

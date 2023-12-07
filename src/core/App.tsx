@@ -4,13 +4,14 @@ import './app.scss'
 import { useEffect } from 'react'
 import { useAction } from '../hooks/useAction'
 import { useTypedSelector } from '../hooks/useTypedSelector'
+import { requestPaginationSetting } from '../middleware/requestPaginationSetting'
 
 export const App = () => {
   const { isLoading } = useTypedSelector((state) => state.unit);
-  const { getFakeData } = useAction()
+  const { getAllUnits } = useAction()
 
   useEffect(() => {
-    getFakeData();
+    getAllUnits(requestPaginationSetting);
   }, [])
 
   if (isLoading) return <h1>loading...</h1>;

@@ -17,7 +17,7 @@ export const ChangePeriod: FC = () => {
 
       <select name="" id="">
         {/* TO DO сделать default value */}
-        
+
         {allYears.map(year =>
           <option value={year}>
             {year}

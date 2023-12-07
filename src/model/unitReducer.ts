@@ -7,10 +7,7 @@ const initialState: UnitInitState = {
   units: [],
 }
 
-export const unitReducer = (
-  state = initialState,
-  action: UnitActions
-): UnitInitState => {
+export const unitReducer = (state = initialState, action: UnitActions): UnitInitState => {
   switch (action.type) {
     case UnitActionType.FETCH_UNITS:
       return {
