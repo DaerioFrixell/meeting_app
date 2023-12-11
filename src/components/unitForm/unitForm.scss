@@ -23,37 +23,12 @@
   }
 }
 
-/* DO вынести в UI компоненту */
-.submit-buttons {
+.buttons-block {
+  display: grid;
   width: 26rem;
   margin: auto;
-  display: grid;
+
   grid-template-columns: repeat(2, 12rem);
   grid-template-rows: 4rem;
   gap: 0 2rem;
-}
-
-/* DO вынести в UI компоненту */
-.button {
-  color: white; // execute in color
-  font-size: 1.8rem;
-  width: 100%;
-  height: 100%;
-
-  border: none;
-  background-color: #862ef1df; // execute in color
-  border-radius: 4px;
-  transition: all 0.2s;
-
-  &:active {
-    transform: scale(110%);
-  }
-
-  &__cancel {
-    @include second-button;
-  }
-}
-
-.disable-btn {
-  background-color: gray;
 }

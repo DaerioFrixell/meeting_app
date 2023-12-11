@@ -3,6 +3,7 @@ import { FC } from "react";
 import { allYears } from "../../../staticData/date";
 import { useNavigate } from "react-router-dom";
 import { NavigatePath } from "../../../core/routing/type";
+import { Button } from "../../buttons/Button";
 
 export const ChangePeriod: FC = () => {
   const navigate = useNavigate();
@@ -22,9 +23,10 @@ export const ChangePeriod: FC = () => {
           </option>)}
       </select>
 
-      <button onClick={goToMonthStats}>
-        по месяцам
-      </button>
+      <Button
+        buttonsName={"по месяцам"}
+        onClick={goToMonthStats}
+      />
     </div>
   );
 };

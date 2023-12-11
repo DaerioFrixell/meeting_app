@@ -10,9 +10,9 @@ export type UnitV1 = {
   whereMeet: string
   typeMeet: 'offline' | 'online'
 
-  createAt: Date | string
-  updateAt: Date | string
-}
+  createAt: Date | string;
+  updateAt: Date | string;
+};
 
 type UnitRequestV1 = Omit<UnitV1,
   'id'
@@ -22,7 +22,6 @@ type UnitRequestV1 = Omit<UnitV1,
 >;
 
 export type UnitResponseV1 = UnitV1[];
-
 export type UnitCreateV1 = UnitRequestV1
 
 export type UnitUpdateV1 = Omit<UnitV1,

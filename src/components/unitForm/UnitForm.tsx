@@ -4,9 +4,11 @@ import { Form, Formik } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
 import { SignupSchemaFormData, initialFormDataValues } from './formData';
-import { GroupButtons } from '../UI/inputs/GroupButtons';
+import { RadioOrCheckbox } from '../inputs/RadioOrCheckbox';
+import { Button } from '../buttons/Button';
 import { staticData } from '../../staticData/staticData';
 
+//  DO: всю статику взять из файла со статикой.
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
@@ -80,7 +82,7 @@ export const UnitForm: FC = () => {
                 placeholder="место встречи"
               />
 
-              <GroupButtons
+              <RadioOrCheckbox
                 formikName="typeMeet"
                 title="type Meet"
                 buttonsNames={["online", "offline"]}
@@ -88,20 +90,19 @@ export const UnitForm: FC = () => {
             </div>
           </div>
 
-          <div className="submit-buttons">
-            <button
+          <div className="buttons-block">
+            {/* DO: статику взять из файла со статикой. Для аттрибутов сделать Enum */}
+            <Button
+              className={(Object.entries(errors).length !== 0) && "disable-btn"}
+              buttonsName={"Create"}
               disabled={Object.entries(errors).length !== 0}
-              className={
-                (Object.entries(errors).length === 0)
-                  ? "button button-create"
-                  : "button button-create disable-btn"
-              }
-              type="submit"
-            >
-              {staticData.UI.buttons.create}
-            </button>
+              type={"submit"}
+            />
 
-            <button className="button button__cancel">{staticData.UI.buttons.clearForm}</button>
+            <Button
+              className={"btn-cancel"}
+              buttonsName={"Clear form"}
+            />
           </div>
         </Form>
       )}
