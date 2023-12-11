@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { Button } from '../buttons/Button';
 import './modal.scss';
+import { FC, ReactNode } from 'react';
 
 type Modal = {
     toggle(): void;
-    children: React.ReactNode;
+    children: ReactNode;
     title: string;
 };
 export const Modal: FC<Modal> = ({ toggle, children, title }) => {
@@ -11,14 +12,21 @@ export const Modal: FC<Modal> = ({ toggle, children, title }) => {
         <div className="modal-bg" onClick={toggle}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <div className="modal__header">
-                    <p className="modal__header__title">{title}</p>
+                    <p className="modal__header__title">
+                        {title}
+                    </p>
                 </div>
 
-                <div className="modal__body">{children}</div>
+                <div className="modal__body">
+                    {children}
+                </div>
 
                 <div className="modal__footer">
-                    <p>footer</p>
-                    <button onClick={toggle}>close</button>
+                    {/* DO: статика в голом виде опять */}
+                    <Button
+                        buttonsName={"close"}
+                        onClick={toggle}
+                    />
                 </div>
             </div>
         </div>
