@@ -1,12 +1,4 @@
-/**TO DO сделать объектом. ЗАчем массив из 1 элемента?)))
- * А вообще можно Enum сделать и вынести его в MockData, т.к. это по проекту будет использоваться.
- * А сами поля вообще не Enum можно делать, а через i18n
- */
-
-
-
-export const unitFieldsV2 = [
-  {
+export const unitFieldsV2 = {
     id: 'id',
     number: '№',
     status: {
@@ -30,5 +22,4 @@ export const unitFieldsV2 = [
     typeMeet: 'type meet',
     createAt: 'created',
     updateAt: 'updated',
-  },
-];
+  };

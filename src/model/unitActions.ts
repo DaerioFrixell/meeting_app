@@ -53,10 +53,7 @@ export const createUnitV1 = (unit: UnitCreateV1) => {
     try {
       // dispatch({ type: UnitActionType.FETCH_UNITS })
 
-      /** TO DO перекидывать на список Units после добавления! */
       const data: UnitV1 = await createUnit(unit)
-      console.log("data: ", data)
-
 
       dispatch({
         type: UnitActionType.ADD_UNITS,
@@ -95,7 +92,7 @@ export const deleteUnitAction = (id: string | undefined) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       id ? deleteUnit(id) : console.log(`неверный id. Now is = ${id}`)
-      /**TO DO
+      /** DO
        * удалить объект в редаксе, чтобы изменить UI!
        *
        */

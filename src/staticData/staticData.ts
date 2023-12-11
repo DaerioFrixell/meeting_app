@@ -1,0 +1,98 @@
+export const staticData = {
+  login: "",
+  unit: {
+    info: {
+      status: "статус"
+    },
+    about: {
+      title: "описание",
+      name: "имя",
+      family: "фамилия",
+      birth: "дата рождения"
+    },
+    links: {
+      title: "ссылки",
+      vk: "vk",
+      inst: "inst",
+      tg: "telegram",
+      other: "other links"
+    },
+    meeting: {
+      title: "о встрече",
+      dateMeet: "дата встречи",
+      whereMeet: "где познакомились",
+      typeMeet: "тип знакомства"
+    }
+  },
+  unitForm: {
+    blockTitle: {
+      aboutUnit: "about unit",
+      linkList: "список ссылок",
+      aboutMeet: "about meet"
+    },
+    placeholders: {
+      status: "статус",
+      name: "введите имя",
+      surname: "введите фамилию",
+      birth: "выберете дату рождения",
+      linkVk: "укажите ссылку на Vk",
+      linkInst: "укажите ссылку на Inst",
+      linkTg: "укажите ссылку на Telegram",
+      linkOther: "укажите ссылку на Unit",
+      dateMeet: "выберете дату встречи",
+      whereMeet: "укажите место встречи"
+    },
+    errors: {
+      noName: "не указано имя",
+      noSurname: "не указана фамилия",
+      link: {
+        execute: "такая ссылка уже добавлена"
+      },
+      birth: {
+        empty: "не указана дата рождения",
+        invalid: "некорректная дата рождения"
+      },
+      dateMeet: {
+        empty: "не указана дата встречи",
+        invalid: "некорректная дата встречи"
+      }
+    }
+  },
+  unitList: {
+    title: "список всех"
+  },
+  statistics: {
+    global: {
+      title: "общая статистика",
+      goal: "цель",
+      completly: "завершено",
+      changePeriod: "выберете период"
+    },
+    months: {},
+    commons: {
+      typeMeet: {
+        online: "online",
+        offline: "offline",
+        perMonth: "в месяц"
+      }
+    }
+  },
+  UI: {
+    buttons: {
+      create: "создать",
+      update: "обновить",
+      delete: "удалить",
+      clear: "очистить",
+      clearForm: "очистить форму",
+      close: "закрыть",
+      open: "открыть",
+      back: "назад"
+    }
+  },
+  timing: {
+    year: "год:",
+    month: "месяц: ",
+    all: "всего: ",
+    loading: "идёт загрузка..."
+  }
+}

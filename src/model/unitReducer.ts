@@ -56,7 +56,7 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
   }
 }
 
-/** TO DO
+/** DO
  * вынести функцию в middleware, в thunk или еще куда-то.
  * оставлять редакс чистым для чтения
  */
