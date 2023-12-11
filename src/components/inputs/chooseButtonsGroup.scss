@@ -1,7 +1,7 @@
 @import "../../style/colors.scss";
 @import "../../style/font-style.scss";
 
-.checkbox-or-radio {
+.choose-button {
   display: inline-flex;
   overflow: hidden;
   position: relative;
@@ -26,6 +26,10 @@
   }
 }
 
-.checkbox-or-radio input[type=radio]:checked+.checkbox-or-radio__label {
+.choose-button input[type=radio]:checked+.choose-button__label {
+  background-color: $active-modal;
+}
+
+.choose-button input[type=checkbox]:checked+.choose-button__label {
   background-color: $active-modal;
 }

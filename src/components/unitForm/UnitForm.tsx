@@ -4,7 +4,7 @@ import { Form, Formik } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
 import { SignupSchemaFormData, initialFormDataValues } from './formData';
-import { RadioOrCheckbox } from '../inputs/RadioOrCheckbox';
+import { ChooseButtonsGroup } from '../inputs/ChooseButtonsGroup';
 import { Button } from '../buttons/Button';
 import { staticData } from '../../staticData/staticData';
 
@@ -82,10 +82,11 @@ export const UnitForm: FC = () => {
                 placeholder="место встречи"
               />
 
-              <RadioOrCheckbox
+              <ChooseButtonsGroup
                 formikName="typeMeet"
-                title="type Meet"
-                buttonsNames={["online", "offline"]}
+                groupName="type Meet"
+                titles={["online", "offline"]}
+                type="radio"
               />
             </div>
           </div>
