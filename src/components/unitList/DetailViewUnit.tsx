@@ -3,15 +3,14 @@ import { FC, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { unitSelector } from "../../model/unit/unit.selectors";
 import { useSelector } from "react-redux";
-import { TypeMeet } from "../../Data/typeMeet";
-import { Links } from "../../Data/links";
-import { Status } from "../../Data/statuses";
 import { UnitUpdateV1, UnitV1 } from "../../Data/UnitV1";
 import { Field, Form, Formik } from "formik";
 import { useAction } from "../../hooks/useAction";
 import { FormField } from "../UI/field/FormField";
 import { ViewField } from "../UI/field/viewField/ViewField";
+import { Button } from "../buttons/Button";
 
+// DO: статика в голом виде везде.
 export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
 
@@ -44,34 +43,36 @@ export const DetailViewUnit: FC = () => {
           setCanUpdate(false);
         }}
       >
-        {values => (
+        {_ => (
           <Form className="editUnit">
             <div className="navigation">
-              <button
-                className="navigation__butt"
-                type="button"
+              {/* v2: у кнопки иконка должна быть. */}
+              <Button
+                className="btn-nav"
+                buttonsName={`<- back`}
                 onClick={() => navigate("/allunits")}
-              >
-                {"<-"} back
-              </button>
+              />
 
-              <button
-                className="navigation__butt"
-                type="button"
+              <Button
+                className="btn-nav"
+                buttonsName={canUpdate ? "cancel" : "edit"}
                 onClick={() => setCanUpdate(!canUpdate)}
-              >
-                {canUpdate ? "cancel" : "edit"}
-              </button>
+              />
 
               {canUpdate && (
-                <button className="navigation__butt" type="submit">
-                  confirm change
-                </button>
+                <Button
+                  className="btn-nav"
+                  buttonsName={"confirm"}
+                  type="submit"
+                />
               )}
 
-              <button className="navigation__butt delete-button" onClick={() => deleteUnitAction(id)}>
-                del
-              </button>
+              <Button
+                className="btn-delete"
+                buttonsName={"del"}
+                type="submit"
+                onClick={() => deleteUnitAction(id)}
+              />
             </div>
 
             {canUpdate ? (
@@ -86,8 +87,8 @@ export const DetailViewUnit: FC = () => {
                   <FormField name="status" label="статус" placeholder="status" />
                   <Field component="select" name="typeMeet">
                     <option disabled>тип знакомства</option>
-                    <option value="live">live</option>
-                    <option value="ether">ether </option>
+                    <option value="offline">offline</option>
+                    <option value="online">online</option>
                   </Field>
                 </div>
 
@@ -146,8 +147,6 @@ export const DetailViewUnit: FC = () => {
           </Form>
         )}
       </Formik>
-
-
     </section>
   );
 };

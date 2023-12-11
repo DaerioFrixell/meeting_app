@@ -1,11 +1,10 @@
-@import "../../../style/colors.scss";
-@import "../../../style/font-style.scss";
+@import "../../style/colors.scss";
+@import "../../style/font-style.scss";
 
 .checkbox-or-radio {
   display: inline-flex;
   overflow: hidden;
   position: relative;
-
   margin-right: 1rem;
 
   &__input {

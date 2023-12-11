@@ -1,4 +1,4 @@
-import "./groupButtons.scss";
+import "./radioOrCheckbox.scss";
 import { Field, FieldProps } from "formik";
 import { FC, Fragment } from 'react';
 
@@ -9,7 +9,7 @@ export type GroupButtons_T = {
 }
 
 /** DO: сделать возможность использовать и для checkboxes */
-export const GroupButtons: FC<GroupButtons_T> = ({ buttonsNames, formikName, title }) => {
+export const RadioOrCheckbox: FC<GroupButtons_T> = ({ buttonsNames, formikName, title }) => {
   return (
     <div className="group-buttons-wrapper">
       <h3>{title}</h3>

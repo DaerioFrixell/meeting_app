@@ -1,14 +1,13 @@
 import './unitForm.scss';
 import { FC } from 'react';
-import { Form, Formik, Field } from 'formik';
+import { Form, Formik } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
 import { SignupSchemaFormData, initialFormDataValues } from './formData';
-import { GroupButtons } from '../UI/inputs/GroupButtons';
+import { RadioOrCheckbox } from '../inputs/RadioOrCheckbox';
+import { Button } from '../buttons/Button';
 
-/** DO: все заголовки вынести в файл статики или i18n. 
- * не хранить статику в таком виде.
- */
+//  DO: всю статику взять из файла со статикой.
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
@@ -33,8 +32,7 @@ export const UnitForm: FC = () => {
         actions.setSubmitting(false);
       }}
     >
-      {({ errors, values }) => (
-        console.log(values),
+      {({ errors }) => (
         <Form className="unit-form">
           <div className="unit-form__block">
             <div className="unit-form__block__one">
@@ -82,7 +80,7 @@ export const UnitForm: FC = () => {
                 placeholder="место встречи"
               />
 
-              <GroupButtons
+              <RadioOrCheckbox
                 formikName="typeMeet"
                 title="type Meet"
                 buttonsNames={["online", "offline"]}
@@ -90,20 +88,19 @@ export const UnitForm: FC = () => {
             </div>
           </div>
 
-          <div className="submit-buttons">
-            <button
+          <div className="buttons-block">
+            {/* DO: статику взять из файла со статикой. Для аттрибутов сделать Enum */}
+            <Button
+              className={(Object.entries(errors).length !== 0) && "disable-btn"}
+              buttonsName={"Create"}
               disabled={Object.entries(errors).length !== 0}
-              className={
-                (Object.entries(errors).length === 0)
-                  ? "button button-create"
-                  : "button button-create disable-btn"
-              }
-              type="submit"
-            >
-              Create
-            </button>
+              type={"submit"}
+            />
 
-            <button className="button button__cancel">Clear form</button>
+            <Button
+              className={"btn-cancel"}
+              buttonsName={"Clear form"}
+            />
           </div>
         </Form>
       )}
