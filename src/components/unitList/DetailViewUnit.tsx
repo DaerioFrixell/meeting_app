@@ -1,24 +1,25 @@
 import "./units.scss";
 import { FC, useState } from "react";
+import { Form, Formik } from "formik";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { unitSelector } from "../../model/unit/unit.selectors";
-import { useSelector } from "react-redux";
 import { UnitUpdateV1, UnitV1 } from "../../Data/UnitV1";
-import { Field, Form, Formik } from "formik";
 import { useAction } from "../../hooks/useAction";
 import { FormField } from "../UI/field/FormField";
 import { ViewField } from "../UI/field/viewField/ViewField";
 import { Button } from "../buttons/Button";
+import { staticData } from "../../staticData/staticData";
+import { ChooseButtonsGroup } from "../inputs/ChooseButtonsGroup";
 
-// DO: статика в голом виде везде.
 export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
+  const units = useSelector(unitSelector);
 
   const { deleteUnitAction, updateUnit } = useAction();
   const [canUpdate, setCanUpdate] = useState(true);
   const { id } = useParams();
 
-  const units = useSelector(unitSelector);
   const [oneUnit] = units.filter((u: UnitV1) => u.id.toString() === id);
 
   const initialValues: UnitUpdateV1 = {
@@ -38,7 +39,6 @@ export const DetailViewUnit: FC = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          console.log("submit")
           updateUnit(values);
           setCanUpdate(false);
         }}
@@ -53,23 +53,29 @@ export const DetailViewUnit: FC = () => {
                 onClick={() => navigate("/allunits")}
               />
 
+              {/* v2: у кнопки иконка должна быть. */}
               <Button
                 className="btn-nav"
-                buttonsName={canUpdate ? "cancel" : "edit"}
+                buttonsName={canUpdate
+                  ? staticData.buttons.close
+                  : staticData.buttons.edit
+                }
                 onClick={() => setCanUpdate(!canUpdate)}
               />
 
+              {/* v2: у кнопки иконка должна быть. */}
               {canUpdate && (
                 <Button
                   className="btn-nav"
-                  buttonsName={"confirm"}
+                  buttonsName={staticData.buttons.confirm}
                   type="submit"
                 />
               )}
 
+              {/* v2: у кнопки иконка должна быть. */}
               <Button
                 className="btn-delete"
-                buttonsName={"del"}
+                buttonsName={staticData.buttons.delete}
                 type="submit"
                 onClick={() => deleteUnitAction(id)}
               />
@@ -79,36 +85,77 @@ export const DetailViewUnit: FC = () => {
               <>
                 <div className="flex-line">
                   <ViewField title='id' value={oneUnit.id + "."} />
-                  <FormField name="name" label="имя" placeholder="name" />
-                  <FormField name="surname" label="фамилия" placeholder="surname" />
+
+                  <FormField
+                    label={staticData.unit.name}
+                    placeholder={staticData.unit.name}
+                    name="name"
+                  />
+
+                  <FormField
+                    label={staticData.unit.surname}
+                    placeholder={staticData.unit.surname}
+                    name="surname"
+                  />
                 </div>
 
                 <div className="flex-line">
-                  <FormField name="status" label="статус" placeholder="status" />
-                  <Field component="select" name="typeMeet">
-                    <option disabled>тип знакомства</option>
-                    <option value="offline">offline</option>
-                    <option value="online">online</option>
-                  </Field>
+                  <FormField
+                    label={staticData.unit.status.title}
+                    placeholder={staticData.unit.status.title}
+                    name="status"
+                  />
+
+                  <ChooseButtonsGroup
+                    groupName={staticData.unit.meeting.typeMeet}
+                    titles={[
+                      staticData.unit.typeMeet.online,
+                      staticData.unit.typeMeet.offline
+                    ]}
+                    formikName="typeMeet"
+                    type="radio"
+                  />
                 </div>
 
                 <div className="flex-line">
+                  {/* v2: добавить статику в staticData и заменить сразу */}
                   <ViewField title='было лет' value={oneUnit.wasOld} />
-                  <FormField name="dateMeet" label="дата встречи" placeholder="dateMeet" type="date" />
-                  <FormField name="whereMeet" label="место встречи" placeholder="whereMeet" />
+
+                  <FormField
+                    label={staticData.unit.meeting.dateMeet}
+                    placeholder={staticData.unit.meeting.dateMeet}
+                    name="dateMeet"
+                    type="date"
+                  />
+
+                  <FormField
+                    label={staticData.unit.meeting.whereMeet}
+                    placeholder={staticData.unit.meeting.whereMeet}
+                    name="whereMeet"
+                  />
                 </div>
 
                 <div className="flex-line">
-                  <FormField name="link" label="ссылки" placeholder="link" />
+                  <FormField
+                    label={staticData.unit.links.anyLink}
+                    placeholder={staticData.unit.links.anyLink}
+                    name="link"
+                  />
                 </div>
 
                 <div className="flex-line">
+                  {/* v2: добавить дату создания/обновления в value */}
                   <ViewField title='дата создания' value={oneUnit.createAt} />
                   <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                 </div>
 
                 <div className="flex-line">
-                  <FormField name="birth" label="дата рождение" placeholder="birth" type="date" />
+                  <FormField
+                    label={staticData.unit.birth}
+                    placeholder={staticData.unit.birth}
+                    name="birth"
+                    type="date"
+                  />
                 </div>
               </>
             )
@@ -121,27 +168,49 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    <ViewField title='статус' value={oneUnit.status} />
-                    <ViewField title='тип знакомства' value={oneUnit.typeMeet} />
+                    <ViewField
+                      title={staticData.unit.status.title}
+                      value={oneUnit.status}
+                    />
+
+                    <ViewField
+                      title={staticData.unit.meeting.typeMeet}
+                      value={oneUnit.typeMeet}
+                    />
                   </div>
 
                   <div className="flex-line">
+                    {/* v2: add in value */}
                     <ViewField title='было лет' value={oneUnit.wasOld} />
-                    <ViewField title='дата встречи' value={oneUnit.dateMeet} />
-                    <ViewField title='место встречи' value={oneUnit.whereMeet} />
+
+                    <ViewField
+                      title={staticData.unit.meeting.dateMeet}
+                      value={oneUnit.dateMeet}
+                    />
+
+                    <ViewField
+                      title={staticData.unit.meeting.whereMeet}
+                      value={oneUnit.whereMeet}
+                    />
                   </div>
 
                   <div className="flex-line">
-                    <ViewField title='ссылки' value={oneUnit.link} />
+                    <ViewField
+                      title={staticData.unit.links.anyLink}
+                      value={oneUnit.link} />
                   </div>
 
                   <div className="flex-line">
+                    {/* v2: add in value */}
                     <ViewField title='дата создания' value={oneUnit.createAt} />
                     <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                   </div>
 
                   <div className="flex-line">
-                    <ViewField title='дата рождения' value={oneUnit.birth} />
+                    <ViewField
+                      title={staticData.unit.birth}
+                      value={oneUnit.birth}
+                    />
                   </div>
                 </div>)}
           </Form>

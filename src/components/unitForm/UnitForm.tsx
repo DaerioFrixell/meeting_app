@@ -8,7 +8,6 @@ import { ChooseButtonsGroup } from '../inputs/ChooseButtonsGroup';
 import { Button } from '../buttons/Button';
 import { staticData } from '../../staticData/staticData';
 
-//  DO: всю статику взять из файла со статикой.
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
@@ -17,19 +16,10 @@ export const UnitForm: FC = () => {
       initialValues={initialFormDataValues}
       validationSchema={SignupSchemaFormData}
       onSubmit={(values, actions) => {
-        /** DO: здесь можно ...values сделать же просто, не? */
         createUnitV1({
-          name: values.name,
-          surname: values.surname,
-          birth: values.birth,
-          dateMeet: values.dateMeet,
-          link: values.link,
-          whereMeet: values.whereMeet,
-          typeMeet: values.typeMeet,
-
-          status: null,
+          ...values,
+          status: values.status || null,
         });
-
         actions.resetForm();
         actions.setSubmitting(false);
       }}
@@ -41,68 +31,71 @@ export const UnitForm: FC = () => {
               <h3>{staticData.unitForm.blockTitle.aboutUnit}</h3>
 
               <FormField
-                label="имя"
+                label={staticData.unit.name}
+                placeholder={staticData.unit.name}
                 name="name"
-                placeholder="имя" />
-
-              <FormField
-                label="фамилия"
-                name="surname"
-                placeholder="фамилия"
               />
 
               <FormField
-                label="дата рождения"
+                label={staticData.unit.surname}
+                placeholder={staticData.unit.surname}
+                name="surname"
+              />
+
+              <FormField
+                label={staticData.unit.birth}
+                placeholder={staticData.unit.birth}
                 name="birth"
-                placeholder="дата рождения"
                 type="date"
               />
 
               <FormField
-                label="дата знакомства"
+                label={staticData.unit.meeting.dateMeet}
+                placeholder={staticData.unit.meeting.dateMeet}
                 name="dateMeet"
-                placeholder="дата знакомства"
                 type="date"
               />
             </div>
 
             <div className="unit-form__block__two">
               {/* v2: добавить возможность добавлять ссылки на разные места. */}
-              <h3>{staticData.unitForm.blockTitle.linkList}</h3>
+              <h3>{staticData.unitForm.blockTitle.linksList}</h3>
               <FormField
-                label="any link"
+                label={staticData.unit.links.anyLink}
+                placeholder={staticData.unit.links.anyLink}
                 name="link"
-                placeholder="любая ссылка на unit"
               />
 
               <h3>{staticData.unitForm.blockTitle.aboutMeet}</h3>
               <FormField
-                label="место встречи"
+                label={staticData.unit.meeting.whereMeet}
+                placeholder={staticData.unit.meeting.whereMeet}
                 name="whereMeet"
-                placeholder="место встречи"
               />
 
               <ChooseButtonsGroup
+                groupName={staticData.unit.meeting.typeMeet}
+                titles={[
+                  staticData.unit.typeMeet.online,
+                  staticData.unit.typeMeet.offline
+                ]}
                 formikName="typeMeet"
-                groupName="type Meet"
-                titles={["online", "offline"]}
                 type="radio"
               />
             </div>
           </div>
 
           <div className="buttons-block">
-            {/* DO: статику взять из файла со статикой. Для аттрибутов сделать Enum */}
             <Button
-              className={(Object.entries(errors).length !== 0) && "disable-btn"}
-              buttonsName={"Create"}
-              disabled={Object.entries(errors).length !== 0}
+              className={!!Object.entries(errors).length && "disable-btn"}
+              buttonsName={staticData.buttons.create}
+              disabled={!!Object.entries(errors).length}
               type={"submit"}
             />
 
             <Button
-              className={"btn-cancel"}
-              buttonsName={"Clear form"}
+              className={"btn-clear"}
+              buttonsName={staticData.buttons.clearForm}
             />
           </div>
         </Form>

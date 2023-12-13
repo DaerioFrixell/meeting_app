@@ -1,24 +1,26 @@
 export const staticData = {
   login: "",
   unit: {
-    info: {
-      status: "статус"
+    status: {
+      title: "статус",
+      a: "расшифровка", // DO:
+      b: "описание" // DO:
     },
-    about: {
-      title: "описание",
-      name: "имя",
-      family: "фамилия",
-      birth: "дата рождения"
+    name: "имя",
+    surname: "фамилия",
+    birth: "дата рождения",
+    typeMeet: {
+      online: "online",
+      offline: "offline",
     },
     links: {
-      title: "ссылки",
+      anyLink: "любая ссылка",
       vk: "vk",
       inst: "inst",
       tg: "telegram",
       other: "other links"
     },
     meeting: {
-      title: "о встрече",
       dateMeet: "дата встречи",
       whereMeet: "где познакомились",
       typeMeet: "тип знакомства"
@@ -27,8 +29,19 @@ export const staticData = {
   unitForm: {
     blockTitle: {
       aboutUnit: "about unit",
-      linkList: "список ссылок",
-      aboutMeet: "about meet"
+      linksList: "список ссылок",
+      aboutMeet: "о встрече"
+    },
+    form: {
+      dateMeet: "дата знакомства",
+      whereMeet: "место встречи",
+      typeMeet: "тип встречи",
+      typeMeetValue: {
+        online: "online",
+        offline: "offline",
+      }
+
+
     },
     placeholders: {
       status: "статус",
@@ -70,24 +83,22 @@ export const staticData = {
     },
     months: {},
     commons: {
-      typeMeet: {
-        online: "online",
-        offline: "offline",
-        perMonth: "в месяц"
-      }
+      perMonth: "в месяц"
     }
   },
-  UI: {
-    buttons: {
-      create: "создать",
-      update: "обновить",
-      delete: "удалить",
-      clear: "очистить",
-      clearForm: "очистить форму",
-      close: "закрыть",
-      open: "открыть",
-      back: "назад"
-    }
+  buttons: {
+    create: "создать",
+    update: "обновить",
+    edit: "редактировать",
+    confirm: "принять",
+    delete: "удалить",
+
+    open: "открыть",
+    close: "закрыть",
+    back: "назад",
+    clear: "очистить",
+    clearForm: "очистить форму",
+
   },
   timing: {
     year: "год:",

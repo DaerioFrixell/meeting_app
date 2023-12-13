@@ -21,8 +21,7 @@ export const FormField: FC<FormField_T> = ({
             {label}
           </label>
 
-          {/* DO: сделать UI инпут или хотя бы стили для инпута */}
-          {touched && error && <h3 className="error">err: {error}</h3>}
+          {touched && error && <h3 className="error">{error}</h3>}
 
           <input
             id={label}

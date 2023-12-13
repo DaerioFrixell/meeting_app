@@ -35,4 +35,8 @@ export const getCountAllUnitsSelector: number = countAllUnitsSelector.reduce(
 );
 
 /** цель на год */
-export const getCountAllUnitsGoalSelector: number = 500;
+export const getCountAllUnitsGoalSelector = (): number => {
+  let number = 500;
+
+  return number
+};

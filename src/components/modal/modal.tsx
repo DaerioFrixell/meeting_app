@@ -1,3 +1,4 @@
+import { staticData } from '../../staticData/staticData';
 import { Button } from '../buttons/Button';
 import './modal.scss';
 import { FC, ReactNode } from 'react';
@@ -22,9 +23,8 @@ export const Modal: FC<Modal> = ({ toggle, children, title }) => {
                 </div>
 
                 <div className="modal__footer">
-                    {/* DO: статика в голом виде опять */}
                     <Button
-                        buttonsName={"close"}
+                        buttonsName={staticData.buttons.close}
                         onClick={toggle}
                     />
                 </div>
