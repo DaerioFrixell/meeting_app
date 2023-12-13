@@ -18,7 +18,7 @@ export const ChangePeriod: FC = () => {
 
       <select name="" id="">
         {allYears.map(year =>
-          <option value={year}>
+          <option value={year} key={year}>
             {year}
           </option>)}
       </select>

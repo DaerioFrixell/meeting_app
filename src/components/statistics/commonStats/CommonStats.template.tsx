@@ -23,7 +23,7 @@ export const CommonStatsTemplate: FC<CommonStatsOnlineType> = ({
         <Statuses />
 
         {valueArray.map((obj) => (
-          <p>
+          <p key={obj.status}>
             {obj.value}
           </p>
         ))}
