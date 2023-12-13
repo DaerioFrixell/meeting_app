@@ -43,6 +43,10 @@
   @include second-button;
 }
 
+.btn-clear {
+  @include second-button;
+}
+
 .btn-delete {
   margin-left: 5rem;
   background-color: $danger-1;

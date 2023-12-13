@@ -1,7 +1,7 @@
-import { fakeUnitsV1 } from '../../mocdb/mocdb';
-import { UnitCreateV1, UnitV1 } from '../../Data/UnitV1';
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
+import { fakeUnitsV1 } from '../../mocdb/mocdb';
+import { UnitCreateV1, UnitV1 } from '../../Data/UnitV1';
 import { TypeMeet } from '../../Data/typeMeet';
 
 const data: UnitV1[] = fakeUnitsV1;
@@ -12,6 +12,7 @@ export const getLinkList = (links: string[]) => {
 }
 
 export const initialFormDataValues: UnitCreateV1 = {
+  status: '', // v2: добавить поле в форму, т.к. будет не автоматическое
   name: '',
   surname: '',
   birth: '',
@@ -19,8 +20,6 @@ export const initialFormDataValues: UnitCreateV1 = {
   link: '',
   whereMeet: '',
   typeMeet: TypeMeet.ONLINE,
-
-  status: '-', // v2: добавить поле в форму добавления unit
 };
 
 const getMinBirth = () => {
@@ -28,6 +27,7 @@ const getMinBirth = () => {
   return date.subtract(14, 'year')
 }
 
+// v2: ерорры перенести в ./staticData
 export const SignupSchemaFormData = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
