@@ -37,7 +37,6 @@ export const getStatisticsSelector = createSelector(getUserState, (userState: Us
 const getCountByEveryOnline = [1, 2]
 export const getCountOnlineUnitsSelector = getCountByEveryOnline;
 
-
 /** значения по каждому статусу offline */
 const getCountByEveryOffline: number[] = globalStatistics.offline;
 export const getCountOfflineUnitsSelector = getCountByEveryOffline;
