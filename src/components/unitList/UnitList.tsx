@@ -5,42 +5,26 @@ import { useNavigate } from 'react-router-dom';
 import { ViewField } from '../UI/field/viewField/ViewField';
 import { MainTitle } from '../UI/mainTitle/MainTitle';
 import { useAction } from '../../hooks/useAction';
-import { requestPaginationSetting } from '../../middleware/requestPaginationSetting';
+import { pageSelector } from '../../model/settings/setting.selectors';
+import { delay } from '@reduxjs/toolkit/dist/utils';
 
 export const UnitList: FC = () => {
   const navigate = useNavigate();
-  const { getAllUnits } = useAction()
+  const { getAllUnits, changePage } = useAction()
   const { units } = useTypedSelector((state) => state.unit);
+  const page = useTypedSelector(pageSelector)
 
   const [isBottom, setIsBottom] = useState(false)
-  const [page, setPage] = useState(2)
 
-  const search = {
-    limit: requestPaginationSetting.limit,
-    page: page
-  }
+
 
   useEffect(() => {
-    if (isBottom) {
-      setIsBottom(false)
-      getAllUnits(search)
+    getAllUnits({ limit: 15, page })
 
-      setPage(page + 1)
-    }
-  }, [isBottom])
 
-  useEffect(() => {
-    document.addEventListener('scroll', scrollCheck)
-    return function () {
-      document.removeEventListener('scroll', scrollCheck)
-    }
   }, [])
 
-  const scrollCheck = (e: any) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-      setIsBottom(true)
-    }
-  }
+
 
   const openDetailView = (id: number) => {
     navigate(`${id}`)

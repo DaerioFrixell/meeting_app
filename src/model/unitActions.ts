@@ -1,27 +1,29 @@
 import { Dispatch } from 'redux'
-import { UnitActions, UnitActionType } from './unitTypes'
+import { UnitActions, UnitAction_E } from './unitTypes'
 import {
   createUnit,
+
   deleteUnit,
   getUnits,
   updateUnitRequest,
 } from '../api/unitApi'
 import { fakeUnitsV1 } from '../mocdb/mocdb'
 import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
-import { requestPaginationSetting_T } from '../middleware/requestPaginationSetting'
+import { SearchRequest_T } from './settings/setting.type'
 
-export const getAllUnits = (counts: requestPaginationSetting_T) => {
+export const getAllUnits = (counts: SearchRequest_T) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
       const data = await getUnits(counts)
+      console.log(counts)
 
       dispatch({
-        type: UnitActionType.FETCH_UNITS_SUCCESS,
+        type: UnitAction_E.FETCH_UNITS_SUCCESS,
         payload: data,
       })
     } catch (e) {
       dispatch({
-        type: UnitActionType.FETCH_UNITS_ERROR,
+        type: UnitAction_E.FETCH_UNITS_ERROR,
         payload: 'ошибка при загрузке units',
       })
     }
@@ -31,17 +33,17 @@ export const getAllUnits = (counts: requestPaginationSetting_T) => {
 export const getAllUnitsFake = () => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      dispatch({ type: UnitActionType.FETCH_UNITS })
+      dispatch({ type: UnitAction_E.FETCH_UNITS })
 
       const data: UnitV1[] = fakeUnitsV1
 
       dispatch({
-        type: UnitActionType.FETCH_UNITS_SUCCESS,
+        type: UnitAction_E.FETCH_UNITS_SUCCESS,
         payload: data,
       })
     } catch (e) {
       dispatch({
-        type: UnitActionType.FETCH_UNITS_ERROR,
+        type: UnitAction_E.FETCH_UNITS_ERROR,
         payload: 'ошибка при загрузке units',
       })
     }
@@ -51,17 +53,17 @@ export const getAllUnitsFake = () => {
 export const createUnitV1 = (unit: UnitCreateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      // dispatch({ type: UnitActionType.FETCH_UNITS })
+      // dispatch({ type: UnitAction_E.FETCH_UNITS })
 
       const data: UnitV1 = await createUnit(unit)
 
       dispatch({
-        type: UnitActionType.ADD_UNITS,
+        type: UnitAction_E.ADD_UNITS,
         payload: data,
       })
     } catch (e) {
       dispatch({
-        type: UnitActionType.FETCH_UNITS_ERROR,
+        type: UnitAction_E.FETCH_UNITS_ERROR,
         payload: 'ошибка при загрузке units',
       })
     }
@@ -75,12 +77,12 @@ export const updateUnit = (updateUnit: UnitUpdateV1) => {
       const data = await updateUnitRequest(updateUnit)
 
       dispatch({
-        type: UnitActionType.UPDATE_UNIT,
+        type: UnitAction_E.UPDATE_UNIT,
         payload: data.newUnit,
       })
     } catch (e) {
       dispatch({
-        type: UnitActionType.FETCH_UNITS_ERROR,
+        type: UnitAction_E.FETCH_UNITS_ERROR,
         payload: 'ошибка при загрузке units',
       })
     }
@@ -98,7 +100,7 @@ export const deleteUnitAction = (id: string | undefined) => {
        */
     } catch (e) {
       dispatch({
-        type: UnitActionType.DELETE_UNITS_ERROR,
+        type: UnitAction_E.DELETE_UNITS_ERROR,
         payload: `ошибка при удалении ${e}`,
       })
     }

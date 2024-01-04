@@ -1,26 +1,12 @@
 import { UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 
-export type UnitInitState = {
+export type UnitInitState_T = {
   isLoading: boolean
   error: null | string
   units: UnitV1[]
 }
 
-export type AddUnitType = {
-  status: string | null
-  name: string
-  surname: string
-  wasOld: number | 'none'
-  dateMeet: string
-  link: string | null
-  vk: string | null
-  inst: string | null
-  telegram: string | null
-  whereMeet: string
-  typeMeet: string
-}
-
-export enum UnitActionType {
+export enum UnitAction_E {
   FETCH_UNITS = 'FETCH_UNITS',
   FETCH_UNITS_SUCCESS = 'FETCH_UNITS_SUCCESS',
   FETCH_UNITS_ERROR = 'FETCH_UNITS_ERROR',
@@ -35,43 +21,52 @@ export enum UnitActionType {
   DELETE_UNITS_ERROR = 'DELETE_UNITS_ERROR',
 }
 
+// DO: исправить на enum название через ..._T;
 export type FetchUnitAction = {
-  type: UnitActionType.FETCH_UNITS
+  type: UnitAction_E.FETCH_UNITS
 }
 
+// DO: исправить на enum название через ..._T;
 export type OffFetchUnitAction = {
-  type: UnitActionType.OFF_LOADING
+  type: UnitAction_E.OFF_LOADING
 }
 
+// DO: исправить на enum название через ..._T;
 export type FetchUnitSuccessAction = {
-  type: UnitActionType.FETCH_UNITS_SUCCESS
+  type: UnitAction_E.FETCH_UNITS_SUCCESS
   payload: any[]
 }
 
+// DO: исправить на enum название через ..._T;
 export type FetchUnitErrorAction = {
-  type: UnitActionType.FETCH_UNITS_ERROR
+  type: UnitAction_E.FETCH_UNITS_ERROR
   payload: string
 }
 
+// DO: исправить на enum название через ..._T;
 export type AddUnitsAction = {
-  type: UnitActionType.ADD_UNITS
+  type: UnitAction_E.ADD_UNITS
   payload: UnitV1
 }
 
+// DO: исправить на enum название через ..._T;
 export type DeleteUnitAction = {
-  type: UnitActionType.DELETE_UNITS
+  type: UnitAction_E.DELETE_UNITS
 }
 
+// DO: исправить на enum название через ..._T;
 export type DeleteUnitErrorAction = {
-  type: UnitActionType.DELETE_UNITS_ERROR
+  type: UnitAction_E.DELETE_UNITS_ERROR
   payload: string
 }
 
+// DO: исправить на enum название через ..._T;
 export type UpdateUnitAction = {
-  type: UnitActionType.UPDATE_UNIT
+  type: UnitAction_E.UPDATE_UNIT
   payload: UnitUpdateV1
 }
 
+// DO: исправить на enum название через ..._T;
 export type UnitActions =
   | OffFetchUnitAction
   | FetchUnitAction

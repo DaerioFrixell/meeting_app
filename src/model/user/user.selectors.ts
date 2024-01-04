@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store";
 import { zeroArray_10 } from "../../staticData/others";
 import { UserState } from "./user.reducer";
+import { StatusMark } from "../../Data/statuses";
 
 export const globalStatistics = {
   online: zeroArray_10,
@@ -14,7 +15,23 @@ const getUserState = (state: RootState): UserState => state.user;
  * значения по каждому статусу online
  */
 export const getStatisticsSelector = createSelector(getUserState, (userState: UserState) => {
-  return userState.statistics.statuses
+  const statisticsArray = userState.statistics.statuses;
+  let accum = 0;
+
+  // суммирую value статусов, чтобы прибавить это значение в статус StatusMark.C
+  statisticsArray.forEach(el => {
+    if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
+      accum += el.value
+    }
+  })
+
+  statisticsArray.forEach(el => {
+    if (el.status === StatusMark.C) {
+      el.value += accum
+    }
+  })
+
+  return statisticsArray
 })
 
 const getCountByEveryOnline = [1, 2]

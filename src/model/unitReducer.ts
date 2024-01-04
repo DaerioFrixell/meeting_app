@@ -1,41 +1,41 @@
 import { UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
-import { UnitActions, UnitActionType, UnitInitState } from './unitTypes'
+import { UnitAction_E, UnitActions, UnitInitState_T } from './unitTypes'
 
-const initialState: UnitInitState = {
+const initialState: UnitInitState_T = {
   isLoading: false,
   error: null,
   units: [],
 }
 
-export const unitReducer = (state = initialState, action: UnitActions): UnitInitState => {
+export const unitReducer = (state = initialState, action: UnitActions): UnitInitState_T => {
   switch (action.type) {
-    case UnitActionType.FETCH_UNITS:
+    case UnitAction_E.FETCH_UNITS:
       return {
         ...state,
         isLoading: true
       }
 
-    case UnitActionType.OFF_LOADING:
+    case UnitAction_E.OFF_LOADING:
       return {
         ...state,
         isLoading: false
       }
 
-    case UnitActionType.FETCH_UNITS_SUCCESS:
+    case UnitAction_E.FETCH_UNITS_SUCCESS:
       return {
         isLoading: false,
         error: null,
         units: state.units.concat(action.payload),
       }
 
-    case UnitActionType.FETCH_UNITS_ERROR:
+    case UnitAction_E.FETCH_UNITS_ERROR:
       return {
         ...state,
         isLoading: false,
         error: 'ошибка загрузки юнитов',
       }
 
-    case UnitActionType.ADD_UNITS:
+    case UnitAction_E.ADD_UNITS:
       return {
         ...state,
         isLoading: false,
@@ -43,7 +43,7 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
         units: state.units.concat(action.payload),
       }
 
-    case UnitActionType.UPDATE_UNIT:
+    case UnitAction_E.UPDATE_UNIT:
       return {
         ...state,
         isLoading: false,
@@ -61,7 +61,7 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
  * оставлять редакс чистым для чтения
  */
 
-const updateStateUnits = (state: UnitInitState, payload: UnitUpdateV1): UnitV1[] => {
+const updateStateUnits = (state: UnitInitState_T, payload: UnitUpdateV1): UnitV1[] => {
   for (let i = 0; i < state.units.length; i++) {
     if (state.units[i].id === payload.id) {
       Object.assign(state.units[i], payload);
