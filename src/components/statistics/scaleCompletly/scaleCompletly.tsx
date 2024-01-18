@@ -9,23 +9,17 @@ export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
 
   useEffect(() => {
-    getUnitsCount();
-  }, []);
+    getUnitsCount()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  /** 
-   * Целевое количество Units на текущий год.
-   */
+  /** Целевое количество Units на текущий год. */
   const goalCountUits: number = 500;
 
-  /** 
-   * Текущее количество Units за текущий год.
-   */
-  const currentUnits: number = useSelector(countUnitsSelector);
+  /** Текущее количество Units за текущий год. */
+  const currentUnitsCount: number = useSelector(countUnitsSelector);
 
-  /** 
-   * процент завершения цели.
-   */
-  const completlyPercent = currentUnits / goalCountUits * 100
+  /** Процент завершения цели. */
+  const completlyPercent = currentUnitsCount / goalCountUits * 100
 
   return (
     <div className="gs-inner">
@@ -45,12 +39,12 @@ export const ScaleCompletly: FC = () => {
 
       <div className="gs-inner__process">
         <p>
-          {/* Вынести статику в staticData. */}
+          {/* TO DO: Вынести статику в staticData. */}
           completly {completlyPercent}%
         </p>
 
         <p>
-          {currentUnits} из {goalCountUits}
+          {currentUnitsCount} из {goalCountUits}
         </p>
       </div>
     </div>

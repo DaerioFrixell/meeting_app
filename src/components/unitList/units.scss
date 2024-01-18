@@ -70,3 +70,12 @@
   gap: 3rem;
   margin-bottom: 2rem;
 }
+
+// TO DO: перенести в компонент с пагинацией.
+.button-paginator {
+  display: flex;
+  gap: 1rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  margin-bottom: 3rem;
+}

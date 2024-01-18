@@ -1,7 +1,7 @@
-import { Dispatch } from "react"
 import { getCountUnitsForAllStatuses } from "../../api/statsApi";
 import { UserAction_E, UserActions } from "./user.type";
 import { getUnitsCountRequest } from "../../api/user.api";
+import { Dispatch } from "redux";
 
 export const getCountUnitsForAllStatusesRequest = () => {
   return async (dispatch: Dispatch<UserActions>) => {
@@ -13,7 +13,7 @@ export const getCountUnitsForAllStatusesRequest = () => {
         payload: data,
       })
     } catch (e) {
-      console.log("stats error")
+      console.warn("ошибка в <getCountUnitsForAllStatusesRequest>: ", e)
     }
   }
 }
@@ -29,7 +29,7 @@ export const getUnitsCount = () => {
       })
 
     } catch (e) {
-      console.log("counts error", e)
+      console.warn("ошибка в <getUnitsCount>: ", e)
     }
   }
 }

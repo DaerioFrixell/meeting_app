@@ -39,6 +39,7 @@ export const getCountOnlineUnitsSelector = getCountByEveryOnline;
 
 /** значения по каждому статусу offline */
 const getCountByEveryOffline: number[] = globalStatistics.offline;
+
 export const getCountOfflineUnitsSelector = getCountByEveryOffline;
 
 const countAllUnitsSelector: number[] = [
