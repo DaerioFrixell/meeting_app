@@ -16,7 +16,7 @@ export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
   const units = useSelector(unitSelector);
 
-  const { deleteUnitAction, updateUnit } = useAction();
+  const { deleteUnit, updateUnit } = useAction();
   const [canUpdate, setCanUpdate] = useState(true);
   const { id } = useParams();
 
@@ -77,7 +77,7 @@ export const DetailViewUnit: FC = () => {
                 className="btn-delete"
                 buttonsName={staticData.buttons.delete}
                 type="submit"
-                onClick={() => deleteUnitAction(id)}
+                onClick={() => deleteUnit(id)}
               />
             </div>
 

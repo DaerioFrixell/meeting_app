@@ -1,25 +1,29 @@
 import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 import { $host } from '../core/url'
+import { SearchRequest_T } from '../model/settings/setting.type'
+import { Response_T } from './api.type'
 
-// запрашивать 10/205/ Units, а не несколько тысяч.
-export const getUnits = async (search: any): Promise<UnitV1[]> => {
-  const { data } = await $host.get(`api/unit?limit=${search.limit}&page=${search.page}`)
-  return data
+export const getUnitsRequest = async (search: SearchRequest_T): Promise<UnitV1[]> => {
+  const response: Response_T<UnitV1[]> = await $host
+    .get(`api/unit?limit=${search.limit}&page=${search.page}`);
+
+  return response.data;
 }
 
-// с бэка массив придёт или только созданный объект?
-export const createUnit = async (unit: UnitCreateV1) => {
-  const { data } = await $host.post('api/unit', unit)
-  return data
+export const createUnitRequest = async (createUnit: UnitCreateV1): Promise<UnitV1> => {
+  const response: Response_T<UnitV1> = await $host
+    .post('api/unit', createUnit);
+
+  return response.data;
 }
 
-// с бэка весь объект придёт или только обновленные поля?
-export const updateUnitRequest = async (updateUnit: UnitUpdateV1) => {
-  const { data } = await $host.put('api/unit', updateUnit)
-  return data
+export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<UnitV1> => {
+  const response: Response_T<UnitV1> = await $host
+    .put('api/unit', updateUnit);
+
+  return response.data
 }
 
-// что с бэка приходит?
-export const deleteUnit = async (id: string) => {
-  return await $host.delete(`api/unit/${id}`)
+export const deleteUnitRequest = async (id: string): Promise<string> => {
+  return await $host.delete(`api/unit/${id}`);
 }

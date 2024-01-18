@@ -1,32 +1,31 @@
 import "./scaleCompletly.scss";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { goalObj } from "../../../model/something/some.selector";
-import { getCountAllUnitsGoalSelector, getCountAllUnitsSelector } from "../../../model/user/user.selectors";
+import { countUnitsSelector } from "../../../model/user/user.selectors";
+import { useAction } from "../../../hooks/useAction";
+import { useSelector } from "react-redux";
 
 export const ScaleCompletly: FC = () => {
-  /** 
-   * процент завершения цели.
-   */
-  const [completlyPercent, setCompletlyPercent] = useState(0)
+  const { getUnitsCount } = useAction();
+
+  useEffect(() => {
+    getUnitsCount();
+  }, []);
 
   /** 
    * Целевое количество Units на текущий год.
    */
-  const goalCountUits: number = getCountAllUnitsGoalSelector();
+  const goalCountUits: number = 500;
 
   /** 
-   * Фактическое количество Units за текущий год.
+   * Текущее количество Units за текущий год.
    */
-  const currentUnits: number = getCountAllUnitsSelector;
+  const currentUnits: number = useSelector(countUnitsSelector);
 
-  useEffect(() => {
-    if (goalCountUits === 0) {
-      setCompletlyPercent(0);
-    } else {
-      setCompletlyPercent(Math.floor(currentUnits / goalCountUits * 100));
-    }
-  }, [])
-
+  /** 
+   * процент завершения цели.
+   */
+  const completlyPercent = currentUnits / goalCountUits * 100
 
   return (
     <div className="gs-inner">

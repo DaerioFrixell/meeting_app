@@ -1,4 +1,4 @@
-import { UnitResponseV1 } from "../Data/UnitV1";
+import { UnitV1 } from "../Data/UnitV1";
 import { Unit } from "../Data/UnitV2";
 import { StatusMark, StatusMetric } from "../Data/statuses";
 import { TypeMeet } from "../Data/typeMeet";
@@ -53,7 +53,7 @@ export const fakeUnitsV2: Unit[] = [
     typeMeet: TypeMeet.ONLINE
   },
 ]
-export const fakeUnitsV1: UnitResponseV1 = [
+export const fakeUnitsV1: UnitV1[] = [
   {
     id: 1,
     status: "EW3",

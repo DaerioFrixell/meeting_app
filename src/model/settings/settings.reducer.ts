@@ -14,7 +14,7 @@ const initialState: SettingReducerInitState = {
 export const settingReducer = (state = initialState, action: SettingActions_T): SettingReducerInitState => {
   switch (action.type) {
     case Setting_E.SET_PAGE:
-      console.log("payload: ", action.payload)
+      console.log("settingReducer page: ", action.payload)
       return {
         ...state,
         searchRequest: {

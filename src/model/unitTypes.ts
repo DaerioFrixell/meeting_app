@@ -34,7 +34,7 @@ export type OffFetchUnitAction = {
 // DO: исправить на enum название через ..._T;
 export type FetchUnitSuccessAction = {
   type: UnitAction_E.FETCH_UNITS_SUCCESS
-  payload: any[]
+  payload: UnitV1[]
 }
 
 // DO: исправить на enum название через ..._T;

@@ -1,34 +1,29 @@
 import './units.scss';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useNavigate } from 'react-router-dom';
 import { ViewField } from '../UI/field/viewField/ViewField';
 import { MainTitle } from '../UI/mainTitle/MainTitle';
 import { useAction } from '../../hooks/useAction';
 import { pageSelector } from '../../model/settings/setting.selectors';
-import { delay } from '@reduxjs/toolkit/dist/utils';
 
 export const UnitList: FC = () => {
+  const { getUnitsPart, changePage } = useAction()
   const navigate = useNavigate();
-  const { getAllUnits, changePage } = useAction()
-  const { units } = useTypedSelector((state) => state.unit);
+
   const page = useTypedSelector(pageSelector)
-
-  const [isBottom, setIsBottom] = useState(false)
-
-
-
-  useEffect(() => {
-    getAllUnits({ limit: 15, page })
-
-
-  }, [])
-
-
+  const { units } = useTypedSelector((state) => state.unit);
 
   const openDetailView = (id: number) => {
     navigate(`${id}`)
   };
+
+  useEffect(() => {
+    getUnitsPart({
+      limit: 15, page: 1
+    })
+
+  }, [])
 
   return (
     <section className="unit-list">
@@ -48,6 +43,7 @@ export const UnitList: FC = () => {
           <ViewField title='ссылка' value={oneUnit.link} />
         </div>
       ))}
+
     </section>
   );
 };

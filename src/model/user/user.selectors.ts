@@ -56,3 +56,8 @@ export const getCountAllUnitsGoalSelector = (): number => {
 
   return number
 };
+
+export const countUnitsSelector = createSelector(getUserState, (unitState: UserState) => {
+  // console.log(unitState.statistics.unitsCount)
+  return unitState.statistics.unitsCount;
+});

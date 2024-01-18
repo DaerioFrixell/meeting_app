@@ -3,6 +3,11 @@
 @import "../../style/mixine.scss";
 @import "../../style/layouts.scss";
 
+.trigger {
+  background-color: red;
+  height: 10rem
+}
+
 .unit-list {
   @include layout-units-list;
 

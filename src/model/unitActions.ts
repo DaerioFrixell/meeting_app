@@ -1,26 +1,25 @@
 import { Dispatch } from 'redux'
 import { UnitActions, UnitAction_E } from './unitTypes'
 import {
-  createUnit,
-
-  deleteUnit,
-  getUnits,
+  createUnitRequest,
+  deleteUnitRequest,
+  getUnitsRequest,
   updateUnitRequest,
 } from '../api/unitApi'
 import { fakeUnitsV1 } from '../mocdb/mocdb'
 import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
 import { SearchRequest_T } from './settings/setting.type'
 
-export const getAllUnits = (counts: SearchRequest_T) => {
+export const getUnitsPart = (counts: SearchRequest_T) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      const data = await getUnits(counts)
-      console.log(counts)
+      const units = await getUnitsRequest(counts)
 
       dispatch({
         type: UnitAction_E.FETCH_UNITS_SUCCESS,
-        payload: data,
+        payload: units,
       })
+
     } catch (e) {
       dispatch({
         type: UnitAction_E.FETCH_UNITS_ERROR,
@@ -53,9 +52,7 @@ export const getAllUnitsFake = () => {
 export const createUnitV1 = (unit: UnitCreateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      // dispatch({ type: UnitAction_E.FETCH_UNITS })
-
-      const data: UnitV1 = await createUnit(unit)
+      const data: UnitV1 = await createUnitRequest(unit)
 
       dispatch({
         type: UnitAction_E.ADD_UNITS,
@@ -73,12 +70,11 @@ export const createUnitV1 = (unit: UnitCreateV1) => {
 export const updateUnit = (updateUnit: UnitUpdateV1) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      // { status: number, newUnit: {} }
-      const data = await updateUnitRequest(updateUnit)
+      const unitAfterUpdate = await updateUnitRequest(updateUnit)
 
       dispatch({
         type: UnitAction_E.UPDATE_UNIT,
-        payload: data.newUnit,
+        payload: unitAfterUpdate,
       })
     } catch (e) {
       dispatch({
@@ -89,15 +85,13 @@ export const updateUnit = (updateUnit: UnitUpdateV1) => {
   }
 }
 
-export const deleteUnitAction = (id: string | undefined) => {
-  console.log('delete action work')
+/** TO DO: удалить объект в редаксе, чтобы изменить UI! */
+export const deleteUnit = (id: string | undefined) => {
+  console.log('delete action work');
+
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      id ? deleteUnit(id) : console.log(`неверный id. Now is = ${id}`)
-      /** DO
-       * удалить объект в редаксе, чтобы изменить UI!
-       *
-       */
+      id ? deleteUnitRequest(id) : console.log(`неверный id. Now is = ${id}`)
     } catch (e) {
       dispatch({
         type: UnitAction_E.DELETE_UNITS_ERROR,

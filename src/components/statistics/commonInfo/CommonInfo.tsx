@@ -6,12 +6,12 @@ import { ChangePeriod } from "../changePeriod/ChangePeriod";
 
 export const CommonInfo: FC = () => {
   const year: number = new Date().getFullYear();
-  const countUits: number = getUnitCountSelector;
+  const goalCountUits: number = getUnitCountSelector;
 
   return (
     <div className="common-info">
       <p className="common-info__goal">
-        Goal: meeting {countUits} units per {year} year
+        Goal: meeting {goalCountUits} units per {year} year
       </p>
 
       <ScaleCompletly />

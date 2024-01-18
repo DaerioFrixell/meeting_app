@@ -22,10 +22,11 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
       }
 
     case UnitAction_E.FETCH_UNITS_SUCCESS:
+      // console.log("UnitAction sucsecc: ", action.payload)
       return {
         isLoading: false,
         error: null,
-        units: state.units.concat(action.payload),
+        units: action.payload,
       }
 
     case UnitAction_E.FETCH_UNITS_ERROR:
@@ -52,7 +53,7 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
       }
 
     default:
-      return state
+      return state;
   }
 }
 
@@ -60,13 +61,13 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
  * вынести функцию в middleware, в thunk или еще куда-то.
  * оставлять редакс чистым для чтения
  */
-
 const updateStateUnits = (state: UnitInitState_T, payload: UnitUpdateV1): UnitV1[] => {
   for (let i = 0; i < state.units.length; i++) {
     if (state.units[i].id === payload.id) {
       Object.assign(state.units[i], payload);
-      break
+      break;
     }
   }
-  return state.units
+
+  return state.units;
 }
