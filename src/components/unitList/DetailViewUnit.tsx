@@ -82,65 +82,10 @@ export const DetailViewUnit: FC = () => {
             </div>
 
             {canUpdate ? (
-              <>
+              <div className="detail-view-wrapper" >
                 <div className="flex-line">
                   <ViewField title='id' value={oneUnit.id + "."} />
-
-                  <FormField
-                    label={staticData.unit.name}
-                    placeholder={staticData.unit.name}
-                    name="name"
-                  />
-
-                  <FormField
-                    label={staticData.unit.surname}
-                    placeholder={staticData.unit.surname}
-                    name="surname"
-                  />
-                </div>
-
-                <div className="flex-line">
-                  <FormField
-                    label={staticData.unit.status.title}
-                    placeholder={staticData.unit.status.title}
-                    name="status"
-                  />
-
-                  <ChooseButtonsGroup
-                    groupName={staticData.unit.meeting.typeMeet}
-                    titles={[
-                      staticData.unit.typeMeet.online,
-                      staticData.unit.typeMeet.offline
-                    ]}
-                    formikName="typeMeet"
-                    type="radio"
-                  />
-                </div>
-
-                <div className="flex-line">
-                  {/* v2: добавить статику в staticData и заменить сразу */}
                   <ViewField title='было лет' value={oneUnit.wasOld} />
-
-                  <FormField
-                    label={staticData.unit.meeting.dateMeet}
-                    placeholder={staticData.unit.meeting.dateMeet}
-                    name="dateMeet"
-                    type="date"
-                  />
-
-                  <FormField
-                    label={staticData.unit.meeting.whereMeet}
-                    placeholder={staticData.unit.meeting.whereMeet}
-                    name="whereMeet"
-                  />
-                </div>
-
-                <div className="flex-line">
-                  <FormField
-                    label={staticData.unit.links.anyLink}
-                    placeholder={staticData.unit.links.anyLink}
-                    name="link"
-                  />
                 </div>
 
                 <div className="flex-line">
@@ -149,22 +94,68 @@ export const DetailViewUnit: FC = () => {
                   <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                 </div>
 
-                <div className="flex-line">
-                  <FormField
-                    label={staticData.unit.birth}
-                    placeholder={staticData.unit.birth}
-                    name="birth"
-                    type="date"
-                  />
-                </div>
-              </>
+                <FormField
+                  label={staticData.unit.name}
+                  placeholder={staticData.unit.name}
+                  name="name"
+                />
+
+                <FormField
+                  label={staticData.unit.surname}
+                  placeholder={staticData.unit.surname}
+                  name="surname"
+                />
+
+                <FormField
+                  label={staticData.unit.status.title}
+                  placeholder={staticData.unit.status.title}
+                  name="status"
+                />
+
+                {/* v2: добавить статику в staticData и заменить сразу */}
+                <FormField
+                  label={staticData.unit.meeting.dateMeet}
+                  placeholder={staticData.unit.meeting.dateMeet}
+                  name="dateMeet"
+                  type="date"
+                />
+
+                <FormField
+                  label={staticData.unit.birth}
+                  placeholder={staticData.unit.birth}
+                  name="birth"
+                  type="date"
+                />
+
+                <FormField
+                  label={staticData.unit.links.anyLink}
+                  placeholder={staticData.unit.links.anyLink}
+                  name="link"
+                />
+
+                <FormField
+                  label={staticData.unit.meeting.whereMeet}
+                  placeholder={staticData.unit.meeting.whereMeet}
+                  name="whereMeet"
+                />
+
+                <ChooseButtonsGroup
+                  groupName={staticData.unit.meeting.typeMeet}
+                  titles={[
+                    staticData.unit.typeMeet.online,
+                    staticData.unit.typeMeet.offline
+                  ]}
+                  formikName="typeMeet"
+                  type="radio"
+                />
+              </div>
             )
               : (
                 <div className="unit-list__detailView">
                   <div className="flex-line">
-                    <ViewField title='' value={oneUnit.id + "."} />
-                    <ViewField title='' value={oneUnit.name} />
-                    <ViewField title='' value={oneUnit.surname} />
+                    <ViewField title='id' value={oneUnit.id + "."} />
+                    <ViewField title='name' value={oneUnit.name} />
+                    <ViewField title='surname' value={oneUnit.surname} />
                   </div>
 
                   <div className="flex-line">

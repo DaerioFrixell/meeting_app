@@ -5,11 +5,16 @@
   margin: auto;
 }
 
+.choose-buttons-group-wrapper {
+  width: 18rem;
+  margin: auto;
+}
+
 .choose-button {
   display: inline-flex;
   overflow: hidden;
   position: relative;
-  margin-right: 1rem;
+  margin-right: .8rem;
 
   &__input {
     display: none;
