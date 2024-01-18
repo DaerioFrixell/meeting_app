@@ -1,6 +1,7 @@
 import "./chooseButtonsGroup.scss";
 import { Field, FieldProps } from "formik";
 import { FC, Fragment } from 'react';
+import { TitleCenter } from "../UI/titleCenter/TitleCenter";
 
 export type ChooseButtonsGroup_T = {
   formikName: string;
@@ -17,7 +18,7 @@ export const ChooseButtonsGroup: FC<ChooseButtonsGroup_T> = ({
 }) => {
   return (
     <div className="choose-buttons-group">
-      <h3>{groupName}</h3>
+      <TitleCenter title={groupName} />
 
       <Field name={formikName}>
         {({ field }: FieldProps) => titles.map(buttonName =>

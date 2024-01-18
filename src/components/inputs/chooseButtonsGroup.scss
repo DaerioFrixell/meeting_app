@@ -1,6 +1,10 @@
 @import "../../style/colors.scss";
 @import "../../style/font-style.scss";
 
+.choose-buttons-group {
+  margin: auto;
+}
+
 .choose-button {
   display: inline-flex;
   overflow: hidden;

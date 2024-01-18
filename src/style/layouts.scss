@@ -6,7 +6,8 @@
   padding: 1rem;
 }
 
-
+// V2: много слоёв. Сделать 1 широкий, 1 средний, 1 мелкий. 
+// ...а лучше к двум или к 1му свести.
 @mixin layout-units-list {
   @include layout-inner;
 
@@ -15,10 +16,9 @@
 }
 
 @mixin layout-unit-form {
-  width: 36rem;
+  width: 30rem;
   margin: auto;
 }
-
 
 @mixin layout-global-stats {
   @include layout-inner;
