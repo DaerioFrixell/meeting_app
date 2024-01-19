@@ -24,6 +24,6 @@ export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<UnitV
   return response.data
 }
 
-export const deleteUnitRequest = async (id: string): Promise<string> => {
+export const deleteUnitRequest = async (id: number): Promise<string> => {
   return await $host.delete(`api/unit/${id}`);
 }

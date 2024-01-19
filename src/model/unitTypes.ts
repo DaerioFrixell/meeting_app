@@ -50,8 +50,9 @@ export type AddUnitsAction = {
 }
 
 // DO: исправить на enum название через ..._T;
-export type DeleteUnitAction = {
+export type DeleteUnitAction_T = {
   type: UnitAction_E.DELETE_UNITS
+  payload: number
 }
 
 // DO: исправить на enum название через ..._T;
@@ -73,6 +74,6 @@ export type UnitActions =
   | FetchUnitSuccessAction
   | FetchUnitErrorAction
   | AddUnitsAction
-  | DeleteUnitAction
+  | DeleteUnitAction_T
   | DeleteUnitErrorAction
   | UpdateUnitAction

@@ -1,3 +1,5 @@
+import { staticData } from "./staticData";
+
 export const allMonthes: string[] = [
   'jan',
   'feb',
@@ -25,4 +27,4 @@ export const daysInYear: number = 365;
 
 export const monthsInYear: number = 12;
 
-export const period: string[] = ['pDay', 'pMonth'];
+export const period: string[] = [staticData.statistics.global.pDay, staticData.statistics.global.pMonth];

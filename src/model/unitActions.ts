@@ -85,13 +85,15 @@ export const updateUnit = (updateUnit: UnitUpdateV1) => {
   }
 }
 
-/** TO DO: удалить объект в редаксе, чтобы изменить UI! */
-export const deleteUnit = (id: string | undefined) => {
-  console.log('delete action work');
-
+export const deleteUnit = (id: number) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
-      id ? deleteUnitRequest(id) : console.log(`неверный id. Now is = ${id}`)
+      deleteUnitRequest(id);
+
+      dispatch({
+        type: UnitAction_E.DELETE_UNITS,
+        payload: id,
+      })
     } catch (e) {
       dispatch({
         type: UnitAction_E.DELETE_UNITS_ERROR,
