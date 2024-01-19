@@ -22,7 +22,6 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
       }
 
     case UnitAction_E.FETCH_UNITS_SUCCESS:
-      // console.log("UnitAction sucsecc: ", action.payload)
       return {
         isLoading: false,
         error: null,
@@ -65,17 +64,16 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
   }
 }
 
-/** DO
- * вынести функцию в middleware, в thunk или еще куда-то.
- * оставлять редакс чистым для чтения
- */
+// V2: рассмотреть возможность вынести функцию в отдельный файл, чтобы здесь был только Reducer.
 const updateStateUnits = (state: UnitInitState_T, payload: UnitUpdateV1): UnitV1[] => {
-  for (let i = 0; i < state.units.length; i++) {
-    if (state.units[i].id === payload.id) {
-      Object.assign(state.units[i], payload);
+  const copyState = structuredClone(state);
+
+  for (let i = 0; i < copyState.units.length; i++) {
+    if (copyState.units[i].id === payload.id) {
+      Object.assign(copyState.units[i], payload);
       break;
     }
   }
 
-  return state.units;
+  return copyState.units;
 }
