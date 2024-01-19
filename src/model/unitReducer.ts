@@ -1,4 +1,4 @@
-import { UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
+import { UnitUpdateV1, UnitV1 } from '../types/UnitV1'
 import { UnitAction_E, UnitActions, UnitInitState_T } from './unitTypes'
 
 const initialState: UnitInitState_T = {

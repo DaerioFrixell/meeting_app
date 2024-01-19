@@ -1,6 +1,7 @@
-import { StatusMark } from "../Data/statuses";
+import { StatusMark } from "../types/statuses";
 import { $host } from "../core/url"
 import { Response_T } from "./api.type";
+
 
 // V2: в статусе в итоге должно быть: описание для подсказок при наведении, краткий статус, значение.
 type getCountUnitsForAllStatuses_T = {

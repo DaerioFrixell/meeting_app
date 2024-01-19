@@ -1,5 +1,5 @@
-import { UnitV1 } from "../../Data/UnitV1"
-import { StatusMark } from "../../Data/statuses"
+import { UnitV1 } from "../../types/UnitV1"
+import { StatusMark } from "../../types/statuses"
 import { UserAction_E, UserActions } from "./user.type"
 
 

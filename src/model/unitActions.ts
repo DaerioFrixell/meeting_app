@@ -7,7 +7,7 @@ import {
   updateUnitRequest,
 } from '../api/unitApi'
 import { fakeUnitsV1 } from '../mocdb/mocdb'
-import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
+import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1'
 import { SearchRequest_T } from './settings/setting.type'
 
 export const getUnitsPart = (counts: SearchRequest_T) => {

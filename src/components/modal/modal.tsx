@@ -3,6 +3,7 @@ import { Button } from '../buttons/Button';
 import './modal.scss';
 import { FC, ReactNode } from 'react';
 
+
 type Modal = {
     toggle(): void;
     children: ReactNode;

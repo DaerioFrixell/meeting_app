@@ -26,7 +26,7 @@ export const UnitList: FC = () => {
   // V2: Сейчас выводится вообще всё количество. Еще не реализован вывод по годам*
   const currentUnitsCount: number = useSelector(countUnitsSelector);
 
-  /** Нумерация каждого Units. Не факт, что будет корректно работать. Протестить. */
+  // V2: testing. Нумерация каждого Units. Не факт, что будет корректно работать. Протестить.
   let num = currentUnitsCount - ((paginatorPage - 1) * 15);
 
 
@@ -41,7 +41,7 @@ export const UnitList: FC = () => {
   }
 
 
-  /** При перерендеренге теряется currentUnitsCount, т.к. вызывается в другом месте. */
+  // V2:При перерендеренге теряется currentUnitsCount, т.к. вызывается в другом месте.
   useEffect(() => {
     setPaginatorTotalPage();
   }, [])

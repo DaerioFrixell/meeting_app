@@ -1,7 +1,8 @@
-import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../Data/UnitV1'
+import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1'
 import { $host } from '../core/url'
 import { SearchRequest_T } from '../model/settings/setting.type'
 import { Response_T } from './api.type'
+
 
 export const getUnitsRequest = async (search: SearchRequest_T): Promise<UnitV1[]> => {
   const response: Response_T<UnitV1[]> = await $host

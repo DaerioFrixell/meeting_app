@@ -3,6 +3,7 @@
 @import "../../style/font-style.scss";
 @import "../../style/layouts.scss";
 
+
 .month {
   @include layout-month-stats;
 }

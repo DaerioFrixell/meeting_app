@@ -1,6 +1,7 @@
 import "./mainTitle.scss";
 import { FC } from 'react';
 
+
 export type MainTitle_T = {
   title: string
 }

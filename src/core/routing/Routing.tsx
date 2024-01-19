@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { allRoutes } from './routes.config';
 
+// V2: приватные, публичные, общие роуты сделать.
 export const Routing = () => {
   return (
     <Routes>

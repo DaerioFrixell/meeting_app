@@ -8,6 +8,7 @@ export const CommonInfo: FC = () => {
   const year: number = new Date().getFullYear();
   const goalCountUits: number = getUnitCountSelector;
 
+  // V2: вынести в файл staticData всю статику.
   return (
     <div className="common-info">
       <p className="common-info__goal">

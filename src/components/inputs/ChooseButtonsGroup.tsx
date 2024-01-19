@@ -3,6 +3,7 @@ import { Field, FieldProps } from "formik";
 import { FC, Fragment } from 'react';
 import { TitleCenter } from "../UI/titleCenter/TitleCenter";
 
+
 export type ChooseButtonsGroup_T = {
   formikName: string;
   groupName: string;
@@ -44,7 +45,6 @@ export const ChooseButtonsGroup: FC<ChooseButtonsGroup_T> = ({
           )}
         </Field>
       </div>
-
     </div>
   )
 }

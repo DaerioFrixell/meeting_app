@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { NavigatePath } from "../../../core/routing/type";
 import { Button } from "../../buttons/Button";
 
+
 export const ChangePeriod: FC = () => {
   const navigate = useNavigate();
 
@@ -12,6 +13,7 @@ export const ChangePeriod: FC = () => {
     navigate(NavigatePath.MONTHS_STAT);
   };
 
+  // V2: вынести в файл staticData всю статику.
   return (
     <div className="change-period">
       <span>change period</span>

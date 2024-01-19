@@ -3,6 +3,7 @@ import { Field, FieldProps } from 'formik';
 import { FC } from 'react';
 import { FormField_T } from './formField.type';
 
+
 /** 
  * Use *GroupButton component* for checkbox/radio 
  */
@@ -25,7 +26,7 @@ export const FormField: FC<FormField_T> = ({
 
           <input
             id={label}
-            className={`unit-form-input ${className}`} // DO: className подключить
+            className={`unit-form-input ${className}`} // V2: className подключить
             placeholder={placeholder}
             type={type}
             {...field}

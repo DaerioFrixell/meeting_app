@@ -1,6 +1,7 @@
 import "./titleCenter.scss";
 import { FC } from 'react';
 
+
 export type TitleCenter_T = {
   title: string
 }

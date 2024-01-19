@@ -5,6 +5,7 @@ import { AllUnits } from '../../page/allUnits/AllUnits';
 import { GlobalStats } from '../../page/globalStats/GlobalStats';
 import { NavigatePath, allNavigationRoutes } from './type';
 
+
 export const allRoutes: allNavigationRoutes[] =
   [
     {

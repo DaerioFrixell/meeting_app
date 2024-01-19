@@ -1,6 +1,7 @@
 import "./button.scss";
 import { ButtonHTMLAttributes, FC } from 'react';
 
+
 export type Button_T = {
   buttonsName: string
 
@@ -12,10 +13,10 @@ export type Button_T = {
 
 export const Button: FC<Button_T> = ({
   buttonsName,
-  onClick,
 
   className,
   type = "button",
+  onClick,
 }) => {
   return (
     <button

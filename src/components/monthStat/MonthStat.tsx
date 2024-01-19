@@ -4,10 +4,8 @@ import { allMonthes } from '../../staticData/date';
 import { MonthStatsData, MonthStatsTitle } from './type';
 import { zeroArray_12 } from '../../staticData/others';
 
-type MonthStats_T = {
-  asd: any
-}
-export const MonthStats: FC<MonthStats_T> = ({ asd }) => {
+
+export const MonthStats: FC = () => {
   const data: MonthStatsData = [
     {
       title: MonthStatsTitle.MONTH,
@@ -27,6 +25,7 @@ export const MonthStats: FC<MonthStats_T> = ({ asd }) => {
     },
   ];
 
+  // V2: вынести статику в staticData.
   return (
     <div className="month">
       <p className='month-inner__element'>год: 0000</p>
