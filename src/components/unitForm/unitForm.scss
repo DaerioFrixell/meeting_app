@@ -4,6 +4,7 @@
 @mixin block {
   display: flex;
   flex-direction: column;
+  margin: auto
 }
 
 .unit-form {

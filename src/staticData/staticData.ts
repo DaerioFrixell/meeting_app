@@ -23,7 +23,7 @@ export const staticData = {
     meeting: {
       dateMeet: "дата встречи",
       whereMeet: "где познакомились",
-      typeMeet: "тип знакомства"
+      typeMeet: "выберете тип знакомства"
     }
   },
   unitForm: {
@@ -97,7 +97,7 @@ export const staticData = {
     close: "закрыть",
     back: "назад",
     clear: "очистить",
-    clearForm: "очистить форму",
+    clearForm: "очистить",
 
   },
   timing: {
