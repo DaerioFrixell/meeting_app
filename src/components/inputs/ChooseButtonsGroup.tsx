@@ -3,6 +3,7 @@ import { Field, FieldProps } from "formik";
 import { FC, Fragment } from 'react';
 import { TitleCenter } from "../UI/titleCenter/TitleCenter";
 
+
 export type ChooseButtonsGroup_T = {
   formikName: string;
   groupName: string;
@@ -18,30 +19,32 @@ export const ChooseButtonsGroup: FC<ChooseButtonsGroup_T> = ({
 }) => {
   return (
     <div className="choose-buttons-group">
-      <TitleCenter title={groupName} />
+      <div className="choose-buttons-group-wrapper ">
+        <TitleCenter title={groupName} />
 
-      <Field name={formikName}>
-        {({ field }: FieldProps) => titles.map(buttonName =>
-          <div key={buttonName} className="choose-button">
-            <Fragment >
-              <input
-                id={buttonName}
-                className="choose-button__input"
-                type={type}
-                {...field}
-                value={buttonName}
-              />
+        <Field name={formikName}>
+          {({ field }: FieldProps) => titles.map(buttonName =>
+            <div key={buttonName} className="choose-button">
+              <Fragment >
+                <input
+                  id={buttonName}
+                  className="choose-button__input"
+                  type={type}
+                  {...field}
+                  value={buttonName}
+                />
 
-              <label
-                className="choose-button__label"
-                htmlFor={buttonName}
-              >
-                {buttonName}
-              </label>
-            </Fragment>
-          </div>
-        )}
-      </Field>
+                <label
+                  className="choose-button__label"
+                  htmlFor={buttonName}
+                >
+                  {buttonName}
+                </label>
+              </Fragment>
+            </div>
+          )}
+        </Field>
+      </div>
     </div>
   )
 }

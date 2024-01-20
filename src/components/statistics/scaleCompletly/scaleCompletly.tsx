@@ -4,6 +4,8 @@ import { goalObj } from "../../../model/something/some.selector";
 import { countUnitsSelector } from "../../../model/user/user.selectors";
 import { useAction } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
+import { staticData } from "../../../staticData/staticData";
+
 
 export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
@@ -39,8 +41,7 @@ export const ScaleCompletly: FC = () => {
 
       <div className="gs-inner__process">
         <p>
-          {/* TO DO: Вынести статику в staticData. */}
-          completly {completlyPercent}%
+          {staticData.statistics.global.completly} {completlyPercent}%
         </p>
 
         <p>

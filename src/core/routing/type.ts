@@ -1,3 +1,4 @@
+// V2: rename Name_E
 export enum NavigatePath {
   GLOBAL_STATS = '/',
   MONTHS_STAT = '/month_stat',
@@ -9,6 +10,7 @@ export enum NavigatePath {
   AUTH = "/auth"
 }
 
+// V2: rename Name_T
 export type allNavigationRoutes = {
   path: NavigatePath;
   element: React.FC | React.FC<any>;

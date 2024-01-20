@@ -27,7 +27,6 @@ export enum StatusMetric {
 }
 
 export type Status = {
-  number: string | number
-  metric: StatusMetric
+  description: StatusMetric
   mark: StatusMark
 }

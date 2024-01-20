@@ -1,8 +1,9 @@
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
 import { fakeUnitsV1 } from '../../mocdb/mocdb';
-import { UnitCreateV1, UnitV1 } from '../../Data/UnitV1';
-import { TypeMeet } from '../../Data/typeMeet';
+import { UnitCreateV1, UnitV1 } from '../../types/UnitV1';
+import { TypeMeet } from '../../types/V2/typeMeetV2.type';
+
 
 const data: UnitV1[] = fakeUnitsV1;
 const unitLinks = data.map(u => u.link)

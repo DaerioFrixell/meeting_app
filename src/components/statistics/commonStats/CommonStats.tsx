@@ -6,6 +6,7 @@ import { CommonStatsTemplate } from './CommonStats.template';
 import { useAction } from '../../../hooks/useAction';
 import { useSelector } from 'react-redux';
 
+
 export const CommonStats: FC = () => {
   const { getCountUnitsForAllStatusesRequest } = useAction()
 

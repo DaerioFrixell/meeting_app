@@ -1,8 +1,8 @@
-import { Status } from "./statuses"
-import { Links } from "./links"
-import { TypeMeet } from "./typeMeet"
+import { Status } from "../statuses"
+import { LinkV2 } from "./linkV2.type"
+import { TypeMeet } from "./typeMeetV2.type"
 
-export type Unit = {
+export type UnitV2 = {
   id: number
   number: string | number
   status: Status
@@ -11,14 +11,14 @@ export type Unit = {
   birth: Date | string
   wasOld: string | number
   dateMeet: Date | string
-  link: Omit<Links, "title">
+  link: Omit<LinkV2, "title">
   createAt: Date | string
   updateAt: Date | string
   whereMeet: string
   typeMeet: TypeMeet
 }
 
-export type CreateUnit = Omit<Unit,
+export type CreateUnit = Omit<UnitV2,
   "id"
   | "number"
   | "wasOld"
@@ -26,7 +26,7 @@ export type CreateUnit = Omit<Unit,
   | "updateAp"
 >
 
-export type UpdateUnit = Omit<Unit,
+export type UpdateUnit = Omit<UnitV2,
   "number"
   | "createAt"
   | "updateAt"
