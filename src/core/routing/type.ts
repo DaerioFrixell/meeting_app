@@ -4,7 +4,9 @@ export enum NavigatePath {
   ALL_UNITS = '/allunits',
   DETAIL_UNIT = '/allunits/:id',
 
-  CREATE_UNITS = '/create-units'
+  CREATE_UNITS = '/create-units',
+
+  AUTH = "/auth"
 }
 
 export type allNavigationRoutes = {

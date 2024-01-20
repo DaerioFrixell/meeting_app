@@ -2,6 +2,7 @@ import { MonthStats } from '../../components/monthStat/MonthStat';
 import { UnitForm } from '../../components/unitForm/UnitForm';
 import { DetailViewUnit } from '../../components/unitList/DetailViewUnit';
 import { AllUnits } from '../../page/allUnits/AllUnits';
+import { AuthPage } from '../../page/auth/Auth.page';
 import { GlobalStats } from '../../page/globalStats/GlobalStats';
 import { NavigatePath, allNavigationRoutes } from './type';
 
@@ -27,4 +28,8 @@ export const allRoutes: allNavigationRoutes[] =
       path: NavigatePath.MONTHS_STAT,
       element: MonthStats,
     },
+    {
+      path: NavigatePath.AUTH,
+      element: AuthPage,
+    }
   ];

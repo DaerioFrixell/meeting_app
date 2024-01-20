@@ -13,4 +13,8 @@ export const links = [
         to: NavigatePath.CREATE_UNITS,
         title: 'add unit',
     },
+    {
+        to: NavigatePath.AUTH,
+        title: 'auth',
+    },
 ];
