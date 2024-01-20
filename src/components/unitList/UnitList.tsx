@@ -11,7 +11,7 @@ import { Button } from '../buttons/Button';
 
 export const UnitList: FC = () => {
   const navigate = useNavigate();
-  const { getUnitsPart } = useAction();
+  const { getUnitsPart, getAllUnitsFake } = useAction();
 
   const [paginatorPage, setPaginatorPage] = useState(1);
 
@@ -47,6 +47,7 @@ export const UnitList: FC = () => {
   }, [])
 
   useEffect(() => {
+    getAllUnitsFake()
     if (paginatorPage > 0) {
       getUnitsPart({
         limit: 15, page: paginatorPage

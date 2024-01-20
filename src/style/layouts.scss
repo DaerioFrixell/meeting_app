@@ -20,6 +20,10 @@
   margin: auto;
 }
 
+@mixin layout-unit-detail-view-edit {
+  width: 36rem;
+}
+
 @mixin layout-global-stats {
   @include layout-inner;
 
