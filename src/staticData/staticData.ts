@@ -3,8 +3,8 @@ export const staticData = {
   unit: {
     status: {
       title: "статус",
-      a: "расшифровка", // DO:
-      b: "описание" // DO:
+      a: "расшифровка", // V2
+      b: "описание" // V2
     },
     name: "имя",
     surname: "фамилия",
@@ -79,7 +79,9 @@ export const staticData = {
       title: "общая статистика",
       goal: "цель",
       completly: "завершено",
-      changePeriod: "выберете период"
+      changePeriod: "выберете период",
+      pDay: "в/день",
+      pMonth: "в/мес"
     },
     months: {},
     commons: {

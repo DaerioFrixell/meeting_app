@@ -34,6 +34,11 @@ export const DetailViewUnit: FC = () => {
     typeMeet: oneUnit.typeMeet,
   };
 
+  const deleteAndNavigate = () => {
+    deleteUnit(Number(id))
+    navigate("/allunits");
+  }
+
   return (
     <section className="unit-list">
       <Formik
@@ -46,14 +51,14 @@ export const DetailViewUnit: FC = () => {
         {_ => (
           <Form className="editUnit">
             <div className="navigation">
-              {/* v2: у кнопки иконка должна быть. */}
+              {/* V2: у кнопки иконка должна быть. */}
               <Button
                 className="btn-nav"
                 buttonsName={`<- back`}
                 onClick={() => navigate("/allunits")}
               />
 
-              {/* v2: у кнопки иконка должна быть. */}
+              {/* V2: у кнопки иконка должна быть. */}
               <Button
                 className="btn-nav"
                 buttonsName={canUpdate
@@ -63,7 +68,7 @@ export const DetailViewUnit: FC = () => {
                 onClick={() => setCanUpdate(!canUpdate)}
               />
 
-              {/* v2: у кнопки иконка должна быть. */}
+              {/* V2: у кнопки иконка должна быть. */}
               {canUpdate && (
                 <Button
                   className="btn-nav"
@@ -72,12 +77,12 @@ export const DetailViewUnit: FC = () => {
                 />
               )}
 
-              {/* v2: у кнопки иконка должна быть. */}
+              {/* V2: у кнопки иконка должна быть. */}
               <Button
                 className="btn-delete"
                 buttonsName={staticData.buttons.delete}
                 type="submit"
-                onClick={() => deleteUnit(id)}
+                onClick={deleteAndNavigate}
               />
             </div>
 
@@ -89,7 +94,7 @@ export const DetailViewUnit: FC = () => {
                 </div>
 
                 <div className="flex-line">
-                  {/* v2: добавить дату создания/обновления в value */}
+                  {/* V2: добавить дату создания/обновления в value */}
                   <ViewField title='дата создания' value={oneUnit.createAt} />
                   <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                 </div>
@@ -112,7 +117,7 @@ export const DetailViewUnit: FC = () => {
                   name="status"
                 />
 
-                {/* v2: добавить статику в staticData и заменить сразу */}
+                {/* V2: добавить статику в staticData и заменить сразу */}
                 <FormField
                   label={staticData.unit.meeting.dateMeet}
                   placeholder={staticData.unit.meeting.dateMeet}
@@ -171,7 +176,7 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    {/* v2: add in value */}
+                    {/* V2: add in value */}
                     <ViewField title='было лет' value={oneUnit.wasOld} />
 
                     <ViewField
@@ -192,7 +197,7 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    {/* v2: add in value */}
+                    {/* V2: add in value */}
                     <ViewField title='дата создания' value={oneUnit.createAt} />
                     <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                   </div>

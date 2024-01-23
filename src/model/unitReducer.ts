@@ -52,6 +52,14 @@ export const unitReducer = (state = initialState, action: UnitActions): UnitInit
         units: updateStateUnits(state, action.payload),
       }
 
+    case UnitAction_E.DELETE_UNITS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        units: state.units.filter(unit => unit.id !== action.payload)
+      }
+
     default:
       return state;
   }

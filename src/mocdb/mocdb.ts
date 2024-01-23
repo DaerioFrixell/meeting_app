@@ -8,8 +8,7 @@ export const fakeUnitsV2: Unit[] = [
     id: 1,
     number: "1",
     status: {
-      number: 1,
-      metric: StatusMetric.ACTIVE_BREAKDOWN,
+      description: StatusMetric.ACTIVE_BREAKDOWN,
       mark: StatusMark.A1s
     },
     name: "girl1",
@@ -32,8 +31,7 @@ export const fakeUnitsV2: Unit[] = [
     id: 2,
     number: "2",
     status: {
-      number: 1,
-      metric: StatusMetric.ACTIVE_BREAKDOWN,
+      description: StatusMetric.ACTIVE_BREAKDOWN,
       mark: StatusMark.A1s
     },
     name: "girl 2",
