@@ -8,6 +8,7 @@ import { ChooseButtonsGroup } from '../inputs/ChooseButtonsGroup';
 import { Button } from '../buttons/Button';
 import { staticData } from '../../staticData/staticData';
 
+
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
@@ -60,6 +61,7 @@ export const UnitForm: FC = () => {
             <div className="unit-form__block__two">
               {/* v2: добавить возможность добавлять ссылки на разные места. */}
               <h3>{staticData.unitForm.blockTitle.linksList}</h3>
+
               <FormField
                 label={staticData.unit.links.anyLink}
                 placeholder={staticData.unit.links.anyLink}
@@ -67,6 +69,7 @@ export const UnitForm: FC = () => {
               />
 
               <h3>{staticData.unitForm.blockTitle.aboutMeet}</h3>
+
               <FormField
                 label={staticData.unit.meeting.whereMeet}
                 placeholder={staticData.unit.meeting.whereMeet}

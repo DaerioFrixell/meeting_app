@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store";
 import { zeroArray_10 } from "../../staticData/others";
 import { UserState } from "./user.reducer";
-import { StatusMark } from "../../Data/statuses";
+import { StatusMark } from "../../types/statuses";
 
 export const globalStatistics = {
   online: zeroArray_10,

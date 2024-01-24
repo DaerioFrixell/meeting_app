@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { unitSelector } from "../../model/unit/unit.selectors";
-import { UnitUpdateV1, UnitV1 } from "../../Data/UnitV1";
+import { UnitUpdateV1, UnitV1 } from "../../types/UnitV1";
 import { useAction } from "../../hooks/useAction";
 import { FormField } from "../UI/field/FormField";
 import { ViewField } from "../UI/field/viewField/ViewField";
@@ -12,6 +12,7 @@ import { Button } from "../buttons/Button";
 import { staticData } from "../../staticData/staticData";
 import { ChooseButtonsGroup } from "../inputs/ChooseButtonsGroup";
 
+// V2: нужен запрос getUnitById, т.к. при перезагрузке page id теряется. Либо запоминать id.
 export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
   const units = useSelector(unitSelector);

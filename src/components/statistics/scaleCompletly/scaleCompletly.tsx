@@ -6,6 +6,7 @@ import { useAction } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
 
+
 export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
 

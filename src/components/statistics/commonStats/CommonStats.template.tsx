@@ -2,6 +2,7 @@ import './commonStats.scss';
 import { FC } from 'react';
 import { Statuses } from '../../statuses/Statuses';
 
+
 type CommonStatsOnlineType = {
   statsType: string
   valueArray: {
