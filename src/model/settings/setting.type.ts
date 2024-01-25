@@ -1,36 +1,68 @@
 export enum Setting_E {
-  LOADING = "loading",
+  ON_LOADING = "onLoading",
+  OFF_LOADING = "offLoading",
+
   SET_PAGE = "setPage",
   SET_PAGE_ERROR = "setPageError",
 
+  CHECK_AUTH = "checkAuth",
+  LOG_IN = "logIn",
+  LOG_OUT = "logOut",
 }
 
-type SettingLoading_T = {
-  type: Setting_E.LOADING
+// V2: поч это здесь?
+export type SearchRequest_T = {
+  limit: number
+  page: number
 }
 
-export type SettingSetPage_T = {
+export type SettingState_T = {
+  loading: boolean
+  isAuth: boolean
+  searchRequest: SearchRequest_T
+}
+
+export type SettingOnLoadingAction_T = {
+  type: Setting_E.ON_LOADING
+  payload: boolean
+}
+
+export type SettingOffLoadingAction_T = {
+  type: Setting_E.OFF_LOADING
+  payload: boolean
+}
+
+export type SettingCheckAuthAction_T = {
+  type: Setting_E.CHECK_AUTH
+}
+
+export type SettingLogInAction_T = {
+  type: Setting_E.LOG_IN
+  payload: boolean
+}
+
+export type SettingLogOutAction_T = {
+  type: Setting_E.LOG_OUT
+  payload: boolean
+}
+
+export type SettingSetPageAction_T = {
   type: Setting_E.SET_PAGE,
   payload: number
 }
 
-export type SettingSetPageError_T = {
+export type SettingSetPageErrorAction_T = {
   type: Setting_E.SET_PAGE_ERROR,
   payload: string
 }
 
-export type SearchRequest_T = {
-  limit: number,
-  page: number,
-}
-
-export type SettingReducerInitState = {
-  loading: boolean;
-  searchRequest: SearchRequest_T
-}
-
-// ехпорт всех типов
 export type SettingActions_T =
-  | SettingLoading_T
-  | SettingSetPage_T
-  | SettingSetPageError_T
+  | SettingOnLoadingAction_T
+  | SettingOffLoadingAction_T
+
+  | SettingCheckAuthAction_T
+  | SettingLogInAction_T
+  | SettingLogOutAction_T
+
+  | SettingSetPageAction_T
+  | SettingSetPageErrorAction_T

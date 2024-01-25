@@ -1,13 +1,12 @@
 import "./auth.scss";
-import { FC } from "react"
-import { Button } from "../../components/buttons/Button"
+import { FC } from "react";
+import { Button } from "../../components/buttons/Button";
+import { useAction } from "../../hooks/useAction";
 
+
+// TO DO: стили добавить.
 export const Auth: FC = () => {
-  const toAuth = () => {
-    const fakeToken = "fakeToken";
-
-    localStorage.setItem("token", fakeToken)
-  }
+  const { settingLogIn } = useAction()
 
   return (
     <div className="auth">
@@ -27,7 +26,7 @@ export const Auth: FC = () => {
         placeholder="введите пароль"
       />
 
-      <Button buttonsName="войти" onClick={toAuth} />
+      <Button buttonsName="войти" onClick={() => settingLogIn()} />
     </div>
   )
 }

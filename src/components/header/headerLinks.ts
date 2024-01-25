@@ -1,20 +1,24 @@
-import { NavigatePath } from "../../core/routing/type";
+import { RoutePaths_E } from "../../core/routing/type";
 
-export const links = [
+
+export const noAuthLink = [
     {
-        to: NavigatePath.GLOBAL_STATS,
+        to: RoutePaths_E.AUTH,
+        title: 'auth',
+    },
+];
+
+export const authLinks = [
+    {
+        to: RoutePaths_E.GLOBAL_STATS,
         title: 'main',
     },
     {
-        to: NavigatePath.ALL_UNITS,
+        to: RoutePaths_E.ALL_UNITS,
         title: 'all units',
     },
     {
-        to: NavigatePath.CREATE_UNITS,
+        to: RoutePaths_E.CREATE_UNITS,
         title: 'add unit',
-    },
-    {
-        to: NavigatePath.AUTH,
-        title: 'auth',
     },
 ];

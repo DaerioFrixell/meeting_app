@@ -1,7 +1,8 @@
-import { SettingActions_T, SettingReducerInitState, Setting_E, } from "./setting.type"
+import { SettingActions_T, SettingState_T, Setting_E, } from "./setting.type"
 
-const initialState: SettingReducerInitState = {
+const initialState: SettingState_T = {
   loading: false,
+  isAuth: false,
   searchRequest: {
     limit: 15,
     page: 1
@@ -11,16 +12,44 @@ const initialState: SettingReducerInitState = {
 /**
  * Настройки приложения
  */
-export const settingReducer = (state = initialState, action: SettingActions_T): SettingReducerInitState => {
+export const settingReducer = (state = initialState, action: SettingActions_T): SettingState_T => {
   switch (action.type) {
+    case Setting_E.ON_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }
+
+    case Setting_E.OFF_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }
+
     case Setting_E.SET_PAGE:
-      console.log("settingReducer page: ", action.payload)
       return {
         ...state,
         searchRequest: {
           limit: 15,
           page: action.payload
         }
+      }
+
+    case Setting_E.LOG_IN:
+      return {
+        ...state,
+        isAuth: action.payload
+      }
+
+    case Setting_E.LOG_OUT:
+      return {
+        ...state,
+        isAuth: action.payload
+      }
+
+    case Setting_E.CHECK_AUTH:
+      return {
+        ...state,
       }
 
     default:
