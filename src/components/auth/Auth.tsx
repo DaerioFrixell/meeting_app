@@ -2,17 +2,16 @@ import "./auth.scss";
 import { FC } from "react";
 import { Button } from "../../components/buttons/Button";
 import { useAction } from "../../hooks/useAction";
+import { TitleCenter } from "../UI/titleCenter/TitleCenter";
 
 
-// TO DO: стили добавить.
+// TO DO: селать и испльзовать кастомный Input. 
 export const Auth: FC = () => {
   const { settingLogIn } = useAction()
 
   return (
     <div className="auth">
-      <h3>авторизация</h3>
-
-      <br />
+      <TitleCenter title="Авторизируйтесь" className="auth__title" />
 
       <input
         className="unit-form-input"
