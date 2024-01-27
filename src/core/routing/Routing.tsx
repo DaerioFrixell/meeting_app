@@ -1,13 +1,33 @@
 import { Routes, Route } from 'react-router-dom';
-import { allRoutes } from './routes.config';
+import { authRoutes, unAuthRoutes } from './routes.config';
 
-// V2: приватные, публичные, общие роуты сделать.
+
 export const Routing = () => {
+  const fakeToken = localStorage.getItem("token");
+
   return (
-    <Routes>
-      {allRoutes.map((route) => (
-        <Route key={route.path} path={route.path} element={<route.element />} />
-      ))}
-    </Routes>
+    <>
+      {fakeToken
+        ? (
+          <Routes>
+            {authRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.element />} />
+            ))}
+          </Routes>
+        )
+        : (
+          <Routes>
+            {unAuthRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.element />} />
+            ))}
+          </Routes>
+        )}
+    </>
   );
 };

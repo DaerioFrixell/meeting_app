@@ -2,7 +2,7 @@ import "./changePeriod.scss";
 import { FC } from "react";
 import { allYears } from "../../../staticData/date";
 import { useNavigate } from "react-router-dom";
-import { NavigatePath } from "../../../core/routing/type";
+import { RoutePaths_E } from "../../../core/routing/type";
 import { Button } from "../../buttons/Button";
 
 
@@ -10,7 +10,7 @@ export const ChangePeriod: FC = () => {
   const navigate = useNavigate();
 
   const goToMonthStats = () => {
-    navigate(NavigatePath.MONTHS_STAT);
+    navigate(RoutePaths_E.MONTHS_STAT);
   };
 
   // V2: вынести в файл staticData всю статику.

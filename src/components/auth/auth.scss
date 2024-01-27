@@ -1,0 +1,11 @@
+@import "../../style/font-style.scss";
+
+.auth {
+  width: 30rem;
+  margin: auto;
+  margin-top: 10rem;
+
+  &__title {
+    font-size: $font-big;
+  }
+}

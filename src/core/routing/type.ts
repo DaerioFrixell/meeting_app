@@ -1,15 +1,16 @@
-// V2: rename Name_E
-export enum NavigatePath {
+export enum RoutePaths_E {
   GLOBAL_STATS = '/',
   MONTHS_STAT = '/month_stat',
   ALL_UNITS = '/allunits',
   DETAIL_UNIT = '/allunits/:id',
 
-  CREATE_UNITS = '/create-units'
+  CREATE_UNITS = '/create-units',
+
+  AUTH = "/auth"
 }
 
-// V2: rename Name_T
-export type allNavigationRoutes = {
-  path: NavigatePath;
+export type Route_T = {
+  path: RoutePaths_E;
   element: React.FC | React.FC<any>;
 };
+
