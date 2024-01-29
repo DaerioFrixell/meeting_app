@@ -3,7 +3,7 @@ import { Field, FieldProps } from "formik";
 import { FC, Fragment } from 'react';
 import { TitleCenter } from "../UI/titleCenter/TitleCenter";
 
-
+// TO DO: вынести в файл ./ChooseButtonsGroup.type.ts
 export type ChooseButtonsGroup_T = {
   formikName: string;
   groupName: string;
@@ -11,6 +11,7 @@ export type ChooseButtonsGroup_T = {
   type: "checkbox" | "radio";
 }
 
+// TO DO: добавить в папку "./multipleButtons", в папке .../src/components/buttons.
 export const ChooseButtonsGroup: FC<ChooseButtonsGroup_T> = ({
   formikName,
   groupName,
