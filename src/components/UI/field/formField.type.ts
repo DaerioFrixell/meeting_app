@@ -1,4 +1,4 @@
-type Input_E = 'text' | 'date' | 'number';
+type FormField_E = 'text' | 'date' | 'number';
 
 export type FormField_T = {
   name: string;
@@ -6,5 +6,5 @@ export type FormField_T = {
   placeholder: string;
 
   className?: string;
-  type?: Input_E;
+  type?: FormField_E;
 };

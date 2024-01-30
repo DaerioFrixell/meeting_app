@@ -8,37 +8,8 @@
   font-weight: 600;
 }
 
-.unit-form-input {
-  width: 100%;
-  height: 4rem;
-  padding: .4rem 0.8rem;
-  margin-bottom: 1.4rem;
-  border-radius: 4px; // execute in radius
-  border: 0px solid white;
-  outline: 1.6px solid rgba(147, 145, 145, 0.518);
-
-  font-size: 1.7rem; // execute in font-size
-  color: #444; // execute in color
-
-  &:focus {
-    border: none;
-    outline: 1.6px solid rgba(94, 18, 157, 0.701); // execute in color
-  }
-
-  &::placeholder {
-    color: #5807558c; // execute in color
-  }
-}
-
 .error {
   color: rgb(245, 62, 62); // execute in color
   font-size: 1.2rem;
   margin-bottom: 0.6rem;
-}
-
-.unit-form-input:disabled {
-  background-color: white;
-  color: rgba(88, 7, 85, 0.587); // execute in color
-  font-weight: bold;
-  outline: 1px solid rgba(231, 229, 229, 0); // execute in color
 }
