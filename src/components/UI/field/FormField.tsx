@@ -26,7 +26,7 @@ export const FormField: FC<FormField_T> = ({
 
           <input
             id={label}
-            className={`unit-form-input ${className}`} // V2: className подключить
+            className={`default-input ${className}`} // TO DO: className подключить
             placeholder={placeholder}
             type={type}
             {...field}
