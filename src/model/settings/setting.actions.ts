@@ -19,54 +19,34 @@ export const changePage = (page: number) => {
   }
 }
 
+/** Добавить токен token */
 export const settingLogIn = () => {
   return async (dispatch: Dispatch<SettingActions_T>) => {
     try {
-      dispatch({
-        type: Setting_E.ON_LOADING,
-        payload: true
-      })
+      dispatch({ type: Setting_E.ON_LOADING });
+
       // TO DO: отправлять запрос в бэк на создание токена
       localStorage.setItem(token, "fakeToken");
 
-      dispatch({
-        type: Setting_E.LOG_IN,
-        payload: true
-      })
-
-      dispatch({
-        type: Setting_E.OFF_LOADING,
-        payload: false
-      })
+      dispatch({ type: Setting_E.OFF_LOADING });
 
     } catch (e) {
-      console.log(`ошибка в фронте в <logIn>`, e)
+      console.log(`ошибка в фронте в <logIn>`, e);
     }
   }
 }
 
+/** Удалить token */
 export const settingLogOut = () => {
   return async (dispatch: Dispatch<SettingActions_T>) => {
     try {
-      dispatch({
-        type: Setting_E.ON_LOADING,
-        payload: true
-      })
+      dispatch({ type: Setting_E.ON_LOADING });
 
       localStorage.removeItem(token);
 
-      dispatch({
-        type: Setting_E.LOG_OUT,
-        payload: false
-      })
-
-      dispatch({
-        type: Setting_E.OFF_LOADING,
-        payload: false
-      })
+      dispatch({ type: Setting_E.OFF_LOADING });
     } catch (e) {
-      console.log(`ошибка в фронте в <logOut>`, e)
+      console.log(`ошибка в фронте в <logOut>`, e);
     }
   }
 }
-

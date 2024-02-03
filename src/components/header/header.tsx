@@ -1,15 +1,21 @@
 import './header.scss';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authLinks, noAuthLink } from './headerLinks';
 import { Button } from '../buttons/Button';
 import { useAction } from '../../hooks/useAction';
 
 
 export const Header: FC = () => {
-    const { settingLogOut } = useAction()
+    const { settingLogOut } = useAction();
+    const navigate = useNavigate();
 
     const fakeToken = localStorage.getItem("token");
+
+    const logOut = () => {
+        settingLogOut();
+        navigate('/auth');
+    }
 
     return (
         <header className="header">
@@ -28,7 +34,7 @@ export const Header: FC = () => {
 
                         <Button
                             buttonsName='выйти'
-                            onClick={() => settingLogOut()}
+                            onClick={logOut}
                         />
                     </nav>
 

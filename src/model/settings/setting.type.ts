@@ -24,16 +24,15 @@ export type SettingState_T = {
 
 export type SettingOnLoadingAction_T = {
   type: Setting_E.ON_LOADING
-  payload: boolean
 }
 
 export type SettingOffLoadingAction_T = {
   type: Setting_E.OFF_LOADING
-  payload: boolean
 }
 
 export type SettingCheckAuthAction_T = {
   type: Setting_E.CHECK_AUTH
+  payload: boolean
 }
 
 export type SettingLogInAction_T = {

@@ -17,13 +17,13 @@ export const settingReducer = (state = initialState, action: SettingActions_T): 
     case Setting_E.ON_LOADING:
       return {
         ...state,
-        loading: action.payload
+        loading: true
       }
 
     case Setting_E.OFF_LOADING:
       return {
         ...state,
-        loading: action.payload
+        loading: false
       }
 
     case Setting_E.SET_PAGE:
@@ -33,23 +33,6 @@ export const settingReducer = (state = initialState, action: SettingActions_T): 
           limit: 15,
           page: action.payload
         }
-      }
-
-    case Setting_E.LOG_IN:
-      return {
-        ...state,
-        isAuth: action.payload
-      }
-
-    case Setting_E.LOG_OUT:
-      return {
-        ...state,
-        isAuth: action.payload
-      }
-
-    case Setting_E.CHECK_AUTH:
-      return {
-        ...state,
       }
 
     default:
