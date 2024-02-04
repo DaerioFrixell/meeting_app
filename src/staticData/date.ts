@@ -1,3 +1,4 @@
+import { SelectPeriod_E, SelectPeriod_T } from "../types/V2/selectPeriodV2.type";
 import { staticData } from "./staticData";
 
 export const allMonthes: string[] = [
@@ -15,16 +16,19 @@ export const allMonthes: string[] = [
   'dec',
 ];
 
-export const allYears: (string | number)[] = [
-  "all time",
+export const allYears: (SelectPeriod_T)[] = [
+  SelectPeriod_E.ALL_TIME,
+  2024,
   2023,
   2022,
   2021,
-  2020,
 ];
 
 export const daysInYear: number = 365;
 
 export const monthsInYear: number = 12;
 
-export const period: string[] = [staticData.statistics.global.pDay, staticData.statistics.global.pMonth];
+export const period: string[] = [
+  staticData.statistics.global.pDay,
+  staticData.statistics.global.pMonth
+];

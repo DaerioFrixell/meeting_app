@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
 import { getUnitCountSelector } from "../../../model/unit/unit.selectors";
 
-
+// 87TODO: className gs-inner переименовать.
 export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
 
@@ -16,14 +16,13 @@ export const ScaleCompletly: FC = () => {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   /** Целевое количество Units на текущий год. */
-
   const goalCountUits: number = getUnitCountSelector;
 
   /** Текущее количество Units за текущий год. */
   const currentUnitsCount: number = useSelector(countUnitsSelector);
 
   /** Процент завершения цели. */
-  const completlyPercent = currentUnitsCount / goalCountUits * 100
+  const completlyPercent = Math.floor(currentUnitsCount / goalCountUits * 100);
 
   return (
     <div className="gs-inner">

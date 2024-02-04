@@ -1,5 +1,7 @@
 import { UnitUpdateV1, UnitV1 } from '../types/UnitV1'
 
+
+// TO DO: переместить в папку ./Unit
 export type UnitInitState_T = {
   isLoading: boolean
   error: null | string

@@ -9,7 +9,7 @@ export const globalStatistics =
   offline: zeroArray_10,
 };
 
-export const MetricCoutnUnits = [
+const MetricCoutnUnits = [
   getUnitCountSelector / daysInYear,
   getUnitCountSelector / monthsInYear,
 ];

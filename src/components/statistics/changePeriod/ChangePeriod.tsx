@@ -1,34 +1,24 @@
 import "./changePeriod.scss";
 import { FC } from "react";
 import { allYears } from "../../../staticData/date";
-import { useNavigate } from "react-router-dom";
-import { RoutePaths_E } from "../../../core/routing/type";
-import { Button } from "../../buttons/Button";
+
+export type ChangePeriod_T = {
+  choosePeriod: (arg: any) => void
+}
+export const ChangePeriod: FC<ChangePeriod_T> = ({ choosePeriod }) => {
 
 
-export const ChangePeriod: FC = () => {
-  const navigate = useNavigate();
-
-  const goToMonthStats = () => {
-    navigate(RoutePaths_E.MONTHS_STAT);
-  };
-
-  // V2: вынести в файл staticData всю статику.
+  // 87TODO: всю статику вынести в файл staticData .
   return (
     <div className="change-period">
       <span>change period</span>
 
-      <select name="" id="">
+      <select name="" id="" onChange={(e) => choosePeriod(e)}>
         {allYears.map(year =>
-          <option value={year} key={year}>
+          <option key={year} defaultValue={2023} value={year}  >
             {year}
           </option>)}
       </select>
-
-      <Button
-        buttonsName={"по месяцам"}
-        onClick={goToMonthStats}
-      />
     </div>
   );
 };

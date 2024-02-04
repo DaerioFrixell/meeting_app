@@ -7,6 +7,7 @@ const initialState: UnitInitState_T = {
   units: [],
 }
 
+// TO DO: переместить в папку ./Unit
 export const unitReducer = (state = initialState, action: UnitActions): UnitInitState_T => {
   switch (action.type) {
     case UnitAction_E.FETCH_UNITS:

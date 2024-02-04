@@ -3,15 +3,19 @@ import { FC } from 'react';
 import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
 import { CommonInfo } from '../../components/statistics/commonInfo/CommonInfo';
 import { CommonStats } from '../../components/statistics/commonStats/CommonStats';
+import { SelectPeriodProvider } from "../../core/Contexts";
+
 
 export const GlobalStats: FC = () => {
   return (
     <section className="global-stats">
       <MainTitle title="main stats" />
 
-      <CommonInfo />
+      <SelectPeriodProvider>
+        <CommonInfo />
 
-      <CommonStats />
+        <CommonStats />
+      </SelectPeriodProvider>
     </section>
   );
 };

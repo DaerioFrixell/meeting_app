@@ -4,11 +4,21 @@
 
 
 .common-info {
+  display: flex;
+  justify-content: space-between;
   border: $b-width-2 solid $gray-opacyti-1;
   border-radius: $b-radus-5;
+
+  padding: 2rem 6rem;
   margin-bottom: 1rem;
 
   &__goal {
     margin-bottom: 1rem;
   }
+}
+
+// 87TODO: норм назвать и вложить в корневой элемент.
+.fl {
+  display: flex;
+  flex-direction: column;
 }

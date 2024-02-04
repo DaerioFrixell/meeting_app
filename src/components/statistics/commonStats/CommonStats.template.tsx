@@ -2,7 +2,7 @@ import './commonStats.scss';
 import { FC } from 'react';
 import { Statuses } from '../../statuses/Statuses';
 
-
+// 87TODO: вынести в файл с типами.
 type CommonStatsOnlineType = {
   statsType: string
   valueArray: {
@@ -10,6 +10,7 @@ type CommonStatsOnlineType = {
     value: number
   }[]
 }
+
 export const CommonStatsTemplate: FC<CommonStatsOnlineType> = ({
   statsType,
   valueArray

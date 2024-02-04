@@ -1,4 +1,5 @@
 import { UnitV1 } from "../../types/UnitV1"
+import { StatisticByYear_T } from "../../types/V2/userApiV2.type"
 import { UserAction_E, UserActions } from "./user.type"
 
 
@@ -8,11 +9,11 @@ export type UserState = {
   units: UnitV1[] | null,
   statistics: {
     unitsCount: number
-    /** DO - это массив со значениями по статусам. Изменить название поля объекта! */
     onlineMeet: number
     offlineMeet: number
-    onlineStat: { status: string, value: number }[]
-    offlineStat: { status: string, value: number }[]
+
+    onlineStat: StatisticByYear_T[]
+    offlineStat: StatisticByYear_T[]
     statuses: any[]
   }
 }
@@ -23,9 +24,9 @@ export const initUserState: UserState = {
   units: null,
   statistics: {
     unitsCount: 0,
-    /** DO - это массив со значениями по статусам. Изменить название поля объекта! */
     onlineMeet: 0,
     offlineMeet: 0,
+
     onlineStat: [],
     offlineStat: [],
     statuses: []

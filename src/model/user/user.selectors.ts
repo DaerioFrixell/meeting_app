@@ -2,7 +2,6 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store";
 import { zeroArray_10 } from "../../staticData/others";
 import { UserState } from "./user.reducer";
-import { StatusMark } from "../../types/statuses";
 
 export const globalStatistics = {
   online: zeroArray_10,
@@ -17,7 +16,7 @@ const getUserState = (state: RootState): UserState => state.user;
 export const getOnlineStatistics = createSelector(getUserState, (userState: UserState) => {
   const statisticsArray = userState.statistics.onlineStat;
 
-  let accum = 0;
+  // let accum = 0;
 
   // суммирую value статусов, чтобы прибавить это значение в статус StatusMark.C
   // statisticsArray.forEach(el => {
@@ -37,8 +36,8 @@ export const getOnlineStatistics = createSelector(getUserState, (userState: User
 
 export const getOfflineStatistics = createSelector(getUserState, (userState: UserState) => {
   const statisticsArray = userState.statistics.offlineStat;
-
-  let accum = 0;
+  // TO DO: если стату != D и != C, то добавлять это значение к статусу C
+  // let accum = 0;
 
   // суммирую value статусов, чтобы прибавить это значение в статус StatusMark.C
   // statisticsArray.forEach(el => {
@@ -55,23 +54,6 @@ export const getOfflineStatistics = createSelector(getUserState, (userState: Use
 
   return statisticsArray
 })
-
-const getCountByEveryOnline = [1, 2]
-export const getCountOnlineUnitsSelector = getCountByEveryOnline;
-
-/** значения по каждому статусу offline */
-const getCountByEveryOffline: number[] = globalStatistics.offline;
-
-export const getCountOfflineUnitsSelector = getCountByEveryOffline;
-
-const countAllUnitsSelector: number[] = [
-  ...getCountByEveryOnline,
-  ...getCountByEveryOffline
-];
-
-export const getCountAllUnitsSelector: number = countAllUnitsSelector.reduce(
-  (sum: number, current: number) => sum + current, 0
-);
 
 /** цель на год */
 export const getCountAllUnitsGoalSelector = (): number => {

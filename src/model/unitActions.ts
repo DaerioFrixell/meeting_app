@@ -10,6 +10,8 @@ import { fakeUnitsV1 } from '../mocdb/mocdb'
 import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1'
 import { SearchRequest_T } from './settings/setting.type'
 
+
+// TO DO: переместить в папку ./Unit
 export const getUnitsPart = (counts: SearchRequest_T) => {
   return async (dispatch: Dispatch<UnitActions>) => {
     try {
