@@ -5,9 +5,9 @@ export enum StatusMark {
   CN = "CN",
   CA = "CA",
   OWS = "OWS",
-  A1s = "A1s",
-  A2s = "A2s",
-  A3s = "A3s",
+  CA1s = "CA1s",
+  CA2s = "CA2s",
+  CA3s = "CA3s",
   ABD = "ABD"
 }
 

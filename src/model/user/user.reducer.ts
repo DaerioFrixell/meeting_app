@@ -1,5 +1,4 @@
 import { UnitV1 } from "../../types/UnitV1"
-import { StatusMark } from "../../types/statuses"
 import { UserAction_E, UserActions } from "./user.type"
 
 
@@ -12,6 +11,8 @@ export type UserState = {
     /** DO - это массив со значениями по статусам. Изменить название поля объекта! */
     onlineMeet: number
     offlineMeet: number
+    onlineStat: { status: string, value: number }[]
+    offlineStat: { status: string, value: number }[]
     statuses: any[]
   }
 }
@@ -25,6 +26,8 @@ export const initUserState: UserState = {
     /** DO - это массив со значениями по статусам. Изменить название поля объекта! */
     onlineMeet: 0,
     offlineMeet: 0,
+    onlineStat: [],
+    offlineStat: [],
     statuses: []
   }
 }
@@ -32,12 +35,21 @@ export const initUserState: UserState = {
 export const userReducer = (state = initUserState, action: UserActions): UserState => {
   const userStateClone = structuredClone(state)
   switch (action.type) {
-    case UserAction_E.INIT_STATS:
+    case UserAction_E.ONLINE_STAT:
       return {
         ...userStateClone,
         statistics: {
           ...userStateClone.statistics,
-          statuses: action.payload,
+          onlineStat: action.payload,
+        }
+      }
+
+    case UserAction_E.OFFLINE_STAT:
+      return {
+        ...userStateClone,
+        statistics: {
+          ...userStateClone.statistics,
+          offlineStat: action.payload,
         }
       }
 

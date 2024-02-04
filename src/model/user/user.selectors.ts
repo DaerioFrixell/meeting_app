@@ -14,22 +14,44 @@ const getUserState = (state: RootState): UserState => state.user;
 /*
  * значения по каждому статусу online
  */
-export const getStatisticsSelector = createSelector(getUserState, (userState: UserState) => {
-  const statisticsArray = userState.statistics.statuses;
+export const getOnlineStatistics = createSelector(getUserState, (userState: UserState) => {
+  const statisticsArray = userState.statistics.onlineStat;
+
   let accum = 0;
 
   // суммирую value статусов, чтобы прибавить это значение в статус StatusMark.C
-  statisticsArray.forEach(el => {
-    if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
-      accum += el.value
-    }
-  })
+  // statisticsArray.forEach(el => {
+  //   if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
+  //     accum += el.value
+  //   }
+  // })
 
-  statisticsArray.forEach(el => {
-    if (el.status === StatusMark.C) {
-      el.value += accum
-    }
-  })
+  // statisticsArray.forEach(el => {
+  //   if (el.status === StatusMark.C) {
+  //     el.value += accum
+  //   }
+  // })
+
+  return statisticsArray
+})
+
+export const getOfflineStatistics = createSelector(getUserState, (userState: UserState) => {
+  const statisticsArray = userState.statistics.offlineStat;
+
+  let accum = 0;
+
+  // суммирую value статусов, чтобы прибавить это значение в статус StatusMark.C
+  // statisticsArray.forEach(el => {
+  //   if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
+  //     accum += el.value
+  //   }
+  // })
+
+  // statisticsArray.forEach(el => {
+  //   if (el.status === StatusMark.C) {
+  //     el.value += accum
+  //   }
+  // })
 
   return statisticsArray
 })

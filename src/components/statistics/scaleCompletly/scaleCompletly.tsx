@@ -5,6 +5,7 @@ import { countUnitsSelector } from "../../../model/user/user.selectors";
 import { useAction } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
+import { getUnitCountSelector } from "../../../model/unit/unit.selectors";
 
 
 export const ScaleCompletly: FC = () => {
@@ -15,7 +16,8 @@ export const ScaleCompletly: FC = () => {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   /** Целевое количество Units на текущий год. */
-  const goalCountUits: number = 500;
+
+  const goalCountUits: number = getUnitCountSelector;
 
   /** Текущее количество Units за текущий год. */
   const currentUnitsCount: number = useSelector(countUnitsSelector);
