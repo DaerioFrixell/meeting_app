@@ -77,7 +77,9 @@ export const staticData = {
   statistics: {
     global: {
       title: "общая статистика",
-      goal: "цель",
+      goalPart1: "Goal: meeting",
+      goalPart2: "units per",
+      goalPart3: "year",
       completly: "завершено",
       changePeriod: "выберете период",
       pDay: "в/день",

@@ -6,7 +6,7 @@ import {
 import { CommonStatsTemplate } from './CommonStats.template';
 import { useAction } from '../../../hooks/useAction';
 import { useSelector } from 'react-redux';
-import { ChangePeriodContext } from '../../../core/Contexts';
+import { ChangePeriodContext } from '../../../model/user/user.context';
 
 
 export const CommonStats: FC = () => {

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { MainTitle } from '../../components/UI/mainTitle/MainTitle';
 import { CommonInfo } from '../../components/statistics/commonInfo/CommonInfo';
 import { CommonStats } from '../../components/statistics/commonStats/CommonStats';
-import { SelectPeriodProvider } from "../../core/Contexts";
+import { SelectPeriodProvider } from "../../model/user/user.context";
 
 
 export const GlobalStats: FC = () => {

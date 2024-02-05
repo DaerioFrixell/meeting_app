@@ -1,6 +1,20 @@
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { SelectPeriod_T } from "../../types/V2/selectPeriodV2.type";
 import { StatisticByYear_T } from "../../types/V2/userApiV2.type";
 
 
+// Context Types:
+export type DefaultValueSelectProvider_T = {
+  selectValue: SelectPeriod_T
+  setSelectValue: Dispatch<SetStateAction<SelectPeriod_T>>
+}
+
+export type SelectPeriodProvider_T = {
+  children: ReactNode
+}
+
+
+// Action Types:
 export enum UserAction_E {
   LOADING = "loading",
 

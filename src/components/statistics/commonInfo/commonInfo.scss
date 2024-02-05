@@ -12,13 +12,12 @@
   padding: 2rem 6rem;
   margin-bottom: 1rem;
 
+  &__inner-item {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__goal {
     margin-bottom: 1rem;
   }
-}
-
-// 87TODO: норм назвать и вложить в корневой элемент.
-.fl {
-  display: flex;
-  flex-direction: column;
 }

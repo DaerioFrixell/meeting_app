@@ -1,17 +1,14 @@
 import "./changePeriod.scss";
 import { FC } from "react";
 import { allYears } from "../../../staticData/date";
+import { staticData } from "../../../staticData/staticData";
+import { ChangePeriod_T } from "./changePerio.type";
 
-export type ChangePeriod_T = {
-  choosePeriod: (arg: any) => void
-}
+
 export const ChangePeriod: FC<ChangePeriod_T> = ({ choosePeriod }) => {
-
-
-  // 87TODO: всю статику вынести в файл staticData .
   return (
     <div className="change-period">
-      <span>change period</span>
+      <span>{staticData.statistics.global.changePeriod}</span>
 
       <select name="" id="" onChange={(e) => choosePeriod(e)}>
         {allYears.map(year =>

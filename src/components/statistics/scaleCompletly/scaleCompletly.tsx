@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
 import { getUnitCountSelector } from "../../../model/unit/unit.selectors";
 
-// 87TODO: className gs-inner переименовать.
+
 export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
 
@@ -25,8 +25,8 @@ export const ScaleCompletly: FC = () => {
   const completlyPercent = Math.floor(currentUnitsCount / goalCountUits * 100);
 
   return (
-    <div className="gs-inner">
-      <div className="gs-inner__calcucation">
+    <div className="scale">
+      <div className="scale__calcucation">
         {goalObj.period.map(period =>
           <p key={period}>
             {period}
@@ -40,7 +40,7 @@ export const ScaleCompletly: FC = () => {
         )}
       </div>
 
-      <div className="gs-inner__process">
+      <div className="scale__process">
         <p>
           {staticData.statistics.global.completly} {completlyPercent}%
         </p>
