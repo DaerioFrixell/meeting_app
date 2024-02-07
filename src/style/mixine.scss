@@ -1,6 +1,32 @@
+@import './colors.scss';
+@import './border-style.scss';
+@import './font-style.scss';
+
 $shadow: 0.1px 1px 10px 1px #0000006f;
 
 @mixin second-button {
-  color: #444; // импортировать из colors
-  background-color: #e2daec; // импортировать из colors
+  color: $gray-4;
+  background-color: $light;
+}
+
+@mixin defaultFormField {
+  width: 100%;
+  height: 4rem;
+  padding: .4rem 0.8rem;
+  margin-bottom: 1.4rem;
+  border-radius: $b-radus-4;
+  border: $no-border;
+  outline: 1.6px solid $gray-opacyti-1;
+
+  font-size: $font-normal;
+  color: $gray-4;
+
+  &:focus {
+    border: none;
+    outline: 1.6px solid $violet-2;
+  }
+
+  &::placeholder {
+    color: $placeholder;
+  }
 }
