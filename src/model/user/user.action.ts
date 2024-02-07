@@ -46,10 +46,10 @@ export const getStatisticByYearRequest = (arg: SelectPeriod_T) => {
   }
 }
 
-export const getUnitsCount = () => {
+export const getUnitsCount = (period: SelectPeriod_T) => {
   return async (dispatch: Dispatch<UserActions>) => {
     try {
-      const unitsCount = await getUnitsCountRequest();
+      const unitsCount = await getUnitsCountRequest(period);
 
       dispatch({
         type: UserAction_E.GET_UNITS_COUNT,

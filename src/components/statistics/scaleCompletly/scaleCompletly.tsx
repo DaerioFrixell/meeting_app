@@ -1,19 +1,21 @@
 import "./scaleCompletly.scss";
-import { FC, useEffect } from "react";
+import { FC, useContext, useEffect } from "react";
 import { goalObj } from "../../../model/something/some.selector";
 import { countUnitsSelector } from "../../../model/user/user.selectors";
 import { useAction } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
 import { getUnitCountSelector } from "../../../model/unit/unit.selectors";
+import { ChangePeriodContext } from "../../../model/user/user.context";
 
 
 export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
+  const { selectValue } = useContext(ChangePeriodContext)
 
   useEffect(() => {
-    getUnitsCount()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    getUnitsCount(selectValue)
+  }, [selectValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
   /** Целевое количество Units на текущий год. */
   const goalCountUits: number = getUnitCountSelector;

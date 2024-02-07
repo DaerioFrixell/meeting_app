@@ -14,8 +14,7 @@ const queryParam = '?year=';
 export const getStatisticByYear = async (arg: SelectPeriod_T): Promise<getStatisticByYear_T> => {
   const urlPath = api + stat + path + queryParam;
 
-  const response: Response_T<getStatisticByYear_T> = await $host
-    .get(urlPath + arg);
+  const response: Response_T<getStatisticByYear_T> = await $host.get(urlPath + arg);
 
   return response.data;
 }

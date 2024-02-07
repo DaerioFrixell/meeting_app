@@ -17,7 +17,6 @@ export const CommonStats: FC = () => {
     getStatisticByYearRequest(selectValue);
   }, [selectValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // 87TODO: суммировать к статусас C, CA e.t.c если есть их продвижения.
   const countOnlineUnits = useSelector(getOnlineStatistics);
   const countOfflineUnits = useSelector(getOfflineStatistics);
 
