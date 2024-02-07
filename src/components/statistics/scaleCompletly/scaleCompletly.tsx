@@ -1,31 +1,34 @@
 import "./scaleCompletly.scss";
-import { FC, useEffect } from "react";
+import { FC, useContext, useEffect } from "react";
 import { goalObj } from "../../../model/something/some.selector";
 import { countUnitsSelector } from "../../../model/user/user.selectors";
 import { useAction } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
+import { getUnitCountSelector } from "../../../model/unit/unit.selectors";
+import { ChangePeriodContext } from "../../../model/user/user.context";
 
 
 export const ScaleCompletly: FC = () => {
   const { getUnitsCount } = useAction();
+  const { selectValue } = useContext(ChangePeriodContext)
 
   useEffect(() => {
-    getUnitsCount()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    getUnitsCount(selectValue)
+  }, [selectValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
   /** Целевое количество Units на текущий год. */
-  const goalCountUits: number = 500;
+  const goalCountUits: number = getUnitCountSelector;
 
   /** Текущее количество Units за текущий год. */
   const currentUnitsCount: number = useSelector(countUnitsSelector);
 
   /** Процент завершения цели. */
-  const completlyPercent = currentUnitsCount / goalCountUits * 100
+  const completlyPercent = Math.floor(currentUnitsCount / goalCountUits * 100);
 
   return (
-    <div className="gs-inner">
-      <div className="gs-inner__calcucation">
+    <div className="scale">
+      <div className="scale__calcucation">
         {goalObj.period.map(period =>
           <p key={period}>
             {period}
@@ -39,7 +42,7 @@ export const ScaleCompletly: FC = () => {
         )}
       </div>
 
-      <div className="gs-inner__process">
+      <div className="scale__process">
         <p>
           {staticData.statistics.global.completly} {completlyPercent}%
         </p>

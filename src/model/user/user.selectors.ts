@@ -1,55 +1,49 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store";
-import { zeroArray_10 } from "../../staticData/others";
 import { UserState } from "./user.reducer";
 import { StatusMark } from "../../types/statuses";
+import { StatisticByYear_T } from "../../types/V2/userApiV2.type";
 
-export const globalStatistics = {
-  online: zeroArray_10,
-  offline: zeroArray_10,
-};
+/** Функция для суммирования всех Units в статус <Contact> */
+const getAllValueByStatusC = (arr: StatisticByYear_T[]) => {
+  const mutableArr = arr;
+
+  let accum = 0;
+  // суммирую value статусов, которые не равны C || D
+  mutableArr.forEach(el => {
+    if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
+      accum += el.value
+    }
+  })
+
+  // складываю это значение в статус C
+  mutableArr.forEach(el => {
+    if (el.status === StatusMark.C) {
+      el.value = accum
+    }
+  })
+
+  return mutableArr;
+}
 
 const getUserState = (state: RootState): UserState => state.user;
 
 /*
  * значения по каждому статусу online
  */
-export const getStatisticsSelector = createSelector(getUserState, (userState: UserState) => {
-  const statisticsArray = userState.statistics.statuses;
-  let accum = 0;
+export const getOnlineStatistics = createSelector(getUserState, (userState: UserState) => {
+  const statisticsArray = userState.statistics.onlineStat;
+  const statAfterCalc = getAllValueByStatusC(statisticsArray);
 
-  // суммирую value статусов, чтобы прибавить это значение в статус StatusMark.C
-  statisticsArray.forEach(el => {
-    if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
-      accum += el.value
-    }
-  })
-
-  statisticsArray.forEach(el => {
-    if (el.status === StatusMark.C) {
-      el.value += accum
-    }
-  })
-
-  return statisticsArray
+  return statAfterCalc
 })
 
-const getCountByEveryOnline = [1, 2]
-export const getCountOnlineUnitsSelector = getCountByEveryOnline;
+export const getOfflineStatistics = createSelector(getUserState, (userState: UserState) => {
+  const statisticsArray = userState.statistics.offlineStat;
+  const statAfterCalc = getAllValueByStatusC(statisticsArray);
 
-/** значения по каждому статусу offline */
-const getCountByEveryOffline: number[] = globalStatistics.offline;
-
-export const getCountOfflineUnitsSelector = getCountByEveryOffline;
-
-const countAllUnitsSelector: number[] = [
-  ...getCountByEveryOnline,
-  ...getCountByEveryOffline
-];
-
-export const getCountAllUnitsSelector: number = countAllUnitsSelector.reduce(
-  (sum: number, current: number) => sum + current, 0
-);
+  return statAfterCalc
+})
 
 /** цель на год */
 export const getCountAllUnitsGoalSelector = (): number => {

@@ -1,25 +1,27 @@
-import { FC, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import {
-  getStatisticsSelector,
+  getOfflineStatistics,
+  getOnlineStatistics,
 } from '../../../model/user/user.selectors';
 import { CommonStatsTemplate } from './CommonStats.template';
 import { useAction } from '../../../hooks/useAction';
 import { useSelector } from 'react-redux';
+import { ChangePeriodContext } from '../../../model/user/user.context';
 
 
 export const CommonStats: FC = () => {
-  const { getCountUnitsForAllStatusesRequest } = useAction()
+  const { getStatisticByYearRequest } = useAction();
+  const { selectValue } = useContext(ChangePeriodContext);
 
   useEffect(() => {
-    getCountUnitsForAllStatusesRequest()
-  }, [])
+    getStatisticByYearRequest(selectValue);
+  }, [selectValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const statistics = useSelector(getStatisticsSelector);
-  const countOnlineUnits = statistics
-  const countOfflineUnits = statistics
+  const countOnlineUnits = useSelector(getOnlineStatistics);
+  const countOfflineUnits = useSelector(getOfflineStatistics);
 
   return (
-    <>
+    < >
       <CommonStatsTemplate
         statsType="online"
         valueArray={countOnlineUnits}
