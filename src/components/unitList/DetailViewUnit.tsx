@@ -11,19 +11,36 @@ import { ViewField } from "../UI/field/viewField/ViewField";
 import { Button } from "../buttons/Button";
 import { staticData } from "../../staticData/staticData";
 import { ChooseButtonsGroup } from "../inputs/ChooseButtonsGroup";
+import { StatusMark } from "../../types/statuses";
+import { SelectField } from "../UI/field/selectField/SelectField";
+
 
 // V2: нужен запрос getUnitById, т.к. при перезагрузке page id теряется. Либо запоминать id.
 export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
-  const units = useSelector(unitSelector);
-
   const { deleteUnit, updateUnit } = useAction();
-  const [canUpdate, setCanUpdate] = useState(true);
+
+  /** 
+   * Id элемента, на который нажали.
+   */
   const { id } = useParams();
 
+  /** 
+   * Свойства для различия редактирования и просмотра формы.
+   */
+  const [canUpdate, setCanUpdate] = useState(true);
+
+  /** 
+   * Список загруженных пользователей.
+   */
+  const units = useSelector(unitSelector);
+
+  /**
+   * Получние Unit с нужным найди.
+   */
   const [oneUnit] = units.filter((u: UnitV1) => u.id.toString() === id);
 
-  const initialValues: UnitUpdateV1 = {
+  const initInitValues: UnitUpdateV1 = {
     id: oneUnit.id,
     status: oneUnit.status,
     name: oneUnit.name,
@@ -35,15 +52,23 @@ export const DetailViewUnit: FC = () => {
     typeMeet: oneUnit.typeMeet,
   };
 
+  /**
+   * Удаление Unit по id и редирект в UnitList.
+   */
   const deleteAndNavigate = () => {
     deleteUnit(Number(id))
     navigate("/allunits");
   }
 
+  /** 
+   * Список статусов для SelectField.
+   * */
+  const statusList = Object.keys(StatusMark)
+
   return (
     <section className="unit-list">
       <Formik
-        initialValues={initialValues}
+        initialValues={initInitValues}
         onSubmit={(values) => {
           updateUnit(values);
           setCanUpdate(false);
@@ -95,7 +120,7 @@ export const DetailViewUnit: FC = () => {
                 </div>
 
                 <div className="flex-line">
-                  {/* V2: добавить дату создания/обновления в value */}
+                  {/* TO DO: добавить дату создания/обновления в value */}
                   <ViewField title='дата создания' value={oneUnit.createAt} />
                   <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                 </div>
@@ -112,13 +137,13 @@ export const DetailViewUnit: FC = () => {
                   name="surname"
                 />
 
-                <FormField
+                <SelectField
+                  nameField="status"
                   label={staticData.unit.status.title}
-                  placeholder={staticData.unit.status.title}
-                  name="status"
+                  options={statusList}
                 />
 
-                {/* V2: добавить статику в staticData и заменить сразу */}
+                {/* TO DO: добавить статику в staticData и заменить сразу */}
                 <FormField
                   label={staticData.unit.meeting.dateMeet}
                   placeholder={staticData.unit.meeting.dateMeet}

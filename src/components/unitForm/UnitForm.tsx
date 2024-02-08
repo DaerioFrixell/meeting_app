@@ -10,6 +10,7 @@ import { staticData } from '../../staticData/staticData';
 
 
 export const UnitForm: FC = () => {
+  /** По дэфолту Unit создаётся со статусом <C> */
   const { createUnitV1 } = useAction();
 
   return (
@@ -18,8 +19,7 @@ export const UnitForm: FC = () => {
       validationSchema={SignupSchemaFormData}
       onSubmit={(values, actions) => {
         createUnitV1({
-          ...values,
-          status: values.status || null,
+          ...values
         });
         actions.resetForm();
         actions.setSubmitting(false);

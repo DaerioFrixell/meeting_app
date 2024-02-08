@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { fakeUnitsV1 } from '../../mocdb/mocdb';
 import { UnitCreateV1, UnitV1 } from '../../types/UnitV1';
 import { TypeMeet } from '../../types/V2/typeMeetV2.type';
+import { StatusMark } from '../../types/statuses';
 
 
 const data: UnitV1[] = fakeUnitsV1;
@@ -13,7 +14,7 @@ export const getLinkList = (links: string[]) => {
 }
 
 export const initialFormDataValues: UnitCreateV1 = {
-  status: '', // v2: добавить поле в форму, т.к. будет не автоматическое
+  status: StatusMark.C,
   name: '',
   surname: '',
   birth: '',

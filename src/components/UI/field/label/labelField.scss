@@ -1,0 +1,13 @@
+@import "../../../../style/colors.scss";
+@import "../../../../style/font-style.scss";
+
+
+.label-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.6rem;
+
+  color: $gray-3;
+  font-size: $font-small;
+  font-weight: 600;
+}
