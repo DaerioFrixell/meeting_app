@@ -1,4 +1,4 @@
-import { AxiosHeaders } from "axios"
+import { AxiosHeaders } from "axios";
 
 
 export type Response_T<T> = {

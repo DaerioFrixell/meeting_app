@@ -1,4 +1,4 @@
-import { getStatisticByYear } from "../../api/statsApi";
+import { getStatisticByYear } from "../../api/stats.api";
 import { UserAction_E, UserActions } from "./user.type";
 import { getUnitsCountRequest } from "../../api/user.api";
 import { Dispatch } from "redux";

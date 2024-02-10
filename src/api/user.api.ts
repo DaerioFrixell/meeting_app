@@ -1,18 +1,15 @@
-import { $host } from "../core/url"
+import { apiV1, endpoints, path, queryParam } from "../core/api.setting";
+import { $host } from "../core/api"
 import { SelectPeriod_T } from "../types/V2/selectPeriodV2.type";
-import { Response_T } from "./api.type"
+import { Response_T } from "../core/api.type"
 
-// TO DO: перенести <api/> в корень формирования api, <statiscit> в statApi. Либо как-то еще архитектурно зарефакторить, чтобы было просто менять урлы.
-const api = 'api/';
-const stat = 'statistic/';
-const path = 'count-unit';
-
-const queryParam = '?year=';
 
 export const getUnitsCountRequest = async (period: SelectPeriod_T): Promise<number> => {
-  const urlPath = api + stat + path + queryParam;
+  const urlPath = apiV1 + endpoints.statistic + path.statistic.getUnitCount;
 
-  const response: Response_T<number> = await $host.get(urlPath + period);
+  const response: Response_T<number> = await $host.get(
+    urlPath + queryParam.statistic.year + period
+  );
 
   return response.data;
 }
