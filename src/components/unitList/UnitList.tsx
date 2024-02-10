@@ -8,11 +8,12 @@ import { useSelector } from 'react-redux';
 import { countUnitsSelector } from '../../model/user/user.selectors';
 import { unitSelector } from '../../model/unit/unit.selectors';
 import { Button } from '../buttons/Button';
+import { SelectPeriod_E } from '../../types/V2/selectPeriodV2.type';
 
-
+// TO DO: селектор на получение количества Unit изменить.
 export const UnitList: FC = () => {
   const navigate = useNavigate();
-  const { getUnitsPart, getAllUnitsFake } = useAction();
+  const { getUnitsPart, getUnitsCount } = useAction();
 
   const [paginatorPage, setPaginatorPage] = useState(1);
 
@@ -38,13 +39,12 @@ export const UnitList: FC = () => {
     setTotalPaginatorPages(totalPagesArray)
   }
 
-  // TO DO: Сделать запрос на получение всех Units
   useEffect(() => {
+    getUnitsCount(SelectPeriod_E.ALL_TIME)
     setPaginatorTotalPage();
   }, [])
 
   useEffect(() => {
-    getAllUnitsFake()
     if (paginatorPage > 0) {
       getUnitsPart({
         limit: 15, page: paginatorPage
