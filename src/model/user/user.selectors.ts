@@ -4,6 +4,7 @@ import { UserState } from "./user.reducer";
 import { StatusMark } from "../../types/statuses";
 import { StatisticByYear_T } from "../../types/V2/userApiV2.type";
 
+
 /** Функция для суммирования всех Units в статус <Contact> */
 const getAllValueByStatusC = (arr: StatisticByYear_T[]) => {
   const mutableArr = arr;
@@ -28,7 +29,7 @@ const getAllValueByStatusC = (arr: StatisticByYear_T[]) => {
 
 const getUserState = (state: RootState): UserState => state.user;
 
-/*
+/**
  * значения по каждому статусу online
  */
 export const getOnlineStatistics = createSelector(getUserState, (userState: UserState) => {
@@ -38,6 +39,9 @@ export const getOnlineStatistics = createSelector(getUserState, (userState: User
   return statAfterCalc
 })
 
+/**
+ * значения по каждому статусу offline
+ */
 export const getOfflineStatistics = createSelector(getUserState, (userState: UserState) => {
   const statisticsArray = userState.statistics.offlineStat;
   const statAfterCalc = getAllValueByStatusC(statisticsArray);
@@ -45,14 +49,18 @@ export const getOfflineStatistics = createSelector(getUserState, (userState: Use
   return statAfterCalc
 })
 
-/** цель на год */
+/** 
+ * цель на год 
+ */
 export const getCountAllUnitsGoalSelector = (): number => {
   let number = 500;
 
   return number
 };
 
-export const countUnitsSelector = createSelector(getUserState, (unitState: UserState) => {
-  // console.log(unitState.statistics.unitsCount)
-  return unitState.statistics.unitsCount;
+/**
+ * Общее количество Unit
+ */
+export const unitsCountSelector = createSelector(getUserState, (userState: UserState) => {
+  return userState.statistics.unitsCount;
 });
