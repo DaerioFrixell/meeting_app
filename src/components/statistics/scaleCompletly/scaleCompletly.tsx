@@ -1,7 +1,7 @@
 import "./scaleCompletly.scss";
 import { FC, useContext, useEffect } from "react";
 import { goalObj } from "../../../model/something/some.selector";
-import { countUnitsSelector } from "../../../model/user/user.selectors";
+import { unitsCountSelector } from "../../../model/user/user.selectors";
 import { useAction } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { staticData } from "../../../staticData/staticData";
@@ -21,7 +21,7 @@ export const ScaleCompletly: FC = () => {
   const goalCountUits: number = getUnitCountSelector;
 
   /** Текущее количество Units за текущий год. */
-  const currentUnitsCount: number = useSelector(countUnitsSelector);
+  const currentUnitsCount: number = useSelector(unitsCountSelector);
 
   /** Процент завершения цели. */
   const completlyPercent = Math.floor(currentUnitsCount / goalCountUits * 100);
