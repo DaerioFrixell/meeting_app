@@ -5,65 +5,93 @@ import { ViewField } from '../UI/field/viewField/ViewField';
 import { MainTitle } from '../UI/mainTitle/MainTitle';
 import { useAction } from '../../hooks/useAction';
 import { useSelector } from 'react-redux';
-import { countUnitsSelector } from '../../model/user/user.selectors';
+import { unitsCountSelector } from '../../model/user/user.selectors';
 import { unitSelector } from '../../model/unit/unit.selectors';
 import { Button } from '../buttons/Button';
+import { SelectPeriod_E } from '../../types/V2/selectPeriodV2.type';
 
 
 export const UnitList: FC = () => {
   const navigate = useNavigate();
-  const { getUnitsPart, getAllUnitsFake } = useAction();
+  const { getUnitsPart, getUnitsCount } = useAction();
 
-  const [paginatorPage, setPaginatorPage] = useState(1);
+  // TO DO: сделать вид пагинатора: <first btn, ...10 btns..., last btn>.
+  /**
+   * Количество страниц, на которые можно переключиться.
+   */
+  const [totalPaginatorPages, setTotalPaginatorPages] = useState([1]);
 
-  // TO DO: сделать отображение <1st page-btn, 10 btns, last page-btn>.
-  const [totalPaginatorPages, setTotalPaginatorPages] = useState([1, 2, 3])
+  /**
+   * Выбранная страница в пагинаторе. Загружается 1 страница по умолчанию.
+   */
+  const [currentPage, setCurrentPage] = useState(1);
 
-  /** Часть юнитов, получанных в useEffect */
+  /** 
+   * Часть юнитов, полученных в useEffect.
+   */
   const unitsPart = useSelector(unitSelector);
 
-  /** Текущее количество Units за текущий год.  */
-  // TO DO: Здесь будет всё количество Units, чтоб работала пагинация по всем. Зачем выводить units за определённый год, если на странице нет выбора периода? Переименовать константу.
-  const currentUnitsCount: number = useSelector(countUnitsSelector);
+  /** 
+   * Количество Units за всё время.
+   */
+  const allUnitsCount: number = useSelector(unitsCountSelector);
 
-  let num = currentUnitsCount - ((paginatorPage - 1) * 15);
+  /**
+   * Начальное число для нумерации Units на каждой странице.
+   */
+  let topUnitNumber: number = allUnitsCount - ((currentPage - 1) * 15);
 
+  /**
+   * Открывает детальный просмотр Unit по id.
+   */
   const openDetailView = (id: number) => {
     navigate(`${id}`)
   };
 
+  /**
+   * Устанавливает общее количество страниц для открывания.
+   */
   const setPaginatorTotalPage = () => {
-    const pagesCount = Math.ceil(currentUnitsCount / 15);
+    const pagesCount = Math.ceil(allUnitsCount / 15);
     const totalPagesArray = Array.from({ length: pagesCount }, (_, i) => i + 1);
     setTotalPaginatorPages(totalPagesArray)
   }
 
-  // TO DO: Сделать запрос на получение всех Units
+  /** 
+   * Получает общее количество Units. 
+   */
   useEffect(() => {
-    setPaginatorTotalPage();
+    getUnitsCount(SelectPeriod_E.ALL_TIME)
   }, [])
 
+  /**
+   * Запускает <setPaginatorTotalPage> при получении общего количества Units.
+   */
   useEffect(() => {
-    getAllUnitsFake()
-    if (paginatorPage > 0) {
-      getUnitsPart({
-        limit: 15, page: paginatorPage
-      })
-    }
-  }, [paginatorPage])
+    setPaginatorTotalPage();
+  }, [allUnitsCount])
+
+  /**
+   * Запрашивает Units при клике на кнопку пагинатора.
+   */
+  useEffect(() => {
+    getUnitsPart({
+      limit: 15, page: currentPage
+    })
+  }, [currentPage])
 
   return (
     <section className="unit-list">
       <MainTitle title="весь список" />
 
-      <span>всего: {currentUnitsCount}</span>
+      <span>всего: {allUnitsCount}</span>
 
       <div className='button-paginator'>
         {totalPaginatorPages.map(page =>
           <Button
             key={page}
             buttonsName={String(page)}
-            onClick={() => setPaginatorPage(page)} />
+            onClick={() => setCurrentPage(page)} />
         )}
       </div>
 
@@ -73,7 +101,7 @@ export const UnitList: FC = () => {
           className="unit-list__commonView"
           onClick={_ => openDetailView(oneUnit.id)}
         >
-          <ViewField title='№' value={num--} />
+          <ViewField title='№' value={topUnitNumber--} />
           <ViewField title='статус' value={oneUnit.status} />
           <ViewField title='имя' value={oneUnit.name} />
           <ViewField title='фамилия' value={oneUnit.surname} />
