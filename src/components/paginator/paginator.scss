@@ -1,0 +1,12 @@
+@import '../../style/colors.scss';
+
+
+.paginator-buttons {
+  display: flex;
+  gap: 0rem 2rem;
+  margin: 2rem;
+
+  &__choose {
+    background-color: $choose-element;
+  }
+}
