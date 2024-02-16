@@ -5,10 +5,12 @@ import { useSelector } from 'react-redux';
 import { settingLoadingSelector } from '../model/settings/setting.selectors';
 import { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../components/loaders/MainLoader';
 
 
 export const App: FC = () => {
   const navigate = useNavigate();
+
   const settingLoading = useSelector(settingLoadingSelector);
 
   const token = localStorage.getItem('token');
@@ -17,7 +19,7 @@ export const App: FC = () => {
     if (!token) navigate("auth");
   }, [token])
 
-  if (settingLoading) return <h2>loading app...</h2>
+  if (settingLoading) return <Loader loaderType='main' />
 
   return (
     <div className="app">
