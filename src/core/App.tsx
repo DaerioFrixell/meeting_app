@@ -12,7 +12,7 @@ export const App: FC = () => {
   const navigate = useNavigate();
 
   const settingLoading = useSelector(settingLoadingSelector);
-  const a = 0
+
   const token = localStorage.getItem('token');
 
   useEffect(() => {
