@@ -2,25 +2,35 @@
 @import "../../style/colors.scss";
 
 .header {
+  position: relative;
   width: 100vw;
   height: 4rem;
 
   align-items: center;
   font-size: $font-normal;
 
-  &__link {
-    min-width: 7rem;
-    margin-right: 1rem;
-    color: $gray-3;
-    transition: all .3s;
-
-    &:hover {
-      color: $hover;
-    }
-  }
-
   &__nav {
     display: flex;
-    width: 32rem;
+    width: 50rem;
+    height: inherit;
+
+    &__link {
+      align-self: center;
+      min-width: 7rem;
+      margin-right: 1rem;
+      color: $gray-3;
+      transition: all .3s;
+
+      &:hover {
+        color: $hover;
+      }
+    }
+
+    &__logout {
+      position: absolute;
+      width: 8rem !important;
+      right: 2rem;
+      top: 1rem;
+    }
   }
 }

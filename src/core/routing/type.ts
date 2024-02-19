@@ -6,7 +6,9 @@ export enum RoutePaths_E {
 
   CREATE_UNITS = '/create-units',
 
-  AUTH = "/auth"
+  AUTH = "/auth",
+
+  DESCRIPTION = '/description',
 }
 
 export type Route_T = {

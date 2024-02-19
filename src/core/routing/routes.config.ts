@@ -1,3 +1,4 @@
+import { Description } from '../../components/description/Description';
 import { MonthStats } from '../../components/monthStat/MonthStat';
 import { UnitForm } from '../../components/unitForm/UnitForm';
 import { DetailViewUnit } from '../../components/unitList/DetailViewUnit';
@@ -7,7 +8,12 @@ import { GlobalStats } from '../../page/globalStats/GlobalStats';
 import { RoutePaths_E, Route_T } from './type';
 
 
-export const commonRoutes: Route_T[] = [];
+export const commonRoutes: Route_T[] = [
+  {
+    path: RoutePaths_E.DESCRIPTION,
+    element: Description
+  }
+];
 
 export const unAuthRoutes: Route_T[] = [
   ...commonRoutes,

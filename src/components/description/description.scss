@@ -1,0 +1,22 @@
+.description {
+  margin-top: 10rem;
+  position: relative;
+
+  &__about {
+    font-size: 1.4rem; // тестовый размер. Пока не знаю, как оформить.
+  }
+
+  &__advertisement {
+    position: fixed;
+    bottom: 0;
+    left: 10vw;
+
+    width: 80vw;
+    margin: auto;
+    background-color: rgb(229, 242, 229); // тестовый цвет. Пока не знаю, как оформить.
+
+    &__content {
+      height: 10rem;
+    }
+  }
+}

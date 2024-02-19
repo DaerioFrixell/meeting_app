@@ -1,7 +1,7 @@
 import './header.scss';
 import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { authLinks, noAuthLink } from './headerLinks';
+import { authLinks, commonLinks, noAuthLink } from './headerLinks';
 import { Button } from '../buttons/Button';
 import { useAction } from '../../hooks/useAction';
 
@@ -19,38 +19,41 @@ export const Header: FC = () => {
 
     return (
         <header className="header">
-            {fakeToken
-                ? (
-                    <nav className="header__nav">
-                        {authLinks.map(link => (
+            <nav className="header__nav">
+                {fakeToken
+                    ? (
+                        <>
+                            {authLinks.map(link => (
+                                <Link
+                                    key={link.to}
+                                    to={link.to}
+                                    className="header__nav__link"
+                                >
+                                    {link.title}
+                                </Link>
+                            ))}
+
+                            <Button
+                                className='header__nav__logout'
+                                buttonsName='выйти'
+                                onClick={logOut}
+                            />
+                        </>
+
+                    )
+                    : (
+                        noAuthLink.map(link => (
                             <Link
                                 key={link.to}
                                 to={link.to}
-                                className="header__link"
+                                className="header__nav__link"
                             >
                                 {link.title}
                             </Link>
-                        ))}
-
-                        <Button
-                            buttonsName='выйти'
-                            onClick={logOut}
-                        />
-                    </nav>
-
-                )
-                : (
-                    noAuthLink.map(link => (
-                        <Link
-                            key={link.to}
-                            to={link.to}
-                            className="header__link"
-                        >
-                            {link.title}
-                        </Link>
-                    ))
-                )
-            }
+                        ))
+                    )
+                }
+            </nav>
         </header>
     );
 };
