@@ -1,0 +1,48 @@
+@import "../../style/font-style.scss";
+@import "../../style/colors.scss";
+
+
+@mixin loader {
+  position: absolute;
+  top: 3rem;
+  left: 25%;
+  transform: translateX(-75%);
+  border-radius: 50%;
+
+  animation: rotate 2.6s infinite;
+}
+
+.main-loader {
+  position: relative;
+  width: 15rem;
+  margin: auto;
+  margin-top: 50vh;
+  font-size: $font-big;
+}
+
+.big-circle {
+  @include loader();
+
+  width: 5rem;
+  height: 5rem;
+  border: 8px dotted $danger-1;
+}
+
+.small-circle {
+  @include loader();
+
+  width: 4rem;
+  height: 4rem;
+  border: 6px dotted $gray-2;
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
