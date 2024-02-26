@@ -3,7 +3,7 @@ import "./loaders.scss";
 import { Loader_T } from "./loader.type";
 import { FC } from "react";
 
-
+// TO DO: сделать константы для статики.
 /**
  * Для показа большого лоадера используй loaderType = "main".
  * 

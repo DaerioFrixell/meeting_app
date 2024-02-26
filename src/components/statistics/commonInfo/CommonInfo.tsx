@@ -9,19 +9,34 @@ import { RoutePaths_E } from "../../../core/routing/type";
 import { staticData } from "../../../staticData/staticData";
 import { ChangePeriodContext } from "../../../model/user/user.context";
 
+
 export const CommonInfo: FC = () => {
   const navigate = useNavigate();
 
+  /**
+   * Устанавливает выбранный год через Select.
+   */
   const { setSelectValue } = useContext(ChangePeriodContext);
 
+  /**
+   * Текущий год.
+   */
   const year: number = new Date().getFullYear();
+
+  /**
+   * Цель на год. (Сейчас моковые данные: 600).
+   */
   const goalCountUits: number = getUnitCountSelector;
 
+  /** Запускает смену выбора года через Select для показа главной статистики. */
   const changePeriod = async (e: any) => {
     const chooseYear = e.target.value;
     setSelectValue(chooseYear);
   }
 
+  /**
+   * Переводит на страницу со статистикой по месяцам.
+   */
   const goToMonthStats = () => {
     navigate(RoutePaths_E.MONTHS_STAT);
   };

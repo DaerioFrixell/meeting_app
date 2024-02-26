@@ -2,9 +2,9 @@ import "./titleCenter.scss";
 import { FC } from 'react';
 
 
+// Вынести тип в отдельный файл.
 export type TitleCenter_T = {
   title: string
-
   className?: string
 }
 

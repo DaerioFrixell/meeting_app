@@ -1,31 +1,31 @@
 import './monthStat.scss';
 import { FC } from 'react';
 import { allMonthes } from '../../staticData/date';
-import { MonthStatsData, MonthStatsTitle } from './type';
+import { MonthStatsData, MonthStatsTitle_E } from './monthStat.type';
 import { zeroArray_12 } from '../../staticData/others';
 
 
 export const MonthStats: FC = () => {
   const data: MonthStatsData = [
     {
-      title: MonthStatsTitle.MONTH,
+      title: MonthStatsTitle_E.MONTH,
       data: allMonthes,
     },
     {
-      title: MonthStatsTitle.ALL,
+      title: MonthStatsTitle_E.ALL,
       data: zeroArray_12,
     },
     {
-      title: MonthStatsTitle.NEGATIVE,
+      title: MonthStatsTitle_E.NEGATIVE,
       data: zeroArray_12,
     },
     {
-      title: MonthStatsTitle.POSITIVE,
+      title: MonthStatsTitle_E.POSITIVE,
       data: zeroArray_12,
     },
   ];
 
-  // V2: вынести статику в staticData.
+  // TO DO: вынести статику в staticData, когда таску с месяцами делать будешь.
   return (
     <div className="month">
       <p className='month-inner__element'>год: 0000</p>

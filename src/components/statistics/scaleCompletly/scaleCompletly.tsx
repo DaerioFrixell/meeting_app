@@ -10,20 +10,36 @@ import { ChangePeriodContext } from "../../../model/user/user.context";
 
 
 export const ScaleCompletly: FC = () => {
+  /**
+   * Запрос на получение количества всех Units.
+   */
   const { getUnitsCount } = useAction();
-  const { selectValue } = useContext(ChangePeriodContext)
 
+  /**
+  * Текущий выбранный год.
+  */
+  const { selectValue } = useContext(ChangePeriodContext);
+
+  /**
+   * Отправляет запрос на получение количества всех Units.
+   */
   useEffect(() => {
     getUnitsCount(selectValue)
   }, [selectValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  /** Целевое количество Units на текущий год. */
+  /**
+   * Цель на год. (Сейчас моковые данные: 600).
+   */
   const goalCountUits: number = getUnitCountSelector;
 
-  /** Текущее количество Units за текущий год. */
+  /**
+   * Текущее количество Units за текущий год.
+   */
   const currentUnitsCount: number = useSelector(unitsCountSelector);
 
-  /** Процент завершения цели. */
+  /**
+   * Процент завершения цели.
+   */
   const completlyPercent = Math.floor(currentUnitsCount / goalCountUits * 100);
 
   return (

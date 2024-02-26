@@ -10,7 +10,7 @@ export enum Setting_E {
   LOG_OUT = "logOut",
 }
 
-// V2: поч это здесь?
+// TO DO: Сделать actionCreator для смены страницы в пагинации. Сейчас это реализовано локально для компоненты.
 export type SearchRequest_T = {
   limit: number
   page: number

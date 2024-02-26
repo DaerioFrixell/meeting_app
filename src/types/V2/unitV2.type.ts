@@ -1,11 +1,11 @@
-import { Status } from "../statuses"
+import { Status_T } from "../statuses.type"
 import { LinkV2 } from "./linkV2.type"
 import { TypeMeet } from "./typeMeetV2.type"
 
 export type UnitV2 = {
   id: number
   number: string | number
-  status: Status
+  status: Status_T
   name: string
   surname: string
   birth: Date | string

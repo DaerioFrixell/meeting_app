@@ -1,4 +1,6 @@
 @import "../../../style/mixine.scss";
+@import "../../../style/colors.scss";
+@import "../../../style/font-style.scss";
 
 
 .form {
@@ -7,8 +9,8 @@
     flex-direction: column;
     margin-bottom: 0.6rem;
 
-    color: #333; // execute in color
-    font-size: 1.4rem; // execute in font-style
+    color: $gray-3;
+    font-size: $font-small;
     font-weight: 600;
   }
 
@@ -18,7 +20,7 @@
 }
 
 .error {
-  color: rgb(245, 62, 62); // execute in color
-  font-size: 1.2rem;
+  color: $danger-1;
+  font-size: $font-little;
   margin-bottom: 0.6rem;
 }

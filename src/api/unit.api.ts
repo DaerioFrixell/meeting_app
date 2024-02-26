@@ -1,10 +1,13 @@
-import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1'
-import { $host } from '../core/api'
-import { SearchRequest_T } from '../model/settings/setting.type'
-import { Response_T } from '../core/api.type'
-import { apiV1, endpoints, path, queryParam } from '../core/api.setting'
+import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1';
+import { $host } from '../core/api';
+import { SearchRequest_T } from '../model/settings/setting.type';
+import { Response_T } from '../core/api.type';
+import { apiV1, endpoints, path, queryParam } from '../core/api.setting';
 
 
+/**
+ * Запрос на получение ограниченного количества Unit.
+ */
 export const getUnitsRequest = async (search: SearchRequest_T): Promise<UnitV1[]> => {
   const urlPath = apiV1 + endpoints.unit + path.unit.getPart;
 
@@ -14,6 +17,9 @@ export const getUnitsRequest = async (search: SearchRequest_T): Promise<UnitV1[]
   return response.data;
 }
 
+/**
+ * Запрос на создание Unit.
+ */
 export const createUnitRequest = async (createUnit: UnitCreateV1): Promise<UnitV1> => {
   const urlPath = apiV1 + endpoints.unit + path.unit.create;
 
@@ -23,6 +29,9 @@ export const createUnitRequest = async (createUnit: UnitCreateV1): Promise<UnitV
   return response.data;
 }
 
+/**
+ * Запрос на обновление Unit.
+ */
 export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<UnitV1> => {
   const urlPath = apiV1 + endpoints.unit + path.unit.update;
 
@@ -32,6 +41,9 @@ export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<UnitV
   return response.data
 }
 
+/**
+ * Запрос на удаление Unit.
+ */
 export const deleteUnitRequest = async (id: number): Promise<string> => {
   const urlPath = apiV1 + endpoints.unit + path.unit.delete;
 

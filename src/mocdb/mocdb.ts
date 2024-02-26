@@ -31,5 +31,3 @@ export const fakeUnitsV1: UnitV1[] = [
     updateAt: "2023-10-10",
   },
 ]
-
-

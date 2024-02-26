@@ -23,59 +23,50 @@ export enum UnitAction_E {
   DELETE_UNITS_ERROR = 'DELETE_UNITS_ERROR',
 }
 
-// DO: исправить на enum название через ..._T;
-export type FetchUnitAction = {
+export type FetchUnitAction_T = {
   type: UnitAction_E.FETCH_UNITS
 }
 
-// DO: исправить на enum название через ..._T;
-export type OffFetchUnitAction = {
+export type OffFetchUnitAction_T = {
   type: UnitAction_E.OFF_LOADING
 }
 
-// DO: исправить на enum название через ..._T;
-export type FetchUnitSuccessAction = {
+export type FetchUnitSuccessAction_T = {
   type: UnitAction_E.FETCH_UNITS_SUCCESS
   payload: UnitV1[]
 }
 
-// DO: исправить на enum название через ..._T;
-export type FetchUnitErrorAction = {
+export type FetchUnitErrorAction_T = {
   type: UnitAction_E.FETCH_UNITS_ERROR
   payload: string
 }
 
-// DO: исправить на enum название через ..._T;
-export type AddUnitsAction = {
+export type AddUnitsAction_T = {
   type: UnitAction_E.ADD_UNITS
   payload: UnitV1
 }
 
-// DO: исправить на enum название через ..._T;
 export type DeleteUnitAction_T = {
   type: UnitAction_E.DELETE_UNITS
   payload: number
 }
 
-// DO: исправить на enum название через ..._T;
-export type DeleteUnitErrorAction = {
+export type DeleteUnitErrorAction_T = {
   type: UnitAction_E.DELETE_UNITS_ERROR
   payload: string
 }
 
-// DO: исправить на enum название через ..._T;
-export type UpdateUnitAction = {
+export type UpdateUnitAction_T = {
   type: UnitAction_E.UPDATE_UNIT
   payload: UnitUpdateV1
 }
 
-// DO: исправить на enum название через ..._T;
-export type UnitActions =
-  | OffFetchUnitAction
-  | FetchUnitAction
-  | FetchUnitSuccessAction
-  | FetchUnitErrorAction
-  | AddUnitsAction
+export type UnitActions_T =
+  | OffFetchUnitAction_T
+  | FetchUnitAction_T
+  | FetchUnitSuccessAction_T
+  | FetchUnitErrorAction_T
+  | AddUnitsAction_T
   | DeleteUnitAction_T
-  | DeleteUnitErrorAction
-  | UpdateUnitAction
+  | DeleteUnitErrorAction_T
+  | UpdateUnitAction_T

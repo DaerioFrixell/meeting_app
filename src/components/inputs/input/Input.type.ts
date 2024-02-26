@@ -1,4 +1,5 @@
-import { HTMLAttributes, InputHTMLAttributes } from "react"
+import { HTMLAttributes, InputHTMLAttributes } from "react";
+
 
 export type Input_T = {
   className?: string

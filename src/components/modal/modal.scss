@@ -1,5 +1,10 @@
+@import "../../style/colors.scss";
+@import "../../style/border-style.scss";
+@import "../../style/font-style.scss";
+
+
 .modal-bg {
-    background-color: rgba(65, 65, 65, 0.461); // execute in color
+    background-color: $modal-background;
     position: fixed;
     top: 0;
     right: 0;
@@ -9,17 +14,16 @@
 
 .modal {
     position: absolute;
-    background-color: white; // execute in color
-    border-radius: 4px; // execute in raduis
-    padding: 1rem;
-    width: auto;
-
     top: 5rem;
     bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
 
+    background-color: $white;
+    border-radius: $b-radus-4;
     font-family: sans-serif;
+    padding: 1rem;
+    width: auto;
 
     &__header {
         height: 15%;
@@ -29,7 +33,7 @@
             height: 100%;
             align-items: center;
 
-            font-size: 1.7rem; // execute in font-size
+            font-size: $font-normal;
             font-weight: 600;
             margin-bottom: 1rem;
         }

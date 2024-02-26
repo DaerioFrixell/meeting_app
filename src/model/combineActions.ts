@@ -9,4 +9,4 @@ const actionCreators = {
   ...SettingActionCreator,
 }
 
-export default actionCreators
+export default actionCreators;

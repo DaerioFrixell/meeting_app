@@ -1,6 +1,7 @@
-import { Dispatch } from "react"
-import { SettingActions_T, Setting_E } from "./setting.type"
-import { token } from "./setting.static"
+import { Dispatch } from "react";
+import { SettingActions_T, Setting_E } from "./setting.type";
+import { token } from "./setting.static";
+
 
 // TO DO: в пагинации страницы должны менятьсья редьюсером, а не локальным стейтом.
 export const changePage = (page: number) => {
@@ -19,7 +20,9 @@ export const changePage = (page: number) => {
   }
 }
 
-/** Добавить токен token */
+/**
+ * Устанавливает токен. (Сейчас устанавливается фейковый токен, т.к. нет реализации в бэке.)
+ */
 export const settingLogIn = () => {
   return async (dispatch: Dispatch<SettingActions_T>) => {
     try {
@@ -36,7 +39,9 @@ export const settingLogIn = () => {
   }
 }
 
-/** Удалить token */
+/** 
+ * Удаляет token.
+ */
 export const settingLogOut = () => {
   return async (dispatch: Dispatch<SettingActions_T>) => {
     try {

@@ -2,6 +2,7 @@ import "./mainTitle.scss";
 import { FC } from 'react';
 
 
+// TO DO: вынести в файл .type.ts.
 export type MainTitle_T = {
   title: string
 }

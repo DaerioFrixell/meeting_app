@@ -50,7 +50,7 @@ export const UnitList: FC = () => {
   }, [])
 
   /**
-   * Запрашивает Units при клике на кнопку пагинатора.
+   * Запускате запрос на получение Units при клике на кнопку пагинатора.
    */
   useEffect(() => {
     getUnitsPart({
@@ -73,6 +73,7 @@ export const UnitList: FC = () => {
             className="unit-list__commonView"
             onClick={_ => openDetailView(oneUnit.id)}
           >
+            {/* TO DO: использовать константы для статики. */}
             <ViewField title='№' value={firstUnitNumber--} />
             <ViewField title='статус' value={oneUnit.status} />
             <ViewField title='имя' value={oneUnit.name} />

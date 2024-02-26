@@ -1,10 +1,11 @@
 @import "../../style/mixine.scss";
 @import "../../style/layouts.scss";
 
-@mixin block {
+
+@mixin form-block {
   display: flex;
   flex-direction: column;
-  margin: auto
+  margin: auto;
 }
 
 .unit-form {
@@ -15,11 +16,11 @@
     width: auto;
 
     &__one {
-      @include block;
+      @include form-block;
     }
 
     &__two {
-      @include block;
+      @include form-block;
     }
   }
 }
