@@ -10,6 +10,9 @@ import { SelectPeriod_T } from "../../types/V2/selectPeriodV2.type";
 const networkError = `Нет доступа к сети или к бэку`;
 
 // TO DO: сделать функцию для обработки ошибок, а не хардкодить одно и то же в catch.
+/**
+ * Получает статистику по году или за всё время.
+ */
 export const getStatisticByYearRequest = (arg: SelectPeriod_T) => {
   return async (dispatch: Dispatch<UserActions>) => {
     try {
@@ -46,6 +49,9 @@ export const getStatisticByYearRequest = (arg: SelectPeriod_T) => {
   }
 }
 
+/**
+ * Получает общее количество Units.
+ */
 export const getUnitsCount = (period: SelectPeriod_T) => {
   return async (dispatch: Dispatch<UserActions>) => {
     try {

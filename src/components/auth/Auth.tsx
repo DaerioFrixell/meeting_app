@@ -13,7 +13,7 @@ export const Auth: FC = () => {
 
   const loginIn = () => {
     settingLogIn();
-    navigate('/')
+    navigate('/');
   }
 
   return (

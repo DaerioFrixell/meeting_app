@@ -1,10 +1,10 @@
 import './commonStats.scss';
 import { FC } from 'react';
 import { Statuses } from '../../statuses/Statuses';
-import { CommonStatsOnlineType } from './commonStats.type';
+import { CommonStatsOnlineType_T } from './commonStats.type';
 
 
-export const CommonStatsTemplate: FC<CommonStatsOnlineType> = ({
+export const CommonStatsTemplate: FC<CommonStatsOnlineType_T> = ({
   statsType,
   valueArray
 }) => {

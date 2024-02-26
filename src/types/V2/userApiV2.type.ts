@@ -1,7 +1,7 @@
-import { StatusMark } from "../statuses";
+import { StatusMark_E } from "../statuses.type";
 
 export type StatisticByYear_T = {
-  status: StatusMark,
+  status: StatusMark_E,
   value: number
 }
 

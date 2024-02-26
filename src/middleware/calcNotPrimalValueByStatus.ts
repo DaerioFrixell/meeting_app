@@ -1,7 +1,7 @@
 // Возможно все calc нужно занести в один файл. СalcMethods.ts, например.
 
 import { StatisticByYear_T } from "../types/V2/userApiV2.type";
-import { StatusMark } from "../types/statuses";
+import { StatusMark_E } from "../types/statuses.type";
 
 // TO DO: назвать функцию более коротко.
 // TO DO: Сделать индексацию папки.
@@ -16,16 +16,16 @@ export const calcNotPrimalValueByStatus = (arr: StatisticByYear_T[]) => {
   let accum = 0;
 
   mutableArr.forEach(el => {
-    if (el.status !== StatusMark.C && el.status !== StatusMark.D) {
+    if (el.status !== StatusMark_E.C && el.status !== StatusMark_E.D) {
       // суммирую value статусов, которые не равны C || D
-      accum += el.value
+      accum += el.value;
     }
   })
 
   mutableArr.forEach(el => {
-    if (el.status === StatusMark.C) {
+    if (el.status === StatusMark_E.C) {
       // складываю это значение в статус C
-      el.value = accum
+      el.value = accum;
     }
   })
 

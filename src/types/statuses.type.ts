@@ -1,4 +1,4 @@
-export enum StatusMark {
+export enum StatusMark_E {
   C = "C",
   D = "D",
   CM = "CM",
@@ -11,9 +11,7 @@ export enum StatusMark {
   ABD = "ABD"
 }
 
-export const statTitles: string[] = Object.keys(StatusMark);
-
-export enum StatusMetric {
+export enum StatusMetric_E {
   CONTACT = 'contact',
   DISREGARATING = 'disregarting',
   CONTACT_MARRIED = 'contact married',
@@ -26,7 +24,9 @@ export enum StatusMetric {
   ACTIVE_BREAKDOWN = 'active breakdown'
 }
 
-export type Status = {
-  description: StatusMetric
-  mark: StatusMark
+export type Status_T = {
+  description: StatusMetric_E
+  mark: StatusMark_E
 }
+
+export const statTitles: string[] = Object.keys(StatusMark_E);

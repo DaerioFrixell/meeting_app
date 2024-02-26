@@ -1,6 +1,8 @@
 import './viewField.scss';
 import { FC } from 'react';
 
+
+// TO DO: вынести тип в отдельный файл.
 type ViewField_T = {
   title: string;
   value: any

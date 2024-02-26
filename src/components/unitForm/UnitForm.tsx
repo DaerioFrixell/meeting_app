@@ -10,7 +10,6 @@ import { staticData } from '../../staticData/staticData';
 
 
 export const UnitForm: FC = () => {
-  /** По дэфолту Unit создаётся со статусом <C> */
   const { createUnitV1 } = useAction();
 
   return (
@@ -59,7 +58,7 @@ export const UnitForm: FC = () => {
             </div>
 
             <div className="unit-form__block__two">
-              {/* v2: добавить возможность добавлять ссылки на разные места. */}
+              {/* TO DO: добавить возможность добавлять ссылки на разные места. */}
               <h3>{staticData.unitForm.blockTitle.linksList}</h3>
 
               <FormField

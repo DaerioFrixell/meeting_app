@@ -1,7 +1,7 @@
 /** deprecated! */
 export const apiV1 = "api/";
 
-// Заапдейтить все апи на 2 версию.
+// TO DO: Заапдейтить все апи на 2 версию.
 export const apiV2 = "apiV2/";
 
 export const endpoints = {

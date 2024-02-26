@@ -1,7 +1,7 @@
 import './header.scss';
 import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { authLinks, commonLinks, noAuthLink } from './headerLinks';
+import { authLinks, noAuthLink } from './headerLinks';
 import { Button } from '../buttons/Button';
 import { useAction } from '../../hooks/useAction';
 

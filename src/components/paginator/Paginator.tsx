@@ -4,8 +4,12 @@ import { Button } from "../buttons/Button";
 import { Paginator_T } from './paginator.type';
 
 
-// TO DO: сделать вид пагинатора: <first btn, ...10 btns..., last btn>.
-export const Paginator: FC<Paginator_T> = ({ elementCount, currentPage, choosePage, children }) => {
+// TO DO: когда будет выполняться таска с пагинатором, то вынести всю статику в staticData.
+export const Paginator: FC<Paginator_T> = ({
+  elementCount,
+  currentPage,
+  choosePage,
+  children }) => {
   /**
    * Количество доступных страниц.
    */

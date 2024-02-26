@@ -10,18 +10,35 @@ import { ChangePeriodContext } from '../../../model/user/user.context';
 
 
 export const CommonStats: FC = () => {
+  /**
+   * Запрос на получение статистики по выбранному году.
+   */
   const { getStatisticByYearRequest } = useAction();
+
+  /**
+   * Текущий выбранный год.
+   */
   const { selectValue } = useContext(ChangePeriodContext);
 
+  /**
+   * Отправляет запрос на получение статистики по выбранному году.
+   */
   useEffect(() => {
     getStatisticByYearRequest(selectValue);
   }, [selectValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  /**
+   * Количество онлайн Units.
+   */
   const countOnlineUnits = useSelector(getOnlineStatistics);
+
+  /**
+   * Количество офлайн Units.
+   */
   const countOfflineUnits = useSelector(getOfflineStatistics);
 
   return (
-    < >
+    <>
       <CommonStatsTemplate
         statsType="online"
         valueArray={countOnlineUnits}

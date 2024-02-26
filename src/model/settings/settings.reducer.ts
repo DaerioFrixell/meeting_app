@@ -1,5 +1,6 @@
 import { SettingActions_T, SettingState_T, Setting_E, } from "./setting.type"
 
+
 const initialState: SettingState_T = {
   loading: false,
   isAuth: false,

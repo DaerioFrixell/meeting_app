@@ -11,11 +11,11 @@ import { ViewField } from "../UI/field/viewField/ViewField";
 import { Button } from "../buttons/Button";
 import { staticData } from "../../staticData/staticData";
 import { ChooseButtonsGroup } from "../inputs/ChooseButtonsGroup";
-import { StatusMark } from "../../types/statuses";
+import { StatusMark_E } from "../../types/statuses.type";
 import { SelectField } from "../UI/field/selectField/SelectField";
 
 
-// V2: нужен запрос getUnitById, т.к. при перезагрузке page id теряется. Либо запоминать id.
+// TO DO: нужен запрос getUnitById, т.к. при перезагрузке page id теряется. Либо запоминать id.
 export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
   const { deleteUnit, updateUnit } = useAction();
@@ -53,7 +53,7 @@ export const DetailViewUnit: FC = () => {
   };
 
   /**
-   * Удаление Unit по id и редирект в UnitList.
+   * Запускает удаление Unit по id и редиректит в UnitList.
    */
   const deleteAndNavigate = () => {
     deleteUnit(Number(id))
@@ -62,8 +62,8 @@ export const DetailViewUnit: FC = () => {
 
   /** 
    * Список статусов для SelectField.
-   * */
-  const statusList = Object.keys(StatusMark)
+   */
+  const statusList = Object.keys(StatusMark_E)
 
   return (
     <section className="unit-list">
@@ -77,14 +77,14 @@ export const DetailViewUnit: FC = () => {
         {_ => (
           <Form className="editUnit">
             <div className="navigation">
-              {/* V2: у кнопки иконка должна быть. */}
+              {/* TO DO: сделать иконку для кнопки. */}
               <Button
                 className="btn-nav"
                 buttonsName={`<- back`}
                 onClick={() => navigate("/allunits")}
               />
 
-              {/* V2: у кнопки иконка должна быть. */}
+              {/* TO DO: сделать иконку для кнопки. */}
               <Button
                 className="btn-nav"
                 buttonsName={canUpdate
@@ -94,7 +94,7 @@ export const DetailViewUnit: FC = () => {
                 onClick={() => setCanUpdate(!canUpdate)}
               />
 
-              {/* V2: у кнопки иконка должна быть. */}
+              {/* TO DO: сделать иконку для кнопки. */}
               {canUpdate && (
                 <Button
                   className="btn-nav"
@@ -103,7 +103,7 @@ export const DetailViewUnit: FC = () => {
                 />
               )}
 
-              {/* V2: у кнопки иконка должна быть. */}
+              {/* TO DO: сделать иконку для кнопки. */}
               <Button
                 className="btn-delete"
                 buttonsName={staticData.buttons.delete}
@@ -143,7 +143,6 @@ export const DetailViewUnit: FC = () => {
                   options={statusList}
                 />
 
-                {/* TO DO: добавить статику в staticData и заменить сразу */}
                 <FormField
                   label={staticData.unit.meeting.dateMeet}
                   placeholder={staticData.unit.meeting.dateMeet}
@@ -202,7 +201,7 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    {/* V2: add in value */}
+                    {/* TO DO: add in value */}
                     <ViewField title='было лет' value={oneUnit.wasOld} />
 
                     <ViewField
@@ -223,7 +222,7 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    {/* V2: add in value */}
+                    {/* TO DO: add in value */}
                     <ViewField title='дата создания' value={oneUnit.createAt} />
                     <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                   </div>

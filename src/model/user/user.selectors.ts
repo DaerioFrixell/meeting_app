@@ -6,15 +6,6 @@ import { calcNotPrimalValueByStatus } from "../../middleware/calcNotPrimalValueB
 
 const getUserState = (state: RootState): UserState => state.user;
 
-/** 
- * цель на год 
- */
-export const getCountAllUnitsGoalSelector = (): number => {
-  let number = 500;
-
-  return number
-};
-
 /**
  * Значения по каждому статусу online
  */

@@ -3,6 +3,7 @@ import { StatisticByYear_T } from "../../types/V2/userApiV2.type"
 import { UserAction_E, UserActions } from "./user.type"
 
 
+// TO DO: почему тип здесь?
 export type UserState = {
   isLoading: boolean
   errors: null | {},

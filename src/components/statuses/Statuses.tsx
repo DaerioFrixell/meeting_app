@@ -1,6 +1,7 @@
 import "./statuses.scss";
-import { FC } from "react"
-import { statTitles } from "../../types/statuses";
+import { FC } from "react";
+import { statTitles } from "../../types/statuses.type";
+
 
 export const Statuses: FC = () => {
   return (
@@ -14,5 +15,4 @@ export const Statuses: FC = () => {
       }
     </>
   )
-
 }

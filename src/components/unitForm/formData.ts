@@ -3,9 +3,10 @@ import dayjs from 'dayjs';
 import { fakeUnitsV1 } from '../../mocdb/mocdb';
 import { UnitCreateV1, UnitV1 } from '../../types/UnitV1';
 import { TypeMeet } from '../../types/V2/typeMeetV2.type';
-import { StatusMark } from '../../types/statuses';
+import { StatusMark_E } from '../../types/statuses.type';
 
 
+// TO DO: зачем фейковые данные здесь?
 const data: UnitV1[] = fakeUnitsV1;
 const unitLinks = data.map(u => u.link)
 
@@ -14,7 +15,7 @@ export const getLinkList = (links: string[]) => {
 }
 
 export const initialFormDataValues: UnitCreateV1 = {
-  status: StatusMark.C,
+  status: StatusMark_E.C,
   name: '',
   surname: '',
   birth: '',
@@ -29,7 +30,7 @@ const getMinBirth = () => {
   return date.subtract(14, 'year')
 }
 
-// v2: ерорры перенести в ./staticData
+// TO DO: ерорры перенести в ./staticData
 export const SignupSchemaFormData = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')

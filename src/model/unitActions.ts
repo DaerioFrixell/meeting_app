@@ -1,21 +1,24 @@
-import { Dispatch } from 'redux'
-import { UnitActions, UnitAction_E } from './unitTypes'
+import { Dispatch } from 'redux';
+import { UnitActions_T, UnitAction_E } from './unitTypes';
 import {
   createUnitRequest,
   deleteUnitRequest,
   getUnitsRequest,
   updateUnitRequest,
-} from '../api/unit.api'
-import { fakeUnitsV1 } from '../mocdb/mocdb'
-import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1'
-import { SearchRequest_T } from './settings/setting.type'
+} from '../api/unit.api';
+import { fakeUnitsV1 } from '../mocdb/mocdb';
+import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1';
+import { SearchRequest_T } from './settings/setting.type';
 
 
 // TO DO: переместить в папку ./Unit
+/**
+ * Получает пагинированный список Units.
+ */
 export const getUnitsPart = (counts: SearchRequest_T) => {
-  return async (dispatch: Dispatch<UnitActions>) => {
+  return async (dispatch: Dispatch<UnitActions_T>) => {
     try {
-      const units = await getUnitsRequest(counts)
+      const units = await getUnitsRequest(counts);
 
       dispatch({
         type: UnitAction_E.FETCH_UNITS_SUCCESS,
@@ -31,8 +34,11 @@ export const getUnitsPart = (counts: SearchRequest_T) => {
   }
 }
 
+/**
+ * Получает фейковый список Units.
+ */
 export const getAllUnitsFake = () => {
-  return async (dispatch: Dispatch<UnitActions>) => {
+  return async (dispatch: Dispatch<UnitActions_T>) => {
     try {
       dispatch({ type: UnitAction_E.FETCH_UNITS })
 
@@ -51,8 +57,13 @@ export const getAllUnitsFake = () => {
   }
 }
 
+/**
+ * Отправляет запрос на создание Unit в БД.
+ * 
+ * Запускает добавление Unit в Store.
+ */
 export const createUnitV1 = (unit: UnitCreateV1) => {
-  return async (dispatch: Dispatch<UnitActions>) => {
+  return async (dispatch: Dispatch<UnitActions_T>) => {
     try {
       const data: UnitV1 = await createUnitRequest(unit)
 
@@ -69,8 +80,13 @@ export const createUnitV1 = (unit: UnitCreateV1) => {
   }
 }
 
+/**
+ * Отправляет запрос на обновление выбранного Unit в БД.
+ * 
+ * Обнавляет выбранный Unit в Store.
+ */
 export const updateUnit = (updateUnit: UnitUpdateV1) => {
-  return async (dispatch: Dispatch<UnitActions>) => {
+  return async (dispatch: Dispatch<UnitActions_T>) => {
     try {
       const unitAfterUpdate = await updateUnitRequest(updateUnit)
 
@@ -87,8 +103,13 @@ export const updateUnit = (updateUnit: UnitUpdateV1) => {
   }
 }
 
+/**
+ * Отправляет запрос на удаление Unit в БД по Id.
+ * 
+ * Удаляет Unit из Store.
+ */
 export const deleteUnit = (id: number) => {
-  return async (dispatch: Dispatch<UnitActions>) => {
+  return async (dispatch: Dispatch<UnitActions_T>) => {
     try {
       deleteUnitRequest(id);
 
