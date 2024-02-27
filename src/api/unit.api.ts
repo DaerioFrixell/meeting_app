@@ -47,5 +47,8 @@ export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<UnitV
 export const deleteUnitRequest = async (id: number): Promise<string> => {
   const urlPath = apiV1 + endpoints.unit + path.unit.delete;
 
-  return await $host.delete(urlPath + id);
+  const response: Response_T<string> = await $host
+    .delete(urlPath + id);
+
+  return response.data;
 }
