@@ -1,6 +1,6 @@
-import { getStatisticByYear } from "../../api/stats.api";
+
 import { UserAction_E, UserActions } from "./user.type";
-import { getUnitsCountRequest } from "../../api/user.api";
+import { getStatisticByYear, getUnitsCountRequest } from "../../api/user.api";
 import { Dispatch } from "redux";
 import { AxiosError } from "axios";
 import { SelectPeriod_T } from "../../types/V2/selectPeriodV2.type";
