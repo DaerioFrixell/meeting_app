@@ -1,0 +1,45 @@
+@import "../../../style/colors.scss";
+@import "../../../style/font-style.scss";
+
+
+.choose-buttons-group {
+  margin: auto;
+}
+
+.choose-buttons-group-wrapper {
+  width: 18rem;
+  margin: auto;
+}
+
+.choose-button {
+  display: inline-flex;
+  overflow: hidden;
+  position: relative;
+  margin-right: .8rem;
+
+  &__input {
+    display: none;
+    position: absolute;
+  }
+
+  &__label {
+    background-color: $light;
+    border-radius: 2rem;
+    color: $gray-3;
+
+    font-size: $font-little;
+    font-weight: 600;
+
+    margin-bottom: 1rem;
+    padding: 1.75rem 2.4rem;
+    transition: .2s;
+  }
+}
+
+.choose-button input[type=radio]:checked+.choose-button__label {
+  background-color: $active-modal;
+}
+
+.choose-button input[type=checkbox]:checked+.choose-button__label {
+  background-color: $active-modal;
+}
