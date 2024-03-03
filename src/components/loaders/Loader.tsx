@@ -1,22 +1,22 @@
 
 import "./loaders.scss";
-import { Loader_T } from "./loader.type";
 import { FC } from "react";
+import { Loader_T } from "./loader.type";
+import { loading_E } from "../../types/common/loading.type";
+import { staticData } from "../../staticData/staticData";
 
-// TO DO: сделать константы для статики.
+
 /**
- * Для показа большого лоадера используй loaderType = "main".
- * 
  * Для показа только индикатора загрузки используй комонент без props.
  */
 export const Loader: FC<Loader_T> = ({ loaderType }) => {
   return (
     <div className="main-loader">
       {
-        (loaderType === "main")
+        (loaderType === loading_E.MAIN)
           ? (
             <>
-              <p>Please wait...</p>
+              <p>{staticData.loading}</p>
               <span className="big-circle"></span>
             </>
           )

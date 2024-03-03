@@ -2,17 +2,11 @@
 import './modal.scss';
 import { staticData } from '../../staticData/staticData';
 import { Button } from '../buttons/Button';
-import { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
+import { ModalWindow_T } from './modalWindow';
 
 
-// TO DO: типы хранить в файле с типами.
-type Modal_T = {
-    toggle(): void;
-    children: ReactNode;
-    title: string;
-};
-
-export const Modal: FC<Modal_T> = ({ toggle, children, title }) => {
+export const ModalWindow: FC<ModalWindow_T> = ({ toggle, children, title }) => {
     return (
         <div className="modal-bg" onClick={toggle}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
