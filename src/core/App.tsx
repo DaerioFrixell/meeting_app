@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import { settingLoadingSelector } from '../model/settings/setting.selectors';
 import { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Loader } from '../components/loaders/MainLoader';
+import { Loader } from '../components/loaders/Loader';
+import { loading_E } from '../types/common/loading.type';
 
 
 export const App: FC = () => {
@@ -28,7 +29,7 @@ export const App: FC = () => {
     if (!token) navigate("auth");
   }, [token])
 
-  if (isViewSettingLoader) return <Loader loaderType='main' />
+  if (isViewSettingLoader) return <Loader loaderType={loading_E.MAIN} />
 
   return (
     <div className="app">
