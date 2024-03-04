@@ -4,7 +4,6 @@ import { Button } from "../buttons/Button";
 import { Paginator_T } from './paginator.type';
 
 
-// TO DO: когда будет выполняться таска с пагинатором, то вынести всю статику в staticData.
 export const Paginator: FC<Paginator_T> = ({
   elementCount,
   currentPage,

@@ -1,11 +1,7 @@
 import "./mainTitle.scss";
 import { FC } from 'react';
+import { MainTitle_T } from "./mainTitle.type";
 
-
-// TO DO: вынести в файл .type.ts.
-export type MainTitle_T = {
-  title: string
-}
 
 export const MainTitle: FC<MainTitle_T> = ({ title }) => {
   return (

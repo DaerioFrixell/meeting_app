@@ -25,7 +25,6 @@ export const MonthStats: FC = () => {
     },
   ];
 
-  // TO DO: вынести статику в staticData, когда таску с месяцами делать будешь.
   return (
     <div className="month">
       <p className='month-inner__element'>год: 0000</p>
