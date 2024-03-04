@@ -1,3 +1,6 @@
+import { loading_E } from "../../types/common/loading.type";
+
+
 export type Loader_T = {
-  loaderType?: "main"
+  loaderType?: loading_E
 }

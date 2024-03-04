@@ -3,7 +3,7 @@ export type UnitV1 = {
   status: string | null
   name: string
   surname: string
-  birth: Date | string
+  birth: string
   wasOld: number
   dateMeet: string
   link: string

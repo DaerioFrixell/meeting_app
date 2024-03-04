@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store";
 import { UserState } from "./user.reducer";
-import { calcNotPrimalValueByStatus } from "../../middleware/calcNotPrimalValueByStatus";
+import { calcNotPrimalValueByStatus } from "../../middleware/calculationMethods";
 
 
 const getUserState = (state: RootState): UserState => state.user;

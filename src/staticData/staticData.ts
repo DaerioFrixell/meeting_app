@@ -1,5 +1,6 @@
 export const staticData = {
   login: "",
+  loading: "идёт загрузка",
   unit: {
     status: {
       title: "статус",
