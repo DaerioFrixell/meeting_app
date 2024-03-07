@@ -3,6 +3,9 @@ import { Field, FieldProps } from 'formik';
 import { FC } from 'react';
 import { FormField_T } from './formField.type';
 import { LabelField } from './label/LabelField';
+import classNames from 'classnames';
+
+const cl = classNames;
 
 
 /** 
@@ -27,7 +30,7 @@ export const FormField: FC<FormField_T> = ({
 
           <input
             id={label}
-            className={`form__input ${className}`} // TO DO: className подключить
+            className={cl("form__input", className)}
             placeholder={placeholder}
             type={type}
             {...field}

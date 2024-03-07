@@ -3,7 +3,9 @@ import { Field } from 'formik';
 import { FC } from 'react';
 import { SelectField_T } from './selectField.type';
 import { LabelField } from '../label/LabelField';
+import classNames from 'classnames';
 
+const cl = classNames;
 
 /** 
  * Select for any form 
@@ -20,7 +22,7 @@ export const SelectField: FC<SelectField_T> = ({
       <LabelField label={label} />
 
       <Field
-        className={`default-select ${className}`}
+        className={cl("default-select", className)}
         as="select"
         name={nameField}
         {...Field} >

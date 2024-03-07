@@ -25,7 +25,7 @@ export const UnitForm: FC = () => {
       }}
     >
       {({ errors }) => (
-        <Form className="unit-form">
+        <Form className="unit-form" placeholder={"wtf"}>
           <div className="unit-form__block">
             <div className="unit-form__block__one">
               <h3>{staticData.unitForm.blockTitle.aboutUnit}</h3>
