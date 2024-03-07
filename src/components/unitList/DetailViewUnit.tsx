@@ -75,7 +75,7 @@ export const DetailViewUnit: FC = () => {
         }}
       >
         {_ => (
-          <Form className="editUnit">
+          <Form className="editUnit" placeholder={"wtf"}>
             <div className="navigation">
               {/* TO DO: сделать иконку для кнопки. */}
               <Button

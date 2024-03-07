@@ -1,6 +1,9 @@
 import "./labelField.scss";
 import { FC } from "react";
 import { LabelField_T } from "./labelField.type";
+import classNames from "classnames";
+
+const cl = classNames;
 
 
 export const LabelField: FC<LabelField_T> = ({
@@ -9,7 +12,7 @@ export const LabelField: FC<LabelField_T> = ({
 }) => {
   return (
     <label
-      className={`label-field ${className}`}
+      className={cl("label-field", className)}
       htmlFor={label}>
       {label}
     </label>
