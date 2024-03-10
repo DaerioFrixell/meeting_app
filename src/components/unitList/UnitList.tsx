@@ -9,6 +9,7 @@ import { unitsCountSelector } from '../../model/user/user.selectors';
 import { unitSelector } from '../../model/unit/unit.selectors';
 import { SelectPeriod_E } from '../../types/V2/selectPeriodV2.type';
 import { Paginator } from '../paginator/Paginator';
+import { limitLoadData } from '../../staticData/constants/paginator';
 
 
 export const UnitList: FC = () => {
@@ -33,7 +34,7 @@ export const UnitList: FC = () => {
   /**
    * Первый номер Unit на каждой странице.
    */
-  let firstUnitNumber: number = allUnitsCount - ((currentPage - 1) * 15);
+  let firstUnitNumber: number = allUnitsCount - ((currentPage - 1) * limitLoadData);
 
   /**
    * Открывает детальный просмотр Unit по id.
@@ -54,7 +55,7 @@ export const UnitList: FC = () => {
    */
   useEffect(() => {
     getUnitsPart({
-      limit: 15, page: currentPage
+      limit: limitLoadData, page: currentPage
     })
   }, [currentPage])
 

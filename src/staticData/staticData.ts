@@ -1,6 +1,7 @@
 export const staticData = {
   login: "",
   loading: "идёт загрузка",
+  paginatorTitle: "всего:",
   unit: {
     status: {
       title: "статус",
@@ -41,8 +42,6 @@ export const staticData = {
         online: "online",
         offline: "offline",
       }
-
-
     },
     placeholders: {
       status: "статус",
