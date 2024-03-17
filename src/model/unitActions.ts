@@ -9,9 +9,10 @@ import {
 import { fakeUnitsV1 } from '../mocdb/mocdb';
 import { UnitCreateV1, UnitUpdateV1, UnitV1 } from '../types/UnitV1';
 import { SearchRequest_T } from './settings/setting.type';
+import { AxiosError } from 'axios';
 
 
-// TO DO: переместить в папку ./Unit
+// TODO: переместить в папку ./Unit
 /**
  * Получает пагинированный список Units.
  */
@@ -88,17 +89,66 @@ export const createUnitV1 = (unit: UnitCreateV1) => {
 export const updateUnit = (updateUnit: UnitUpdateV1) => {
   return async (dispatch: Dispatch<UnitActions_T>) => {
     try {
-      const unitAfterUpdate = await updateUnitRequest(updateUnit)
+      const resp = await updateUnitRequest(updateUnit);
 
       dispatch({
         type: UnitAction_E.UPDATE_UNIT,
-        payload: unitAfterUpdate,
+        payload: {
+          unit: resp.data,
+          status: resp.status
+        },
       })
     } catch (e) {
+      /**
+       * Сообщение с ошибкой, которое передаётся в dispatch и показывается пользователю.
+       */
+      let errorMessage: string;
+      /**
+       * Статус, которыйе передаётся в dispatch.
+       */
+      let errorStatus: number = 0;
+
+      /**
+       * Ошибка в блоке catch.
+       */
+      const err = e as AxiosError;
+
+      switch (err.code) {
+        case AxiosError.ERR_BAD_REQUEST: {
+          errorMessage = `Ошибка: ${err.message}. Возможно неверный url`;
+
+          // 400 Bad Request («неправильный, некорректный запрос»)
+          errorStatus = 400;
+
+          break;
+        }
+
+        case (AxiosError.ERR_NETWORK): {
+          errorMessage = `Ошибка: ${err.message}. Либо отключен инет, либо сервер не работает.`;
+
+          // 522 Connection Timed Out («соединение не отвечает»).
+          errorStatus = 522;
+
+          break;
+        }
+
+        default: {
+          errorMessage = `Ошибка: ${err.message}. Необработанная ошибка.`;
+
+          // 520 Unknown Error («неизвестная ошибка»).
+          errorStatus = 520;
+
+          break;
+        }
+      }
+
       dispatch({
-        type: UnitAction_E.FETCH_UNITS_ERROR,
-        payload: 'ошибка при загрузке units',
-      })
+        type: UnitAction_E.UPDATE_UNIT_ERROR,
+        payload: {
+          status: err.response?.status || errorStatus,
+          error: errorMessage,
+        },
+      });
     }
   }
 }

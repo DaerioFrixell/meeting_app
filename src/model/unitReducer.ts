@@ -5,10 +5,11 @@ import { UnitAction_E, UnitActions_T, UnitInitState_T } from './unitTypes';
 const initialState: UnitInitState_T = {
   isLoading: false,
   error: null,
+  status: 0,
   units: [],
 }
 
-// TO DO: переместить в папку ./Unit
+// TODO: переместить в папку ./Unit
 export const unitReducer = (state = initialState, action: UnitActions_T): UnitInitState_T => {
   switch (action.type) {
     case UnitAction_E.FETCH_UNITS:
@@ -25,6 +26,7 @@ export const unitReducer = (state = initialState, action: UnitActions_T): UnitIn
 
     case UnitAction_E.FETCH_UNITS_SUCCESS:
       return {
+        ...state,
         isLoading: false,
         error: null,
         units: action.payload,
@@ -50,7 +52,16 @@ export const unitReducer = (state = initialState, action: UnitActions_T): UnitIn
         ...state,
         isLoading: false,
         error: null,
-        units: updateStateUnits(state, action.payload),
+        status: action.payload.status,
+        units: updateStateUnits(state, action.payload.unit),
+      }
+
+    case UnitAction_E.UPDATE_UNIT_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        status: action.payload.status,
+        error: action.payload.error,
       }
 
     case UnitAction_E.DELETE_UNITS:
@@ -66,7 +77,7 @@ export const unitReducer = (state = initialState, action: UnitActions_T): UnitIn
   }
 }
 
-// TO DO: рассмотреть возможность вынести функцию в отдельный файл, чтобы здесь был только Reducer.
+// TODO: рассмотреть возможность вынести функцию в отдельный файл, чтобы здесь был только Reducer.
 const updateStateUnits = (state: UnitInitState_T, payload: UnitUpdateV1): UnitV1[] => {
   const copyState = structuredClone(state);
 

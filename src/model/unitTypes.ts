@@ -1,10 +1,11 @@
 import { UnitUpdateV1, UnitV1 } from '../types/UnitV1'
 
 
-// TO DO: переместить в папку ./Unit
+// TODO: переместить в папку ./Unit
 export type UnitInitState_T = {
   isLoading: boolean
   error: null | string
+  status: number
   units: UnitV1[]
 }
 
@@ -18,10 +19,12 @@ export enum UnitAction_E {
   ADD_UNITS = 'ADD_UNITS',
 
   UPDATE_UNIT = 'UPDATE_UNIT',
+  UPDATE_UNIT_ERROR = 'UPDATE_UNIT_ERROR',
 
   DELETE_UNITS = 'DELETE_UNITS',
   DELETE_UNITS_ERROR = 'DELETE_UNITS_ERROR',
 }
+
 
 export type FetchUnitAction_T = {
   type: UnitAction_E.FETCH_UNITS
@@ -58,7 +61,18 @@ export type DeleteUnitErrorAction_T = {
 
 export type UpdateUnitAction_T = {
   type: UnitAction_E.UPDATE_UNIT
-  payload: UnitUpdateV1
+  payload: {
+    unit: UnitUpdateV1,
+    status: number
+  }
+}
+
+export type UpdateUnitErrorAction_T = {
+  type: UnitAction_E.UPDATE_UNIT_ERROR
+  payload: {
+    error: string,
+    status: number
+  }
 }
 
 export type UnitActions_T =
@@ -70,3 +84,4 @@ export type UnitActions_T =
   | DeleteUnitAction_T
   | DeleteUnitErrorAction_T
   | UpdateUnitAction_T
+  | UpdateUnitErrorAction_T

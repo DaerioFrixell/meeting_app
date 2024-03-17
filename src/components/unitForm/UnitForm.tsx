@@ -1,5 +1,5 @@
 import './unitForm.scss';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { useAction } from '../../hooks/useAction';
 import { FormField } from '../UI/field/FormField';
@@ -12,14 +12,38 @@ import { staticData } from '../../staticData/staticData';
 export const UnitForm: FC = () => {
   const { createUnitV1 } = useAction();
 
+  const [isFake, setIsFake] = useState(false);
+
+  const createFake = async () => {
+    setIsFake(true);
+  }
+
   return (
     <Formik
       initialValues={initialFormDataValues}
       validationSchema={SignupSchemaFormData}
       onSubmit={(values, actions) => {
-        createUnitV1({
-          ...values
-        });
+        if (isFake) {
+          values.birth = "2000-01-01";
+          values.dateMeet = "2020-01-01";
+          values.link = "http/fakeLink";
+          values.name = "fake";
+          values.surname = "fake";
+          values.status = "C";
+          values.typeMeet = "online";
+          values.whereMeet = "fake meet";
+
+          createUnitV1({
+            ...values
+          })
+        }
+
+        if (!isFake) {
+          createUnitV1({
+            ...values
+          });
+        }
+
         actions.resetForm();
         actions.setSubmitting(false);
       }}
@@ -58,7 +82,7 @@ export const UnitForm: FC = () => {
             </div>
 
             <div className="unit-form__block__two">
-              {/* TO DO: добавить возможность добавлять ссылки на разные места. */}
+              {/* TODO: добавить возможность добавлять ссылки на разные места. */}
               <h3>{staticData.unitForm.blockTitle.linksList}</h3>
 
               <FormField
@@ -94,6 +118,14 @@ export const UnitForm: FC = () => {
               disabled={!!Object.entries(errors).length}
               type={"submit"}
             />
+
+            {/* !!! Если нужно создать фейковый Unit, то убрать раскомментить код ниже !!! */}
+
+            {/* <Button
+              buttonsName="add fake"
+              type={"submit"}
+              onClick={() => createFake()}
+            /> */}
 
             <Button
               className={"btn-clear"}

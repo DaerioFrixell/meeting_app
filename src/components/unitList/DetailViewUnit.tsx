@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { Form, Formik } from "formik";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { unitSelector } from "../../model/unit/unit.selectors";
+import { unitErrorSelector, unitSelector, unitStatusSelector } from "../../model/unit/unit.selectors";
 import { UnitUpdateV1, UnitV1 } from "../../types/UnitV1";
 import { useAction } from "../../hooks/useAction";
 import { FormField } from "../UI/field/FormField";
@@ -13,17 +13,28 @@ import { staticData } from "../../staticData/staticData";
 import { ChooseButtonsGroup } from "../inputs/ChooseButtonsGroup";
 import { StatusMark_E } from "../../types/statuses.type";
 import { SelectField } from "../UI/field/selectField/SelectField";
+import { useToggle } from "../../hooks/useToggle";
+import { Popup } from "../UI/popup/Popup";
 
 
-// TO DO: нужен запрос getUnitById, т.к. при перезагрузке page id теряется. Либо запоминать id.
+// TODO: нужен запрос getUnitById, т.к. при перезагрузке page id теряется. Либо запоминать id.
 export const DetailViewUnit: FC = () => {
   const navigate = useNavigate();
+  const { isOpen, toggle, toClose } = useToggle();
   const { deleteUnit, updateUnit } = useAction();
 
   /** 
    * Id элемента, на который нажали.
    */
   const { id } = useParams();
+
+  /**
+   * Запускает удаление Unit по id и редиректит в UnitList.
+   */
+  const deleteAndNavigate = () => {
+    deleteUnit(Number(id))
+    navigate("/allunits");
+  }
 
   /** 
    * Свойства для различия редактирования и просмотра формы.
@@ -34,6 +45,16 @@ export const DetailViewUnit: FC = () => {
    * Список загруженных пользователей.
    */
   const units = useSelector(unitSelector);
+
+  /** 
+   * Статус в ответе запроса при обновлении.
+   */
+  const unitStatus = useSelector(unitStatusSelector);
+
+  /** 
+   * Ошибка в ответе запроса при обновлении.
+   */
+  const unitError = useSelector(unitErrorSelector);
 
   /**
    * Получние Unit с нужным найди.
@@ -53,14 +74,6 @@ export const DetailViewUnit: FC = () => {
   };
 
   /**
-   * Запускает удаление Unit по id и редиректит в UnitList.
-   */
-  const deleteAndNavigate = () => {
-    deleteUnit(Number(id))
-    navigate("/allunits");
-  }
-
-  /** 
    * Список статусов для SelectField.
    */
   const statusList = Object.keys(StatusMark_E)
@@ -72,19 +85,20 @@ export const DetailViewUnit: FC = () => {
         onSubmit={(values) => {
           updateUnit(values);
           setCanUpdate(false);
+          toggle();
         }}
       >
         {_ => (
           <Form className="editUnit" placeholder={"wtf"}>
             <div className="navigation">
-              {/* TO DO: сделать иконку для кнопки. */}
+              {/* TODO: сделать иконку для кнопки. */}
               <Button
                 className="btn-nav"
                 buttonsName={`<- back`}
                 onClick={() => navigate("/allunits")}
               />
 
-              {/* TO DO: сделать иконку для кнопки. */}
+              {/* TODO: сделать иконку для кнопки. */}
               <Button
                 className="btn-nav"
                 buttonsName={canUpdate
@@ -94,7 +108,7 @@ export const DetailViewUnit: FC = () => {
                 onClick={() => setCanUpdate(!canUpdate)}
               />
 
-              {/* TO DO: сделать иконку для кнопки. */}
+              {/* TODO: сделать иконку для кнопки. */}
               {canUpdate && (
                 <Button
                   className="btn-nav"
@@ -103,7 +117,7 @@ export const DetailViewUnit: FC = () => {
                 />
               )}
 
-              {/* TO DO: сделать иконку для кнопки. */}
+              {/* TODO: сделать иконку для кнопки. */}
               <Button
                 className="btn-delete"
                 buttonsName={staticData.buttons.delete}
@@ -120,7 +134,7 @@ export const DetailViewUnit: FC = () => {
                 </div>
 
                 <div className="flex-line">
-                  {/* TO DO: добавить дату создания/обновления в value */}
+                  {/* TODO: добавить дату создания/обновления в value */}
                   <ViewField title='дата создания' value={oneUnit.createAt} />
                   <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                 </div>
@@ -201,7 +215,7 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    {/* TO DO: add in value */}
+                    {/* TODO: add in value */}
                     <ViewField title='было лет' value={oneUnit.wasOld} />
 
                     <ViewField
@@ -222,7 +236,7 @@ export const DetailViewUnit: FC = () => {
                   </div>
 
                   <div className="flex-line">
-                    {/* TO DO: add in value */}
+                    {/* TODO: add in value */}
                     <ViewField title='дата создания' value={oneUnit.createAt} />
                     <ViewField title='последнее обновление' value={oneUnit.updateAt} />
                   </div>
@@ -237,6 +251,14 @@ export const DetailViewUnit: FC = () => {
           </Form>
         )}
       </Formik>
+
+      {isOpen &&
+        <Popup
+          status={unitStatus}
+          message={unitError || staticData.response.successUpdateUnit}
+          toClose={toClose}
+        />
+      }
     </section>
   );
 };
