@@ -2,6 +2,45 @@ export const staticData = {
   login: "",
   loading: "идёт загрузка",
   paginatorTitle: "всего:",
+  response: {
+    successUpdateUnit: "Unit успешно обновлён",
+  },
+  buttons: {
+    create: "создать",
+    update: "обновить",
+    edit: "редактировать",
+    confirm: "принять",
+    delete: "удалить",
+
+    open: "открыть",
+    close: "закрыть",
+    back: "назад",
+    clear: "очистить",
+    clearForm: "очистить",
+
+  },
+  statistics: {
+    global: {
+      title: "общая статистика",
+      goalPart1: "Goal: meeting",
+      goalPart2: "units per",
+      goalPart3: "year",
+      completly: "завершено",
+      changePeriod: "выберете период",
+      pDay: "в/день",
+      pMonth: "в/мес"
+    },
+    months: {},
+    commons: {
+      perMonth: "в месяц"
+    }
+  },
+  timing: {
+    year: "год:",
+    month: "месяц: ",
+    all: "всего: ",
+    loading: "идёт загрузка..."
+  },
   unit: {
     status: {
       title: "статус",
@@ -74,40 +113,4 @@ export const staticData = {
   unitList: {
     title: "список всех"
   },
-  statistics: {
-    global: {
-      title: "общая статистика",
-      goalPart1: "Goal: meeting",
-      goalPart2: "units per",
-      goalPart3: "year",
-      completly: "завершено",
-      changePeriod: "выберете период",
-      pDay: "в/день",
-      pMonth: "в/мес"
-    },
-    months: {},
-    commons: {
-      perMonth: "в месяц"
-    }
-  },
-  buttons: {
-    create: "создать",
-    update: "обновить",
-    edit: "редактировать",
-    confirm: "принять",
-    delete: "удалить",
-
-    open: "открыть",
-    close: "закрыть",
-    back: "назад",
-    clear: "очистить",
-    clearForm: "очистить",
-
-  },
-  timing: {
-    year: "год:",
-    month: "месяц: ",
-    all: "всего: ",
-    loading: "идёт загрузка..."
-  }
 }

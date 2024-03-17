@@ -4,6 +4,7 @@ import { SearchRequest_T } from '../model/settings/setting.type';
 import { Response_T } from '../core/api.type';
 import { apiV1, endpoints, path, queryParam } from '../core/api.setting';
 
+// TODO: все функции должны возвращать Response<T>, и уже в Action вытаскивать дату, т.к. изменилось представление данных для редьюсера.
 
 /**
  * Запрос на получение ограниченного количества Unit.
@@ -32,13 +33,13 @@ export const createUnitRequest = async (createUnit: UnitCreateV1): Promise<UnitV
 /**
  * Запрос на обновление Unit.
  */
-export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<UnitV1> => {
+export const updateUnitRequest = async (updateUnit: UnitUpdateV1): Promise<Response_T<UnitV1>> => {
   const urlPath = apiV1 + endpoints.unit + path.unit.update;
 
   const response: Response_T<UnitV1> = await $host
     .put(urlPath, updateUnit);
 
-  return response.data
+  return response
 }
 
 /**

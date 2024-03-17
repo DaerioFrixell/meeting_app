@@ -1,0 +1,16 @@
+@import "../../../style/colors.scss";
+@import "../../../style/mixine.scss";
+
+
+// TODO: наименование цвета неверное. Изменить на подходящее наименование.
+.popup-success {
+  @include popup();
+
+  background-color: $choose-element;
+}
+
+.popup-error {
+  @include popup();
+
+  background-color: $danger-1;
+}
