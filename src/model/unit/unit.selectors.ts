@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { UnitInitState_T } from "../unitTypes";
+import { UnitInitState_T } from "./unitTypes";
 import { RootState } from "../../core/store";
 import { mockCountUnitGoal } from "../../staticData/others";
 
